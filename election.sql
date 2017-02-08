@@ -1,6 +1,6 @@
-.separator ,
+.separator ","
 
-CREATE TABLE elections
+CREATE TABLE election_results
   (fips_code integer,
    state VARCHAR(2),
    county VARCHAR(100),
@@ -31,9 +31,12 @@ CREATE TABLE elections
    oth_16_perc real,
    win_marg_16 real,
    winner_16 VARCHAR(3),
-   DIFF_0812 real,
-   Direction_0812 VARCHAR(6),
-   DIFF_1216 real,
-   Direction_1216 VARCHAR(6),
-   DIFF_0816 real,
-   Direction_0816 VARCHAR(6));
+   diff_0812 real,
+   direction_0812 VARCHAR(6),
+   diff_1216 real,
+   direction_1216 VARCHAR(6),
+   diff_0816 real,
+   direction_0816 VARCHAR(6),
+   primary key (fips_code));
+
+.import e.csv election_results
