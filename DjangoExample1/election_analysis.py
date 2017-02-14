@@ -11,9 +11,12 @@ DATABASE_FILENAME = os.path.join(DATA_DIR, 'data.db')
 def find_data(args_from_ui):
 	connection = sqlite3.connect("data.db")
 	c = connection.cursor()  #set up the connection to database
-	command = construct_sql_command(args_from_ui)
-	results = c.execute(command).fetchall()
-	header = get_header(c)
+	if args_from_ui["county"] or args_from_ui["state"]:
+		command = construct_sql_command(args_from_ui)
+		results = c.execute(command).fetchall()
+		header = get_header(c)
+	else:
+		results = []
 	connection.close()
 	if not results:
 		header = []
