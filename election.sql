@@ -1,31 +1,33 @@
-.separator ","
+.separator ,
+.mode column
+.headers on
 
 CREATE TABLE election_results
   (fips_code integer,
    state VARCHAR(2),
    county VARCHAR(100),
-   total_2008 real,
-   dem_2008 real,
-   gop_2008 real,
-   oth_2008 real,
+   total_2008 integer,
+   dem_2008 integer,
+   gop_2008 integer,
+   oth_2008 integer,
    dem_08_perc real,
    gop_08_perc real,
    oth_08_perc real,
    win_marg_08 real,
    winner_08 VARCHAR(3),
-   total_2012 real,
-   dem_2012 real,
-   gop_2012 real,
-   oth_2012 real,
+   total_2012 integer,
+   dem_2012 integer,
+   gop_2012 integer,
+   oth_2012 integer,
    dem_12_perc real,
    gop_12_perc real,
    oth_12_perc real,
    win_marg_12 real,
    winner_12 VARCHAR(3),
-   total_2016 real,
-   dem_2016 real,
-   gop_2016 real,
-   oth_2016 real,
+   total_2016 integer,
+   dem_2016 integer,
+   gop_2016 integer,
+   oth_2016 integer,
    dem_16_perc real,
    gop_16_perc real,
    oth_16_perc real,
@@ -36,7 +38,6 @@ CREATE TABLE election_results
    diff_1216 real,
    direction_1216 VARCHAR(6),
    diff_0816 real,
-   direction_0816 VARCHAR(6),
-   primary key (fips_code));
+   direction_0816 VARCHAR(6));
 
 .import e.csv election_results
