@@ -1,9 +1,26 @@
-<?php /* Template Name: Election Analysis */ ?> 
+<?php /* Election Analysis */ ?> 
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 <div id="primary"> <div id="content" role="main"> </div><!-- #content -->
 <form method="post" id="election_analysis" action="">
 <h1> 2016 Election Analysis by County </h1> 
 
-<h6> <b> Please check all data you would like to see: </b> </h6>
+<h4> <b> Please check all data you would like to see: </b> </h4>
 
 <b>Total Votes</b>
       <li><label for="total_2008">Total 2008 Votes</label> <input type="checkbox" name="total_2008" id="total_2008" value="total_2008">&emsp;<label for="total_2012">Total 2012 Votes</label> <input type="checkbox" name="total_2012" id="total_2012" value="total_2012">&emsp;<label for="total_2016">Total 2016 Votes</label> <input type="checkbox" name="total_2016" id="total_2016" value="total_2016"></li>
@@ -31,7 +48,7 @@
 
 <b>Winning Margins</b>
 
-      <li><label for="diff_0812">Winning Percentage 2008 to 2012</label> <input type="checkbox" name="diff_0812" id="diff_0812" value="diff_0812">&emsp;<label for="diff_0816">Winning Percentage 2008 to 2016</label> <input type="checkbox" name="diff_0816" id="diff_0816" value="diff_0816">&emsp;<label for="diff_1216">Winning Percentage 2012 to 2016</label> <input type="checkbox" name="diff_1216" id="diff_1216" value="diff_1216"></li>
+      <li><label for="diff_0812">2008 to 2012 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0812" id="diff_0812" value="diff_0812">&emsp;<label for="diff_0816">2008 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0816" id="diff_0816" value="diff_0816">&emsp;<label for="diff_1216">2012 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_1216" id="diff_1216" value="diff_1216"></li>
 
 <b>Unemployment and Labor Force Data</b>
 
@@ -43,19 +60,80 @@
 
 	<li><label for="civilian_labor_force_2008">Civilian Labor Force in 2008</label> <input type="checkbox" name="civilian_labor_force_2008" id="civilian_labor_force_2008" value="civilian_labor_force_2008">&emsp;<label for="civilian_labor_force_2012">Civilian Labor Force in 2012</label> <input type="checkbox" name="civilian_labor_force_2012" id="civilian_labor_force_2012" value="civilian_labor_force_2012">&emsp;<label for="civilian_labor_force_2016">Civilian Labor Force in 2015</label> <input type="checkbox" name="civilian_labor_force_2015" id="civilian_labor_force_2015" value="civilian_labor_force_2015"></li>
 
-	<li><label for="labor_Force_Percent_Difference_2008_to_2015">Difference in Labor Force Rate 2008 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2008_to_2015" id="labor_Force_Percent_Difference_2008_to_2015" value="labor_Force_Percent_Difference_2008_to_2015">&emsp;<label for="labor_Force_Percent_Difference_2012_to_2015">Difference in Labor Force Rate 2012 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2012_to_2015" id="labor_Force_Percent_Difference_2012_to_2015" value="labor_Force_Percent_Difference_2012_to_2015"></li>
+	<li><label for="labor_Force_Percent_Difference_2008_to_2015">Difference in Labor Force Participation Rate 2008 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2008_to_2015" id="labor_Force_Percent_Difference_2008_to_2015" value="labor_Force_Percent_Difference_2008_to_2015">&emsp;<label for="labor_Force_Percent_Difference_2012_to_2015">Difference in Labor Force Participation Rate 2012 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2012_to_2015" id="labor_Force_Percent_Difference_2012_to_2015" value="labor_Force_Percent_Difference_2012_to_2015"></li>
+
+<b>2012 Demographic Data</b>
+      <li><label for="population_12">Total Population in 2012</label> <input type="checkbox" name="population_12" id="population_12" value="population_12">&emsp;<label for="median_age_12">Median Age in 2012</label> <input type="checkbox" name="median_age_12" id="median_age_12" value="median_age_12"></li>
+
+      <li><label for="health_cov_12">Health Coverage in 2012</label> <input type="checkbox" name="health_cov_12" id="health_cov_12" value="health_cov_12">&emsp;<label for="health_cov_per_12">Health Coverage Percent 2012</label> <input type="checkbox" name="health_cov_per_12" id="health_cov_per_12" value="health_cov_per_12"></li>
+     
+      <li><label for="male_pop_12">Male Population in 2012</label> <input type="checkbox" name="male_pop_12" id="male_pop_12" value="male_pop_12">&emsp;<label for="male_per_12">Percent of Population Male in 2012</label> <input type="checkbox" name="male_per_12" id="male_per_12" value="male_per_12"></li>
+
+      <li><label for="female_pop_12">Female Population in 2012</label> <input type="checkbox" name="female_pop_12" id="female_pop_12" value="female_pop_12">&emsp;<label for="female_per_12">Percent of Population Female in 2012</label> <input type="checkbox" name="female_per_12" id="female_per_12" value="female_per_12"></li>
+      
+      <li><label for="poverty_12">Percent of Population in Poverty in 2012</label> <input type="checkbox" name="poverty_12" id="poverty_12" value="poverty_12">&emsp;<label for="median_inc_12">Median Income in 2012</label> <input type="checkbox" name="median_inc_12" id="median_inc_12" value="median_inc_12">&emsp;<label for="gini_12">Gini Coefficient in 2012</label> <input type="checkbox" name="gini_12" id="gini_12" value="gini_12"></li>
+
+      <li><label for="manu_per_12">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_12" id="manu_per_12" value="manu_per_12">&emsp;<label for="salary_workers_12">Percent of Workers on Salary in 2012</label> <input type="checkbox" name="salary_workers_12" id="salary_workers_12" value="salary_workers_12">&emsp;<label for="self_employed_12">Percent of Workers Self-Employed in 2012</label> <input type="checkbox" name="self_employed_12" id="self_employed_12" value="self_employed_12"></li>
+    
+      <li><label for="pop_citizen_12">Population of Citizens in 2012</label> <input type="checkbox" name="pop_citizen_12" id="pop_citizen_12" value="pop_citizen_12">&emsp;<label for="not_cit_12">Population of Non-Citizens in 2012</label> <input type="checkbox" name="not_cit_12" id="not_cit_12" value="not_cit_12">&emsp;<label for="cit_by_nat_12">Population of Naturalized Citizens in 2012</label> <input type="checkbox" name="cit_by_nat_12" id="cit_by_nat_12" value="cit_by_nat_12"></li>
+
+      <li><label for="cit_by_nat_per_12">Citizen by Naturalization Percent 2012</label> <input type="checkbox" name="cit_by_nat_per_12" id="cit_by_nat_per_12" value="cit_by_nat_per_12">&emsp;<label for="not_cit_per_12">Percentage of Non-Citizens in 2012</label> <input type="checkbox" name="not_cit_per_12" id="not_cit_per_12" value="not_cit_per_12"></li>
+
+      <li><label for="bach_or_higher_per_12">Percent of Population with a Bachelor's Degree or Higher in 2012</label> <input type="checkbox" name="bach_or_higher_per_12" id="bach_or_higher_per_12" value="bach_or_higher_per_12">&emsp;<label for="less_than_hs_per_12">Percent of Population with Less Than High School Degree in 2012</label> <input type="checkbox" name="less_than_hs_per_12" id="less_than_hs_per_12" value="less_than_hs_per_12"></li>
+
+<b>2015 Demographic Data</b>
+      <li><label for="population_15">Total Population in 2015</label> <input type="checkbox" name="population_15" id="population_15" value="population_15">&emsp;<label for="median_age_15">Median Age in 2015</label> <input type="checkbox" name="median_age_15" id="median_age_15" value="median_age_15"></li>
+
+      <li><label for="health_cov_15">Health Coverage in 2015</label> <input type="checkbox" name="health_cov_15" id="health_cov_15" value="health_cov_15">&emsp;<label for="health_cov_per_15">Health Coverage Percent 2015</label> <input type="checkbox" name="health_cov_per_15" id="health_cov_per_15" value="health_cov_per_15"></li>
+     
+      <li><label for="male_pop_15">Male Population in 2015</label> <input type="checkbox" name="male_pop_15" id="male_pop_15" value="male_pop_15">&emsp;<label for="male_per_15">Percent of Population Male in 2015</label> <input type="checkbox" name="male_per_15" id="male_per_15" value="male_per_15"></li>
+
+      <li><label for="female_pop_15">Female Population in 2015</label> <input type="checkbox" name="female_pop_15" id="female_pop_15" value="female_pop_15">&emsp;<label for="female_per_15">Percent of Population Female in 2015</label> <input type="checkbox" name="female_per_15" id="female_per_15" value="female_per_15"></li>
+      
+      <li><label for="poverty_15">Percent of Population in Poverty in 2015</label> <input type="checkbox" name="poverty_15" id="poverty_15" value="poverty_15">&emsp;<label for="median_inc_15">Median Income in 2015</label> <input type="checkbox" name="median_inc_15" id="median_inc_15" value="median_inc_15">&emsp;<label for="gini_15">Gini Coefficient in 2015</label> <input type="checkbox" name="gini_15" id="gini_15" value="gini_15"></li>
+
+      <li><label for="manu_per_15">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_15" id="manu_per_15" value="manu_per_15">&emsp;<label for="salary_workers_15">Percent of Workers on Salary in 2015</label> <input type="checkbox" name="salary_workers_15" id="salary_workers_15" value="salary_workers_15">&emsp;<label for="self_employed_15">Percent of Workers Self-Employed in 2015</label> <input type="checkbox" name="self_employed_15" id="self_employed_15" value="self_employed_15"></li>
+    
+      <li><label for="pop_citizen_15">Population of Citizens in 2015</label> <input type="checkbox" name="pop_citizen_15" id="pop_citizen_15" value="pop_citizen_15">&emsp;<label for="not_cit_15">Population of Non-Citizens in 2015</label> <input type="checkbox" name="not_cit_15" id="not_cit_15" value="not_cit_15">&emsp;<label for="cit_by_nat_15">Population of Naturalized Citizens in 2015</label> <input type="checkbox" name="cit_by_nat_15" id="cit_by_nat_15" value="cit_by_nat_15"></li>
+
+      <li><label for="cit_by_nat_per_15">Citizen by Naturalization Percent 2015</label> <input type="checkbox" name="cit_by_nat_per_15" id="cit_by_nat_per_15" value="cit_by_nat_per_15">&emsp;<label for="not_cit_per_15">Percentage of Non-Citizens in 2015</label> <input type="checkbox" name="not_cit_per_15" id="not_cit_per_15" value="not_cit_per_15"></li>
+
+      <li><label for="bach_or_higher_per_15">Percent of Population with a Bachelor's Degree or Higher in 2015</label> <input type="checkbox" name="bach_or_higher_per_15" id="bach_or_higher_per_15" value="bach_or_higher_per_15">&emsp;<label for="less_than_hs_per_15">Percent of Population with Less Than High School Degree in 2015</label> <input type="checkbox" name="less_than_hs_per_15" id="less_than_hs_per_15" value="less_than_hs_per_15"></li>
+
+<b>Difference Between 2012 and 2015 in Demographic Data</b>
+      <li><label for="population_d">Total Population</label> <input type="checkbox" name="population_d" id="population_d" value="population_d">&emsp;<label for="median_age_d">Median Age</label> <input type="checkbox" name="median_age_d" id="median_age_d" value="median_age_d"></li>
+
+      <li><label for="health_cov_d">Health Coverage</label> <input type="checkbox" name="health_cov_d" id="health_cov_d" value="health_cov_d">&emsp;<label for="health_cov_per_d">Health Coverage Percent</label> <input type="checkbox" name="health_cov_per_d" id="health_cov_per_d" value="health_cov_per_d"></li>
+     
+      <li><label for="male_pop_d">Male Population</label> <input type="checkbox" name="male_pop_d" id="male_pop_d" value="male_pop_d">&emsp;<label for="male_per_d">Percent of Population Male</label> <input type="checkbox" name="male_per_d" id="male_per_d" value="male_per_d"></li>
+
+      <li><label for="female_pop_d">Female Population</label> <input type="checkbox" name="female_pop_d" id="female_pop_d" value="female_pop_d">&emsp;<label for="female_per_d">Percent of Population Female</label> <input type="checkbox" name="female_per_d" id="female_per_d" value="female_per_d"></li>
+      
+      <li><label for="poverty_d">Percent of Population in Poverty</label> <input type="checkbox" name="poverty_d" id="poverty_d" value="poverty_d">&emsp;<label for="median_inc_d">Median Income</label> <input type="checkbox" name="median_inc_d" id="median_inc_d" value="median_inc_d">&emsp;<label for="gini_d">Gini Coefficient</label> <input type="checkbox" name="gini_d" id="gini_d" value="gini_d"></li>
+
+      <li><label for="manu_per_d">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_d" id="manu_per_d" value="manu_per_d">&emsp;<label for="salary_workers_d">Percent of Workers on Salary</label> <input type="checkbox" name="salary_workers_d" id="salary_workers_d" value="salary_workers_d">&emsp;<label for="self_employed_d">Percent of Workers Self-Employed</label> <input type="checkbox" name="self_employed_d" id="self_employed_d" value="self_employed_d"></li>
+    
+      <li><label for="pop_citizen_d">Population of Citizens</label> <input type="checkbox" name="pop_citizen_d" id="pop_citizen_d" value="pop_citizen_d">&emsp;<label for="not_cit_d">Population of Non-Citizens</label> <input type="checkbox" name="not_cit_d" id="not_cit_d" value="not_cit_d">&emsp;<label for="cit_by_nat_d">Population of Naturalized Citizens</label> <input type="checkbox" name="cit_by_nat_d" id="cit_by_nat_d" value="cit_by_nat_d"></li>
+
+      <li><label for="cit_by_nat_per_d">Citizen by Naturalization Percent</label> <input type="checkbox" name="cit_by_nat_per_d" id="cit_by_nat_per_d" value="cit_by_nat_per_d">&emsp;<label for="not_cit_per_d">Percentage of Non-Citizens</label> <input type="checkbox" name="not_cit_per_d" id="not_cit_per_d" value="not_cit_per_d"></li>
+
+      <li><label for="bach_or_higher_per_d">Percent of Population with a Bachelor's Degree or Higher</label> <input type="checkbox" name="bach_or_higher_per_d" id="bach_or_higher_per_d" value="bach_or_higher_per_d">&emsp;<label for="less_than_hs_per_d">Percent of Population with Less Than High School Degree</label> <input type="checkbox" name="less_than_hs_per_d" id="less_than_hs_per_d" value="less_than_hs_per_d"></li>
+
+      
+
+
 
     </ul>
   </li>
 </ul>
 
 <h3> <b> Filter your results </b> </h3>
-<h6> <b> Leave state and county fields blank to display all counties </b> </h6> 
+<h4> <b> Leave state and county fields blank to display all counties </b> </h4> 
 <ul>
-<h6> <b> Check all states you'd like to see counties from: </b></h6>
+<h4> <b> Check all states you'd like to see counties from: </b></h4>
 <li><label for="AL">AL</label> <input type="checkbox" name="AL" id="AL" value="AL">&emsp;<label for="AZ">AZ</label> <input type="checkbox" name="AZ" id="AZ" value="AZ">&emsp;<label for="AR">AR</label> <input type="checkbox" name="AR" id="AR" value="AR">&emsp;<label for="CA">CA</label> <input type="checkbox" name="CA" id="CA" value="CA">&emsp;<label for="CO">CO</label> <input type="checkbox" name="CO" id="CO" value="CO">&emsp;<label for="CT">CT</label> <input type="checkbox" name="CT" id="CT" value="CT">&emsp;<label for="DE">DE</label> <input type="checkbox" name="DE" id="DE" value="DE">&emsp;<label for="DC">DC</label> <input type="checkbox" name="DC" id="DC" value="DC">&emsp;<label for="FL">FL</label> <input type="checkbox" name="FL" id="FL" value="FL">&emsp;<label for="GA">GA</label> <input type="checkbox" name="GA" id="GA" value="GA">&emsp;<label for="HI">HI</label> <input type="checkbox" name="HI" id="HI" value="HI">&emsp;<label for="ID">ID</label> <input type="checkbox" name="ID" id="ID" value="ID">&emsp;<label for="IL">IL</label> <input type="checkbox" name="IL" id="IL" value="IL">&emsp;<label for="IN">IN</label> <input type="checkbox" name="IN" id="IN" value="IN">&emsp;<label for="IA">IA</label> <input type="checkbox" name="IA" id="IA" value="IA">&emsp;<label for="KS">KS</label> <input type="checkbox" name="KS" id="KS" value="KS">&emsp;<label for="KY">KY</label> <input type="checkbox" name="KY" id="KY" value="KY">&emsp;<li><label for="LA">LA</label> <input type="checkbox" name="LA" id="LA" value="LA">&emsp;<label for="ME">ME</label> <input type="checkbox" name="ME" id="ME" value="ME">&emsp;<label for="MD">MD</label> <input type="checkbox" name="MD" id="MD" value="MD">&emsp;<label for="MA">MA</label> <input type="checkbox" name="MA" id="MA" value="MA">&emsp;<label for="MI">MI</label> <input type="checkbox" name="MI" id="MI" value="MI">&emsp;<label for="MN">MN</label> <input type="checkbox" name="MN" id="MN" value="MN">&emsp;<label for="MS">MS</label> <input type="checkbox" name="MS" id="MS" value="MS">&emsp;<label for="MO">MO</label> <input type="checkbox" name="MO" id="MO" value="MO">&emsp;<label for="MT">MT</label> <input type="checkbox" name="MT" id="MT" value="MT">&emsp;<label for="NE">NE</label> <input type="checkbox" name="NE" id="NE" value="NE">&emsp;<label for="NV">NV</label> <input type="checkbox" name="NV" id="NV" value="NV">&emsp;<label for="MH">MH</label> <input type="checkbox" name="MH" id="MH" value="MH">&emsp;<label for="NJ">NJ</label> <input type="checkbox" name="NJ" id="NJ" value="NJ">&emsp;<label for="NM">NM</label> <input type="checkbox" name="NM" id="NM" value="NM">&emsp;<label for="NY">NY</label> <input type="checkbox" name="NY" id="NY" value="NY">&emsp;<label for="NC">NC</label> <input type="checkbox" name="NC" id="NC" value="NC">&emsp;<li><label for="ND">ND</label> <input type="checkbox" name="ND" id="ND" value="ND">&emsp;<label for="OH">OH</label> <input type="checkbox" name="OH" id="OH" value="OH">&emsp;<label for="OK">OK</label> <input type="checkbox" name="OK" id="OK" value="OK">&emsp;<label for="OR">OR</label> <input type="checkbox" name="OR" id="OR" value="OR">&emsp;<label for="PA">PA</label> <input type="checkbox" name="PA" id="PA" value="PA">&emsp;<label for="RI">RI</label> <input type="checkbox" name="RI" id="RI" value="RI">&emsp;<label for="SC">SC</label> <input type="checkbox" name="SC" id="SC" value="SC">&emsp;<label for="SD">SD</label> <input type="checkbox" name="SD" id="SD" value="SD">&emsp;<label for="TN">TN</label> <input type="checkbox" name="TN" id="TN" value="TN">&emsp;<label for="TX">TX</label> <input type="checkbox" name="TX" id="TX" value="TX">&emsp;<label for="UT">UT</label> <input type="checkbox" name="UT" id="UT" value="UT">&emsp;<label for="VT">VT</label> <input type="checkbox" name="VT" id="VT" value="VT">&emsp;<label for="VA">VA</label> <input type="checkbox" name="VA" id="VA" value="VA">&emsp;<label for="WA">WA</label> <input type="checkbox" name="WA" id="WA" value="WA">&emsp;<label for="WV">WV</label> <input type="checkbox" name="WV" id="WV" value="WV">&emsp;<label for="WI">WI</label> <input type="checkbox" name="WI" id="WI" value="WI">&emsp;<label for="WY">WY</label> <input type="checkbox" name="WY" id="WY" value="WY">
 
-<h6> <b> Or choose a particular county: </b></h6>
+<h4> <b> Or choose a particular county: </b></h4>
 <li><label for="county"></label>
 <select name="county" id="county">
 <option value="">--No Choice--</option>
@@ -3225,7 +3303,7 @@
 </ul>
 
 
-<li> <b> <u> Display counties with a specified winner in each year: </u> </b> </li>
+<li> <b> Display counties with a specified winner in each year: </b> </li>
 <ul> <li> <b> 2008: </b> <label for="winner_08_criterion"></label>
 <select name="winner_08_criterion" id="winner_08_criterion">
 <option value="">Any Party</option>
@@ -3243,8 +3321,122 @@
 <option value="Gop">Republican Party</option>
 </select></li> </ul> 
 
-<li> <b> <u> Order the results by one of the following: </u> </b> </li>
-<ul> <li> <b> Change in vote between years </b> <label for="diff_criterion"></label>
+<li> <b> Order results by any data above: </b> 
+<label for="orderby"></label>
+<select name="orderby" id="orderby">
+<option value="">--No Choice--</option>
+<option value="e.total_2008">Total 2008 Votes</option>
+<option value="e.total_2012">Total 2012 Votes</option>
+<option value="e.total_2016">Total 2016 Votes</option>
+<option value="e.dem_2008">Democratic Votes 2008</option>
+<option value="e.gop_2008">Republican Votes 2008</option>
+<option value="e.oth_2008">Third Party Votes 2008</option>
+<option value="e.dem_08_perc">Percentage Democratic Votes 2008</option>
+<option value="e.gop_08_perc">Percentage Republican Votes 2008</option>
+<option value="e.oth_08_perc">Percentage Third Party Votes 2008</option>
+<option value="e.win_marg_08">Percentage Winning Margin 2008</option>
+<option value="e.dem_2012">Democratic Votes 2012</option>
+<option value="e.gop_2012">Republican Votes 2012</option>
+<option value="e.oth_2012">Third Party Votes 2012</option>
+<option value="e.dem_12_perc">Percentage Democratic Votes 2012</option>
+<option value="e.gop_12_perc">Percentage Republican Votes 2012</option>
+<option value="e.oth_12_perc">Percentage Third Party Votes 2012</option>
+<option value="e.win_marg_12">Percentage Winning Margin 2012</option>
+<option value="e.dem_2016">Democratic Votes 2016</option>
+<option value="e.gop_2016">Republican Votes 2016</option>
+<option value="e.oth_2016">Third Party Votes 2016</option>
+<option value="e.dem_16_perc">Percentage Democratic Votes 2016</option>
+<option value="e.gop_16_perc">Percentage Republican Votes 2016</option>
+<option value="e.oth_16_perc">Percentage Third Party Votes 2016</option>
+<option value="e.oth_16_perc">Percentage Winning Margin 2016</option>
+<option value="abs(e.diff_0812)">2008 to 2012 Shift in Winning Margin</option>
+<option value="abs(e.diff_0816)">2008 to 2016 Shift in Winning Margin</option>
+<option value="abs(e.diff_1216)">2012 to 2016 Shift in Winning Margin</option>
+<option value="u.unemployment_rate_2008">2008 Unemployment Rate</option>
+<option value="u.unemployment_rate_2012">2012 Unemployment Rate</option>
+<option value="u.unemployment_rate_2015">2015 Unemployment Rate</option>
+<option value="u.unemployed_2008">2008 Total Unemployment</option>
+<option value="u.unemployed_2012">2012 Total Unemployment</option>
+<option value="u.unemployed_2015">2015 Total Unemployment</option>
+<option value="abs(u.unemployment_rate_difference_2008_to_2015)">Difference in Unemployment Rate 2008 to 2015</option>
+<option value="abs(u.unemployment_rate_difference_2012_to_2015)">Difference in Unemployment Rate 2012 to 2015</option>
+<option value="u.civilian_labor_force_2008">Civilian Labor Force in 2008</option>
+<option value="u.civilian_labor_force_2012">Civilian Labor Force in 2012</option>
+<option value="u.civilian_labor_force_2015">Civilian Labor Force in 2015</option>
+<option value="abs(u.labor_Force_Percent_Difference_2008_to_2015)">Difference in Labor Force Participation Rate 2008 to 2015</option>
+<option value="abs(u.labor_Force_Percent_Difference_2012_to_2015)">Difference in Labor Force Participation Rate 2012 to 2015</option>
+<option value="fd12.population">Total Population in 2012</option>
+<option value="fd12.median_age">Median Age in 2012</option>
+<option value="fd12.health_cov">Health Coverage in 2012</option>
+<option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.male_pop">Male Population in 2012</option>
+<option value="fd12.male_per">Percent of Population Male in 2012</option>
+<option value="fd12.female_pop">Female Population in 2012</option>
+<option value="fd12.female_per">Percent of Population Female in 2012</option>
+<option value="fd12.poverty">Percent of Population in Poverty in 2012</option>
+<option value="fd12.median_inc">Median Income in 2012</option>
+<option value="fd12.gini">Gini Coefficient in 2012</option>
+<option value="fd12.manu_per">Percent Employment in Manufacturing 2012</option>
+<option value="fd12.salary_workers">Percent of Workers on Salary in 2012</option>
+<option value="fd12.self_employed">Percent of Workers Self-Employed in 2012</option>
+<option value="fd12.pop_citizen">Population of Citizens in 2012</option>
+<option value="fd12.not_cit">Population of Non-Citizens in 2012</option>
+<option value="fd12.cit_by_nat">Population of Naturalized Citizens in 2012</option>
+<option value="fd12.cit_by_nat_per">Citizen by Naturalization Percent 2012</option>
+<option value="fd12.not_cit_per">Percentage of Non-Citizens in 2012</option>
+<option value="fd12.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2012</option>
+<option value="fd12.less_than_hs_per">Percent of Population with Less Than High School Degree in 2012</option>
+<option value="fd15.population">Total Population in 2015</option>
+<option value="fd15.median_age">Median Age in 2015</option>
+<option value="fd15.health_cov">Health Coverage in 2015</option>
+<option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.male_pop">Male Population in 2015</option>
+<option value="fd15.male_per">Percent of Population Male in 2015</option>
+<option value="fd15.female_pop">Female Population in 2015</option>
+<option value="fd15.female_per">Percent of Population Female in 2015</option>
+<option value="fd15.poverty">Percent of Population in Poverty in 2015</option>
+<option value="fd15.median_inc">Median Income in 2015</option>
+<option value="fd15.gini">Gini Coefficient in 2015</option>
+<option value="fd15.manu_per">Percent Employment in Manufacturing 2015</option>
+<option value="fd15.salary_workers">Percent of Workers on Salary in 2015</option>
+<option value="fd15.self_employed">Percent of Workers Self-Employed in 2015</option>
+<option value="fd15.pop_citizen">Population of Citizens in 2015</option>
+<option value="fd15.not_cit">Population of Non-Citizens in 2015</option>
+<option value="fd15.cit_by_nat">Population of Naturalized Citizens in 2015</option>
+<option value="fd15.cit_by_nat_per">Citizen by Naturalization Percent 2015</option>
+<option value="fd15.not_cit_per">Percentage of Non-Citizens in 2015</option>
+<option value="fd15.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2015</option>
+<option value="fd15.less_than_hs_per">Percent of Population with Less Than High School Degree in 2015</option>
+<option value="d.population">2012 to 2015 Difference in Total Population</option>
+<option value="d.median_age">2012 to 2015 Difference in Median Age</option>
+<option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
+<option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
+<option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
+<option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
+<option value="d.female_per">2012 to 2015 Difference in Percent of Population Female</option>
+<option value="d.poverty">2012 to 2015 Difference in Percent of Population in Poverty</option>
+<option value="d.median_inc">2012 to 2015 Difference in Median Income</option>
+<option value="d.gini">2012 to 2015 Difference in Gini Coefficient</option>
+<option value="d.manu_per">2012 to 2015 Difference in Percent Employment in Manufacturing</option>
+<option value="d.salary_workers">2012 to 2015 Difference in Percent of Workers on Salary</option>
+<option value="d.self_employed">2012 to 2015 Difference in Percent of Workers Self-Employed</option>
+<option value="d.pop_citizen">2012 to 2015 Difference in Population of Citizens</option>
+<option value="d.not_cit">2012 to 2015 Difference in Population of Non-Citizens</option>
+<option value="d.cit_by_nat">2012 to 2015 Difference in Population of Naturalized Citizens</option>
+<option value="d.cit_by_nat_per">2012 to 2015 Difference in Citizen by Naturalization Percent</option>
+<option value="d.not_cit_per">2012 to 2015 Difference in Percentage of Non-Citizens</option>
+<option value="d.bach_or_higher_per">2012 to 2015 Difference in Percent of Population with a Bachelor's Degree or Higher</option>
+<option value="d.less_than_hs_per">2012 to 2015 Difference in Percent of Population with Less Than High School Degree</option>
+</select> <b> sorted </b>
+<label for="orderby_direction"></label>
+<select name="orderby_direction" id="orderby_direction">
+<option value="">--(Default)--</option>
+<option value="DESC">Descending</option>
+<option value="">Ascending</option></select>
+</li>
+<br>
+<!-- <ul> <li> <b> Change in vote between years </b> <label for="diff_criterion"></label>
 <select name="diff_criterion" id="diff_criterion">
 <option value="">No preference</option>
 <option value="diff_1216">2012 to 2016</option>
@@ -3277,8 +3469,8 @@
 <option value="">No Preference</option>
 <option value="DESC">Increased</option>
 <option value="">Decreased</option>
-</select></li> </ul>
-<li> <b> <u> Limit the number of counties displayed: </u> </b> </li>
+</select></li> </ul> -->
+<li> <b> Limit the number of counties displayed: </b> </li>
 <ul> <li> <b> Limit the number of results you see to </b> <label for="limit"></label>
 <select name="limit" id="limit">
 <option value="">No Limit</option>
@@ -6397,20 +6589,235 @@
 </select></li> </ul>
 
 <h3> Run a Regression </h3>
-<h6> <b> Regression output will be displayed above county raw data </b> </h6> 
-<h6> <b> Model the change in winning margin on a factor of your choice: </b> </h6> 
+<h4> <b> Regression output will be displayed above county raw data </b> </h4> 
+<b> Model one of the data above on another: <br> </b> <label for="outcome"></label>
+<select name="outcome" id="outcome">
+<option value="">--No Choice--</option>
+<option value="e.total_2008">Total 2008 Votes</option>
+<option value="e.total_2012">Total 2012 Votes</option>
+<option value="e.total_2016">Total 2016 Votes</option>
+<option value="e.dem_2008">Democratic Votes 2008</option>
+<option value="e.gop_2008">Republican Votes 2008</option>
+<option value="e.oth_2008">Third Party Votes 2008</option>
+<option value="e.dem_08_perc">Percentage Democratic Votes 2008</option>
+<option value="e.gop_08_perc">Percentage Republican Votes 2008</option>
+<option value="e.oth_08_perc">Percentage Third Party Votes 2008</option>
+<option value="e.win_marg_08">Percentage Winning Margin 2008</option>
+<option value="e.dem_2012">Democratic Votes 2012</option>
+<option value="e.gop_2012">Republican Votes 2012</option>
+<option value="e.oth_2012">Third Party Votes 2012</option>
+<option value="e.dem_12_perc">Percentage Democratic Votes 2012</option>
+<option value="e.gop_12_perc">Percentage Republican Votes 2012</option>
+<option value="e.oth_12_perc">Percentage Third Party Votes 2012</option>
+<option value="e.win_marg_12">Percentage Winning Margin 2012</option>
+<option value="e.dem_2016">Democratic Votes 2016</option>
+<option value="e.gop_2016">Republican Votes 2016</option>
+<option value="e.oth_2016">Third Party Votes 2016</option>
+<option value="e.dem_16_perc">Percentage Democratic Votes 2016</option>
+<option value="e.gop_16_perc">Percentage Republican Votes 2016</option>
+<option value="e.oth_16_perc">Percentage Third Party Votes 2016</option>
+<option value="e.oth_16_perc">Percentage Winning Margin 2016</option>
+<option value="abs(e.diff_0812)">2008 to 2012 Shift in Winning Margin</option>
+<option value="abs(e.diff_0816)">2008 to 2016 Shift in Winning Margin</option>
+<option value="abs(e.diff_1216)">2012 to 2016 Shift in Winning Margin</option>
+<option value="u.unemployment_rate_2008">2008 Unemployment Rate</option>
+<option value="u.unemployment_rate_2012">2012 Unemployment Rate</option>
+<option value="u.unemployment_rate_2015">2015 Unemployment Rate</option>
+<option value="u.unemployed_2008">2008 Total Unemployment</option>
+<option value="u.unemployed_2012">2012 Total Unemployment</option>
+<option value="u.unemployed_2015">2015 Total Unemployment</option>
+<option value="abs(u.unemployment_rate_difference_2008_to_2015)">Difference in Unemployment Rate 2008 to 2015</option>
+<option value="abs(u.unemployment_rate_difference_2012_to_2015)">Difference in Unemployment Rate 2012 to 2015</option>
+<option value="u.civilian_labor_force_2008">Civilian Labor Force in 2008</option>
+<option value="u.civilian_labor_force_2012">Civilian Labor Force in 2012</option>
+<option value="u.civilian_labor_force_2015">Civilian Labor Force in 2015</option>
+<option value="abs(u.labor_Force_Percent_Difference_2008_to_2015)">Difference in Labor Force Participation Rate 2008 to 2015</option>
+<option value="abs(u.labor_Force_Percent_Difference_2012_to_2015)">Difference in Labor Force Participation Rate 2012 to 2015</option>
+<option value="fd12.population">Total Population in 2012</option>
+<option value="fd12.median_age">Median Age in 2012</option>
+<option value="fd12.health_cov">Health Coverage in 2012</option>
+<option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.male_pop">Male Population in 2012</option>
+<option value="fd12.male_per">Percent of Population Male in 2012</option>
+<option value="fd12.female_pop">Female Population in 2012</option>
+<option value="fd12.female_per">Percent of Population Female in 2012</option>
+<option value="fd12.poverty">Percent of Population in Poverty in 2012</option>
+<option value="fd12.median_inc">Median Income in 2012</option>
+<option value="fd12.gini">Gini Coefficient in 2012</option>
+<option value="fd12.manu_per">Percent Employment in Manufacturing 2012</option>
+<option value="fd12.salary_workers">Percent of Workers on Salary in 2012</option>
+<option value="fd12.self_employed">Percent of Workers Self-Employed in 2012</option>
+<option value="fd12.pop_citizen">Population of Citizens in 2012</option>
+<option value="fd12.not_cit">Population of Non-Citizens in 2012</option>
+<option value="fd12.cit_by_nat">Population of Naturalized Citizens in 2012</option>
+<option value="fd12.cit_by_nat_per">Citizen by Naturalization Percent 2012</option>
+<option value="fd12.not_cit_per">Percentage of Non-Citizens in 2012</option>
+<option value="fd12.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2012</option>
+<option value="fd12.less_than_hs_per">Percent of Population with Less Than High School Degree in 2012</option>
+<option value="fd15.population">Total Population in 2015</option>
+<option value="fd15.median_age">Median Age in 2015</option>
+<option value="fd15.health_cov">Health Coverage in 2015</option>
+<option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.male_pop">Male Population in 2015</option>
+<option value="fd15.male_per">Percent of Population Male in 2015</option>
+<option value="fd15.female_pop">Female Population in 2015</option>
+<option value="fd15.female_per">Percent of Population Female in 2015</option>
+<option value="fd15.poverty">Percent of Population in Poverty in 2015</option>
+<option value="fd15.median_inc">Median Income in 2015</option>
+<option value="fd15.gini">Gini Coefficient in 2015</option>
+<option value="fd15.manu_per">Percent Employment in Manufacturing 2015</option>
+<option value="fd15.salary_workers">Percent of Workers on Salary in 2015</option>
+<option value="fd15.self_employed">Percent of Workers Self-Employed in 2015</option>
+<option value="fd15.pop_citizen">Population of Citizens in 2015</option>
+<option value="fd15.not_cit">Population of Non-Citizens in 2015</option>
+<option value="fd15.cit_by_nat">Population of Naturalized Citizens in 2015</option>
+<option value="fd15.cit_by_nat_per">Citizen by Naturalization Percent 2015</option>
+<option value="fd15.not_cit_per">Percentage of Non-Citizens in 2015</option>
+<option value="fd15.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2015</option>
+<option value="fd15.less_than_hs_per">Percent of Population with Less Than High School Degree in 2015</option>
+<option value="d.population">2012 to 2015 Difference in Total Population</option>
+<option value="d.median_age">2012 to 2015 Difference in Median Age</option>
+<option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
+<option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
+<option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
+<option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
+<option value="d.female_per">2012 to 2015 Difference in Percent of Population Female</option>
+<option value="d.poverty">2012 to 2015 Difference in Percent of Population in Poverty</option>
+<option value="d.median_inc">2012 to 2015 Difference in Median Income</option>
+<option value="d.gini">2012 to 2015 Difference in Gini Coefficient</option>
+<option value="d.manu_per">2012 to 2015 Difference in Percent Employment in Manufacturing</option>
+<option value="d.salary_workers">2012 to 2015 Difference in Percent of Workers on Salary</option>
+<option value="d.self_employed">2012 to 2015 Difference in Percent of Workers Self-Employed</option>
+<option value="d.pop_citizen">2012 to 2015 Difference in Population of Citizens</option>
+<option value="d.not_cit">2012 to 2015 Difference in Population of Non-Citizens</option>
+<option value="d.cit_by_nat">2012 to 2015 Difference in Population of Naturalized Citizens</option>
+<option value="d.cit_by_nat_per">2012 to 2015 Difference in Citizen by Naturalization Percent</option>
+<option value="d.not_cit_per">2012 to 2015 Difference in Percentage of Non-Citizens</option>
+<option value="d.bach_or_higher_per">2012 to 2015 Difference in Percent of Population with a Bachelor's Degree or Higher</option>
+<option value="d.less_than_hs_per">2012 to 2015 Difference in Percent of Population with Less Than High School Degree</option>
+</select> <b> on </b> 
+<label for="predictor"></label>
+<select name="predictor" id="predictor">
+<option value="">--No Choice--</option>
+<option value="e.total_2008">Total 2008 Votes</option>
+<option value="e.total_2012">Total 2012 Votes</option>
+<option value="e.total_2016">Total 2016 Votes</option>
+<option value="e.dem_2008">Democratic Votes 2008</option>
+<option value="e.gop_2008">Republican Votes 2008</option>
+<option value="e.oth_2008">Third Party Votes 2008</option>
+<option value="e.dem_08_perc">Percentage Democratic Votes 2008</option>
+<option value="e.gop_08_perc">Percentage Republican Votes 2008</option>
+<option value="e.oth_08_perc">Percentage Third Party Votes 2008</option>
+<option value="e.win_marg_08">Percentage Winning Margin 2008</option>
+<option value="e.dem_2012">Democratic Votes 2012</option>
+<option value="e.gop_2012">Republican Votes 2012</option>
+<option value="e.oth_2012">Third Party Votes 2012</option>
+<option value="e.dem_12_perc">Percentage Democratic Votes 2012</option>
+<option value="e.gop_12_perc">Percentage Republican Votes 2012</option>
+<option value="e.oth_12_perc">Percentage Third Party Votes 2012</option>
+<option value="e.win_marg_12">Percentage Winning Margin 2012</option>
+<option value="e.dem_2016">Democratic Votes 2016</option>
+<option value="e.gop_2016">Republican Votes 2016</option>
+<option value="e.oth_2016">Third Party Votes 2016</option>
+<option value="e.dem_16_perc">Percentage Democratic Votes 2016</option>
+<option value="e.gop_16_perc">Percentage Republican Votes 2016</option>
+<option value="e.oth_16_perc">Percentage Third Party Votes 2016</option>
+<option value="e.oth_16_perc">Percentage Winning Margin 2016</option>
+<option value="abs(e.diff_0812)">2008 to 2012 Shift in Winning Margin</option>
+<option value="abs(e.diff_0816)">2008 to 2016 Shift in Winning Margin</option>
+<option value="abs(e.diff_1216)">2012 to 2016 Shift in Winning Margin</option>
+<option value="u.unemployment_rate_2008">2008 Unemployment Rate</option>
+<option value="u.unemployment_rate_2012">2012 Unemployment Rate</option>
+<option value="u.unemployment_rate_2015">2015 Unemployment Rate</option>
+<option value="u.unemployed_2008">2008 Total Unemployment</option>
+<option value="u.unemployed_2012">2012 Total Unemployment</option>
+<option value="u.unemployed_2015">2015 Total Unemployment</option>
+<option value="abs(u.unemployment_rate_difference_2008_to_2015)">Difference in Unemployment Rate 2008 to 2015</option>
+<option value="abs(u.unemployment_rate_difference_2012_to_2015)">Difference in Unemployment Rate 2012 to 2015</option>
+<option value="u.civilian_labor_force_2008">Civilian Labor Force in 2008</option>
+<option value="u.civilian_labor_force_2012">Civilian Labor Force in 2012</option>
+<option value="u.civilian_labor_force_2015">Civilian Labor Force in 2015</option>
+<option value="abs(u.labor_Force_Percent_Difference_2008_to_2015)">Difference in Labor Force Participation Rate 2008 to 2015</option>
+<option value="abs(u.labor_Force_Percent_Difference_2012_to_2015)">Difference in Labor Force Participation Rate 2012 to 2015</option>
+<option value="fd12.population">Total Population in 2012</option>
+<option value="fd12.median_age">Median Age in 2012</option>
+<option value="fd12.health_cov">Health Coverage in 2012</option>
+<option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.male_pop">Male Population in 2012</option>
+<option value="fd12.male_per">Percent of Population Male in 2012</option>
+<option value="fd12.female_pop">Female Population in 2012</option>
+<option value="fd12.female_per">Percent of Population Female in 2012</option>
+<option value="fd12.poverty">Percent of Population in Poverty in 2012</option>
+<option value="fd12.median_inc">Median Income in 2012</option>
+<option value="fd12.gini">Gini Coefficient in 2012</option>
+<option value="fd12.manu_per">Percent Employment in Manufacturing 2012</option>
+<option value="fd12.salary_workers">Percent of Workers on Salary in 2012</option>
+<option value="fd12.self_employed">Percent of Workers Self-Employed in 2012</option>
+<option value="fd12.pop_citizen">Population of Citizens in 2012</option>
+<option value="fd12.not_cit">Population of Non-Citizens in 2012</option>
+<option value="fd12.cit_by_nat">Population of Naturalized Citizens in 2012</option>
+<option value="fd12.cit_by_nat_per">Citizen by Naturalization Percent 2012</option>
+<option value="fd12.not_cit_per">Percentage of Non-Citizens in 2012</option>
+<option value="fd12.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2012</option>
+<option value="fd12.less_than_hs_per">Percent of Population with Less Than High School Degree in 2012</option>
+<option value="fd15.population">Total Population in 2015</option>
+<option value="fd15.median_age">Median Age in 2015</option>
+<option value="fd15.health_cov">Health Coverage in 2015</option>
+<option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.male_pop">Male Population in 2015</option>
+<option value="fd15.male_per">Percent of Population Male in 2015</option>
+<option value="fd15.female_pop">Female Population in 2015</option>
+<option value="fd15.female_per">Percent of Population Female in 2015</option>
+<option value="fd15.poverty">Percent of Population in Poverty in 2015</option>
+<option value="fd15.median_inc">Median Income in 2015</option>
+<option value="fd15.gini">Gini Coefficient in 2015</option>
+<option value="fd15.manu_per">Percent Employment in Manufacturing 2015</option>
+<option value="fd15.salary_workers">Percent of Workers on Salary in 2015</option>
+<option value="fd15.self_employed">Percent of Workers Self-Employed in 2015</option>
+<option value="fd15.pop_citizen">Population of Citizens in 2015</option>
+<option value="fd15.not_cit">Population of Non-Citizens in 2015</option>
+<option value="fd15.cit_by_nat">Population of Naturalized Citizens in 2015</option>
+<option value="fd15.cit_by_nat_per">Citizen by Naturalization Percent 2015</option>
+<option value="fd15.not_cit_per">Percentage of Non-Citizens in 2015</option>
+<option value="fd15.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2015</option>
+<option value="fd15.less_than_hs_per">Percent of Population with Less Than High School Degree in 2015</option>
+<option value="d.population">2012 to 2015 Difference in Total Population</option>
+<option value="d.median_age">2012 to 2015 Difference in Median Age</option>
+<option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
+<option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
+<option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
+<option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
+<option value="d.female_per">2012 to 2015 Difference in Percent of Population Female</option>
+<option value="d.poverty">2012 to 2015 Difference in Percent of Population in Poverty</option>
+<option value="d.median_inc">2012 to 2015 Difference in Median Income</option>
+<option value="d.gini">2012 to 2015 Difference in Gini Coefficient</option>
+<option value="d.manu_per">2012 to 2015 Difference in Percent Employment in Manufacturing</option>
+<option value="d.salary_workers">2012 to 2015 Difference in Percent of Workers on Salary</option>
+<option value="d.self_employed">2012 to 2015 Difference in Percent of Workers Self-Employed</option>
+<option value="d.pop_citizen">2012 to 2015 Difference in Population of Citizens</option>
+<option value="d.not_cit">2012 to 2015 Difference in Population of Non-Citizens</option>
+<option value="d.cit_by_nat">2012 to 2015 Difference in Population of Naturalized Citizens</option>
+<option value="d.cit_by_nat_per">2012 to 2015 Difference in Citizen by Naturalization Percent</option>
+<option value="d.not_cit_per">2012 to 2015 Difference in Percentage of Non-Citizens</option>
+<option value="d.bach_or_higher_per">2012 to 2015 Difference in Percent of Population with a Bachelor's Degree or Higher</option>
+<option value="d.less_than_hs_per">2012 to 2015 Difference in Percent of Population with Less Than High School Degree</option>
+</select>
+
+<!-- <h4> <b> Model the change in winning margin on a factor of your choice: </b> </h4> 
 <ul> <li> <b> Model change in winning margin between years </b> <label for="regression_years"></label>
 <select name="regression_years" id="regression_years">
-<option value="">--No Choice--</option>
+<option value="">\-\-No Choice\-\-</option>
 <option value="2012 to 2016">2012 to 2016</option>
 <option value="2008 to 2016">2008 to 2016</option>
 </select><b> on </b> <label for="regression_predictor"></label>
 <select name="regression_predictor" id="regression_predictor">
-<option value="">--No Choice--</option>
+<option value="">\-\-No Choice\-\-</option>
 <option value="unemployment">Unemployment rate</option>
 <option value="labor">Labor force participation rate</option>
 </select></li> </ul>
-
+ -->
 <br>
 <input type="submit" value="submit" />
 <br>
@@ -6453,7 +6860,7 @@ if ($only_county != 1){
 	$w_command = substr($w_command, 0, -4);
 }
 //Put together data filters
-if(!empty($_POST["winner_08_criterion"]) || !empty($_POST["winner_08_criterion"]) || !empty($_POST["winner_08_criterion"])){
+if(!empty($_POST["winner_08_criterion"]) || !empty($_POST["winner_12_criterion"]) || !empty($_POST["winner_16_criterion"])){
 	if($w_command == ""){
 		$w_command = "WHERE ";
 		if(!empty($_POST["winner_08_criterion"])){
@@ -6480,188 +6887,548 @@ if(!empty($_POST["winner_08_criterion"]) || !empty($_POST["winner_08_criterion"]
 	$w_command = substr($w_command, 0, -5);
 }
 
-
-$f_command = " FROM election_results AS e JOIN unemployment AS u on e.fips_code=u.fips_code ";
+//election_results=e, fd12, fd15, diff12_15=d, unemployment=u
+$f_command = " FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code ";
 $s_command = "SELECT e.county, e.state";
 $display = "<b> County, State | </b>";
+$array = array();
+$array[] = "County, State";
 //Put together SELECT command and header
 if (!empty($_POST["total_2008"])) {
     $s_command = $s_command . ", total_2008 ";
     $display = $display . "  2008 Total Votes | ";
+    $array[] = "2008 Total Votes";
   }
 if (!empty($_POST["dem_2008"])) {
     $s_command = $s_command . ", dem_2008 ";
     $display = $display . "  2008 Democratic Votes | ";
+    $array[] = "2008 Democratic Votes";
   }
 if (!empty($_POST["gop_2008"])) {
     $s_command = $s_command . ", gop_2008 ";
     $display = $display . "  2008 Republican Votes | ";
+    $array[] = "2008 Republican Votes";
   }
 if (!empty($_POST["oth_2008"])) {
     $s_command = $s_command . ", oth_2008 ";
     $display = $display . "  2008 Third Party Votes | ";
+    $array[] = "2008 Third Party Votes";
   }
 if (!empty($_POST["dem_08_perc"])) {
-    $s_command = $s_command . ", 100*dem_08_perc ";
+    $s_command = $s_command . ", e.dem_08_perc*100 ";
     $display = $display . "  2008 Democratic Vote Proportion | ";
+    $array[] = "2008 Democratic Vote %";
   }
 if (!empty($_POST["gop_08_perc"])) {
-    $s_command = $s_command . ", 100*gop_08_perc ";
+    $s_command = $s_command . ", e.gop_08_perc*100 ";
     $display = $display . "  2008 Republican Vote Proportion | ";
+    $array[] = "2008 Republican Vote %";
   }
 if (!empty($_POST["oth_08_perc"])) {
-    $s_command = $s_command . ", 100*oth_08_perc ";
+    $s_command = $s_command . ", e.oth_08_perc*100 ";
     $display = $display . "  2008 Third Party Vote Proportion | ";
+    $array[] = "2008 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_08"])) {
-    $s_command = $s_command . ", 100*abs(win_marg_08), winner_08 ";
-    $display = $display . "  2012 Winning Margin %, Winner | ";
+    $s_command = $s_command . ", e.abs(win_marg_08)*100 ";
+    $display = $display . "  2008 Winning Margin % | ";
+    $array[] = "2008 Winning Margin %";
   }
 if (!empty($_POST["winner_08"])) {
     $s_command = $s_command . ", winner_08 ";
     $display = $display . "  2008 Winner | ";
+    $array[] = "2008 Winner";
   }
 if (!empty($_POST["winner_12"])) {
     $s_command = $s_command . ", winner_12 ";
     $display = $display . "  2012 Winner | ";
+    $array[] = "2012 Winner";
   }
 if (!empty($_POST["winner_16"])) {
     $s_command = $s_command . ", winner_16 ";
     $display = $display . "  2016 Winner | ";
+    $array[] = "2016 Winner";
   }
 if (!empty($_POST["total_2012"])) {
     $s_command = $s_command . ", total_2012 ";
     $display = $display . "  2012 Total Votes | ";
+    $array[] = "2012 Total Votes";
   }
 if (!empty($_POST["dem_2012"])) {
     $s_command = $s_command . ", dem_2012 ";
     $display = $display . "  2012 Total Democratic Votes | ";
+    $array[] = "2012 Total Democratic Votes";
   }
 if (!empty($_POST["gop_2012"])) {
     $s_command = $s_command . ", gop_2012 ";
     $display = $display . "  2012 Total Republican Votes | ";
+    $array[] = "2012 Total Republican Votes";
   }
 if (!empty($_POST["oth_2012"])) {
     $s_command = $s_command . ", oth_2012 ";
     $display = $display . "  2012 Total Third Party Votes | ";
+    $array[] = "2012 Total Third Party Votes";
   }
 if (!empty($_POST["dem_12_perc"])) {
-    $s_command = $s_command . ", 100*dem_12_perc ";
+    $s_command = $s_command . ", e.dem_12_perc*100 ";
     $display = $display . "  2012 Democratic Vote Proportion | ";
+    $array[] = "2012 Democratic Vote %";
   }
 if (!empty($_POST["gop_12_perc"])) {
-    $s_command = $s_command . ", 100*gop_12_perc ";
+    $s_command = $s_command . ", e.gop_12_perc*100 ";
     $display = $display . "  2012 Republican Vote Proportion | ";
+    $array[] = "2012 Republican Vote %";
   }
 if (!empty($_POST["oth_12_perc"])) {
-    $s_command = $s_command . ", 100*oth_12_perc ";
+    $s_command = $s_command . ", e.oth_12_perc*100 ";
     $display = $display . "  2012 Third Party Vote Proportion | ";
+    $array[] = "2012 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_12"])) {
-    $s_command = $s_command . ", 100*abs(win_marg_12), winner_12 ";
-    $display = $display . "  2012 Winning Margin %, Winner | ";
+    $s_command = $s_command . ", e.abs(win_marg_12)*100 ";
+    $display = $display . "  2012 Winning Margin % ";
+    $array[] = "2012 Winning Margin %";
   }
 if (!empty($_POST["total_2016"])) {
     $s_command = $s_command . ", total_2016 ";
     $display = $display . "  2016 Total Votes | ";
+    $array[] = "2016 Total Votes";
   }
 if (!empty($_POST["dem_2016"])) {
     $s_command = $s_command . ", dem_2016 ";
     $display = $display . "  2016 Total Democratic Votes | ";
+    $array[] = "2016 Total Democratic Votes";
   }
 if (!empty($_POST["gop_2016"])) {
     $s_command = $s_command . ", gop_2016 ";
     $display = $display . "  2016 Total Republican Votes | ";
+    $array[] = "2016 Total Republican Votes";
   }
 if (!empty($_POST["oth_2016"])) {
     $s_command = $s_command . ", oth_2016 ";
     $display = $display . "  2016 Total Third Party Votes | ";
+    $array[] = "2016 Total Third Party Votes";
   }
 if (!empty($_POST["dem_16_perc"])) {
-    $s_command = $s_command . ", 100*dem_16_perc ";
+    $s_command = $s_command . ", e.dem_16_perc*100 ";
     $display = $display . "  2016 Democratic Vote Proportion | ";
+    $array[] = "2016 Democratic Vote %";
   }
 if (!empty($_POST["gop_16_perc"])) {
-    $s_command = $s_command . ", 100*gop_16_perc ";
+    $s_command = $s_command . ", e.gop_16_perc*100 ";
     $display = $display . "  2016 Republican Vote Proportion | ";
+    $array[] = "2016 Republican Vote %";
   }
 if (!empty($_POST["oth_16_perc"])) {
-    $s_command = $s_command . ", 100*oth_16_perc ";
+    $s_command = $s_command . ", e.oth_16_perc*100 ";
     $display = $display . "  2016 Third Party Vote Proportion | ";
+    $array[] = "2016 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_16"])) {
-    $s_command = $s_command . ", 100*abs(win_marg_16), winner_16 ";
-    $display = $display . "  2016 Winning Margin %, Winner | ";
+    $s_command = $s_command . ", abs(e.win_marg_16)*100 ";
+    $display = $display . "  2016 Winning Margin % | ";
+    $array[] = "2016 Winning Margin %";
   }
 if (!empty($_POST["diff_0816"])) {
-    $s_command = $s_command . ", 100*diff_0816 ";
+    $s_command = $s_command . ", e.diff_0816*100 ";
     $display = $display . "  % Difference 2008 to 2016 in Winning Margin | ";
+    $array[] = "2008 to 2016 Difference In Winning Margin %";
   }
 if (!empty($_POST["diff_0812"])) {
-    $s_command = $s_command . ", 100*diff_0812 ";
+    $s_command = $s_command . ", e.diff_0812*100 ";
     $display = $display . " % Difference 2008 to 2012 in Winning Margin | ";
+    $array[] = "2008 to 2012 Difference In Winning Margin %";
   }
 if (!empty($_POST["diff_1216"])) {
-    $s_command = $s_command . ", 100*diff_1216 ";
+    $s_command = $s_command . ", e.diff_1216*100 ";
     $display = $display . "  % Difference 2012 to 2016 in Winning Margin | ";
+    $array[] = "2012 to 2016 Difference In Winning Margin %";
   }
 if (!empty($_POST["civilian_labor_force_2008"])) {
     $s_command = $s_command . ", civilian_labor_force_2008 ";
     $display = $display . "  2008 Civ Labor Force | ";
+    $array[] = "2008 Civilian Labor Force";
   }
 if (!empty($_POST["civilian_labor_force_2012"])) {
     $s_command = $s_command . ", civilian_labor_force_2012 ";
     $display = $display . "  2012 Civ Labor Force | ";
+    $array[] = "2012 Civilian Labor Force";
   }
 if (!empty($_POST["civilian_labor_force_2015"])) {
     $s_command = $s_command . ", civilian_labor_force_2015 ";
     $display = $display . "  2015 Civ Labor Force | ";
+    $array[] = "2015 Civilian Labor Force";
   }
 if (!empty($_POST["unemployed_2008"])) {
     $s_command = $s_command . ", unemployed_2008 ";
     $display = $display . "  2008 Total Unemployed | ";
+    $array[] = "2008 Unemployed";
   }
 if (!empty($_POST["unemployed_2012"])) {
     $s_command = $s_command . ", unemployed_2012 ";
     $display = $display . "  2012 Total Unemployed | ";
+    $array[] = "2012 Unemployed";
   }
 if (!empty($_POST["unemployed_2015"])) {
     $s_command = $s_command . ", unemployed_2015 ";
     $display = $display . "  2015 Total Unemployed | ";
+    $array[] = "2015 Unemployed";
   }
 if (!empty($_POST["unemployment_rate_2008"])) {
     $s_command = $s_command . ", unemployment_rate_2008 ";
     $display = $display . "  2008 Unemployment % | ";
+    $array[] = "2008 Unemployed Rate %";
   }
 if (!empty($_POST["unemployment_rate_2012"])) {
     $s_command = $s_command . ", unemployment_rate_2012 ";
     $display = $display . "  2012 Unemployment % | ";
+    $array[] = "2012 Unemployed Rate %";
   }
 if (!empty($_POST["unemployment_rate_2015"])) {
     $s_command = $s_command . ", unemployment_rate_2015 ";
     $display = $display . "  2015 Unemployment % | ";
+    $array[] = "2015 Unemployed Rate %";
   }
-/*if (!empty($_POST["unemployment_rate_2015"])) {
-    $s_command = $s_command . ", unemployment_rate_2015 ";
-    $display = $display . "  2015 Unemployment % | ";
-  }*/
 if (!empty($_POST["unemployment_rate_difference_2008_to_2015"])) {
     $s_command = $s_command . ", unemployment_rate_difference_2008_to_2015 ";
     $display = $display . "  2008 to 2015 Unemployment % Difference | ";
+    $array[] = "2008 to 2015 Unemployed Rate % Difference";
   }
 if (!empty($_POST["unemployment_rate_difference_2012_to_2015"])) {
     $s_command = $s_command . ", unemployment_rate_difference_2012_to_2015 ";
     $display = $display . "  2012 to 2015 Unemployment % Difference | ";
+    $array[] = "2012 to 2015 Unemployed Rate % Difference";
   }
 if (!empty($_POST["labor_Force_Percent_Difference_2008_to_2015"])) {
     $s_command = $s_command . ", labor_Force_Percent_Difference_2008_to_2015 ";
     $display = $display . "  2008 to 2015 Labor Force % Difference | ";
+    $array[] = "2008 to 2015 Labor Force % Difference";
   }
 if (!empty($_POST["labor_Force_Percent_Difference_2012_to_2015"])) {
     $s_command = $s_command . ", labor_Force_Percent_Difference_2012_to_2015 ";
     $display = $display . "  2012 to 2015 Labor Force % Difference | ";
+    $array[] = "2012 to 2015 Labor Force % Difference";
   }
+if (!empty($_POST["population_12"])) {
+    $s_command = $s_command . ", fd12.population ";
+    $display = $display . "  2012 Population | ";
+    $array[] = "2012 Population";
+  }
+if (!empty($_POST["health_cov_12"])) {
+    $s_command = $s_command . ", fd12.health_cov ";
+    $display = $display . "  2012 Health Coverage | ";
+    $array[] = "2012 Health Coverage";
+  }
+if (!empty($_POST["health_cov_per_12"])) {
+    $s_command = $s_command . ", fd12.health_cov_per ";
+    $display = $display . "  2012 Health Coverage % | ";
+    $array[] = "2012 Health Coverage %";
+  }
+if (!empty($_POST["median_age_12"])) {
+    $s_command = $s_command . ", fd12.median_age ";
+    $display = $display . "  2012 Median Age | ";
+    $array[] = "2012 Median Age";
+  }
+if (!empty($_POST["median_inc_12"])) {
+    $s_command = $s_command . ", fd12.median_inc ";
+    $display = $display . "  2012 Median Income | ";
+    $array[] = "2012 Median Income";
+  }
+if (!empty($_POST["gini_12"])) {
+    $s_command = $s_command . ", fd12.gini ";
+    $display = $display . "  2012 Gini Coefficient | ";
+    $array[] = "2012 Gini Coefficient";
+}
+if (!empty($_POST["manu_per_12"])) {
+    $s_command = $s_command . ", fd12.manu_per ";
+    $display = $display . "  2012 Manufacturing % | ";
+    $array[] = "2012 % of Workforce in Manufacturing ";
+}
+if (!empty($_POST["salary_workers_12"])) {
+    $s_command = $s_command . ", fd12.salary_workers ";
+    $display = $display . "  2012 Salaried Workers % | ";
+    $array[] = "2012 % of Workforce Salaried ";
+}
+if (!empty($_POST["self_employed_12"])) {
+    $s_command = $s_command . ", fd12.self_employed ";
+    $display = $display . "  2012 Self-Employed % | ";
+    $array[] = "2012 % of Workforce Self-Employed ";
+}
+if (!empty($_POST["pop_citizen_12"])) {
+    $s_command = $s_command . ", fd12.pop_citizen ";
+    $display = $display . "  2012 Citizen Population | ";
+    $array[] = "2012 Citizen Population";
+}
+if (!empty($_POST["cit_by_nat_12"])) {
+    $s_command = $s_command . ", fd12.cit_by_nat ";
+    $display = $display . "  2012 Naturalized Citizen | ";
+    $array[] = "2012 Naturalized Citizen Population";
+}
+if (!empty($_POST["cit_by_nat_per_12"])) {
+    $s_command = $s_command . ", fd12.cit_by_nat_per ";
+    $display = $display . "  2012 Naturalized Citizen % | ";
+    $array[] = "2012 Naturalized Citizen Population %";
+}
+if (!empty($_POST["not_cit_12"])) {
+    $s_command = $s_command . ", fd12.not_cit ";
+    $display = $display . "  2012 Non-Citizen Population | ";
+    $array[] = "2012 Non-Citizen Population";
+}
+if (!empty($_POST["not_cit_per_12"])) {
+    $s_command = $s_command . ", fd12.not_cit_per ";
+    $display = $display . "  2012 Non-Citizen Population % | ";
+    $array[] = "2012 Non-Citizen Population %";
+}
+if (!empty($_POST["bach_or_higher_per_12"])) {
+    $s_command = $s_command . ", fd12.bach_or_higher_per ";
+    $display = $display . "  2012 Bachelor's Or Higher % | ";
+    $array[] = "2012 Bachelor's Or Higher %";
+}
+if (!empty($_POST["less_than_hs_per_12"])) {
+    $s_command = $s_command . ", fd12.less_than_hs_per ";
+    $display = $display . "  2012 Less Than High School % | ";
+    $array[] = "2012 Less Than High School %";
+}
+if (!empty($_POST["male_pop_12"])) {
+    $s_command = $s_command . ", fd12.male_pop ";
+    $display = $display . "  2012 Male Population | ";
+    $array[] = "2012 Male Population";
+}
+if (!empty($_POST["male_per_12"])) {
+    $s_command = $s_command . ", fd12.male_per ";
+    $display = $display . "  2012 Male Population % | ";
+    $array[] = "2012 Male Population %";
+}
+if (!empty($_POST["female_pop_12"])) {
+    $s_command = $s_command . ", fd12.female_pop ";
+    $display = $display . "  2012 Female Population | ";
+    $array[] = "2012 Female Population";
+}
+if (!empty($_POST["female_per_12"])) {
+    $s_command = $s_command . ", fd12.female_per ";
+    $display = $display . "  2012 Female Population % | ";
+    $array[] = "2012 Female Population %";
+} 
+if (!empty($_POST["poverty_12"])) {
+    $s_command = $s_command . ", fd12.poverty ";
+    $display = $display . "  2012 In Poverty % | ";
+    $array[] = "2012 % In Poverty";
+} 
+if (!empty($_POST["population_15"])) {
+    $s_command = $s_command . ", fd15.population ";
+    $display = $display . "  2015 Population | ";
+    $array[] = "2015 Population";
+  }
+if (!empty($_POST["health_cov_15"])) {
+    $s_command = $s_command . ", fd15.health_cov ";
+    $display = $display . "  2015 Health Coverage | ";
+    $array[] = "2015 Health Coverage";
+  }
+if (!empty($_POST["health_cov_per_15"])) {
+    $s_command = $s_command . ", fd15.health_cov_per ";
+    $display = $display . "  2015 Health Coverage % | ";
+    $array[] = "2015 Health Coverage %";
+  }
+if (!empty($_POST["median_age_15"])) {
+    $s_command = $s_command . ", fd15.median_age ";
+    $display = $display . "  2015 Median Age | ";
+    $array[] = "2015 Median Age";
+  }
+if (!empty($_POST["median_inc_15"])) {
+    $s_command = $s_command . ", fd15.median_inc ";
+    $display = $display . "  2015 Median Income | ";
+    $array[] = "2015 Median Income";
+  }
+if (!empty($_POST["gini_15"])) {
+    $s_command = $s_command . ", fd15.gini ";
+    $display = $display . "  2015 Gini Coefficient | ";
+    $array[] = "2015 Gini Coefficient";
+}
+if (!empty($_POST["manu_per_15"])) {
+    $s_command = $s_command . ", fd15.manu_per ";
+    $display = $display . "  2015 Manufacturing % | ";
+    $array[] = "2015 % of Workforce in Manufacturing ";
+}
+if (!empty($_POST["salary_workers_15"])) {
+    $s_command = $s_command . ", fd15.salary_workers ";
+    $display = $display . "  2015 Salaried Workers % | ";
+    $array[] = "2015 % of Workforce Salaried ";
+}
+if (!empty($_POST["self_employed_15"])) {
+    $s_command = $s_command . ", fd15.self_employed ";
+    $display = $display . "  2015 Self-Employed % | ";
+    $array[] = "2015 % of Workforce Self-Employed ";
+}
+if (!empty($_POST["pop_citizen_15"])) {
+    $s_command = $s_command . ", fd15.pop_citizen ";
+    $display = $display . "  2015 Citizen Population | ";
+    $array[] = "2015 Citizen Population";
+}
+if (!empty($_POST["cit_by_nat_15"])) {
+    $s_command = $s_command . ", fd15.cit_by_nat ";
+    $display = $display . "  2015 Naturalized Citizen | ";
+    $array[] = "2015 Naturalized Citizen Population";
+}
+if (!empty($_POST["cit_by_nat_per_15"])) {
+    $s_command = $s_command . ", fd15.cit_by_nat_per ";
+    $display = $display . "  2015 Naturalized Citizen % | ";
+    $array[] = "2015 Naturalized Citizen Population %";
+}
+if (!empty($_POST["not_cit_15"])) {
+    $s_command = $s_command . ", fd15.not_cit ";
+    $display = $display . "  2015 Non-Citizen Population | ";
+    $array[] = "2015 Non-Citizen Population";
+}
+if (!empty($_POST["not_cit_per_15"])) {
+    $s_command = $s_command . ", fd15.not_cit_per ";
+    $display = $display . "  2015 Non-Citizen Population % | ";
+    $array[] = "2015 Non-Citizen Population %";
+}
+if (!empty($_POST["bach_or_higher_per_15"])) {
+    $s_command = $s_command . ", fd15.bach_or_higher_per ";
+    $display = $display . "  2015 Bachelor's Or Higher % | ";
+    $array[] = "2015 Bachelor's Or Higher %";
+}
+if (!empty($_POST["less_than_hs_per_15"])) {
+    $s_command = $s_command . ", fd15.less_than_hs_per ";
+    $display = $display . "  2015 Less Than High School % | ";
+    $array[] = "2015 Less Than High School %";
+}
+if (!empty($_POST["male_pop_15"])) {
+    $s_command = $s_command . ", fd15.male_pop ";
+    $display = $display . "  2015 Male Population | ";
+    $array[] = "2015 Male Population";
+}
+if (!empty($_POST["male_per_15"])) {
+    $s_command = $s_command . ", fd15.male_per ";
+    $display = $display . "  2015 Male Population % | ";
+    $array[] = "2015 Male Population %";
+}
+if (!empty($_POST["female_pop_15"])) {
+    $s_command = $s_command . ", fd15.female_pop ";
+    $display = $display . "  2015 Female Population | ";
+    $array[] = "2015 Female Population";
+}
+if (!empty($_POST["female_per_15"])) {
+    $s_command = $s_command . ", fd15.female_per ";
+    $display = $display . "  2015 Female Population % | ";
+    $array[] = "2015 Female Population %";
+} 
+if (!empty($_POST["poverty_15"])) {
+    $s_command = $s_command . ", fd15.poverty ";
+    $display = $display . "  2015 In Poverty % | ";
+    $array[] = "2015 % In Poverty";
+}  
+if (!empty($_POST["population_d"])) {
+    $s_command = $s_command . ", d.population ";
+    $display = $display . "  2012 to 2015 Difference In Population | ";
+    $array[] = "2012 to 2015 Difference In Population";
+  }
+if (!empty($_POST["health_cov_d"])) {
+    $s_command = $s_command . ", d.health_cov ";
+    $display = $display . "  2012 to 2015 Difference In Health Coverage | ";
+    $array[] = "2012 to 2015 Difference In Health Coverage";
+  }
+if (!empty($_POST["health_cov_per_d"])) {
+    $s_command = $s_command . ", d.health_cov_per ";
+    $display = $display . "  2012 to 2015 Difference In Health Coverage % | ";
+    $array[] = "2012 to 2015 Difference In Health Coverage %";
+  }
+if (!empty($_POST["median_age_d"])) {
+    $s_command = $s_command . ", d.median_age ";
+    $display = $display . "  2012 to 2015 Difference In Median Age | ";
+    $array[] = "2012 to 2015 Difference In Median Age";
+  }
+if (!empty($_POST["median_inc_d"])) {
+    $s_command = $s_command . ", d.median_inc ";
+    $display = $display . "  2012 to 2015 Difference In Median Income | ";
+    $array[] = "2012 to 2015 Difference In Median Income";
+  }
+if (!empty($_POST["gini_d"])) {
+    $s_command = $s_command . ", d.gini ";
+    $display = $display . "  2012 to 2015 Difference In Gini Coefficient | ";
+    $array[] = "2012 to 2015 Difference In Gini Coefficient";
+}
+if (!empty($_POST["manu_per_d"])) {
+    $s_command = $s_command . ", d.manu_per ";
+    $display = $display . "  2012 to 2015 Difference In Manufacturing % | ";
+    $array[] = "2012 to 2015 Difference In % of Workforce in Manufacturing ";
+}
+if (!empty($_POST["salary_workers_d"])) {
+    $s_command = $s_command . ", d.salary_workers ";
+    $display = $display . "  2012 to 2015 Difference In Salaried Workers % | ";
+    $array[] = "2012 to 2015 Difference In % of Workforce Salaried ";
+}
+if (!empty($_POST["self_employed_d"])) {
+    $s_command = $s_command . ", d.self_employed ";
+    $display = $display . "  2012 to 2015 Difference In Self-Employed % | ";
+    $array[] = "2012 to 2015 Difference In % of Workforce Self-Employed ";
+}
+if (!empty($_POST["pop_citizen_d"])) {
+    $s_command = $s_command . ", d.pop_citizen ";
+    $display = $display . "  2012 to 2015 Difference In Citizen Population | ";
+    $array[] = "2012 to 2015 Difference In Citizen Population";
+}
+if (!empty($_POST["cit_by_nat_d"])) {
+    $s_command = $s_command . ", d.cit_by_nat ";
+    $display = $display . "  2012 to 2015 Difference In Naturalized Citizen | ";
+    $array[] = "2012 to 2015 Difference In Naturalized Citizen Population";
+}
+if (!empty($_POST["cit_by_nat_per_d"])) {
+    $s_command = $s_command . ", d.cit_by_nat_per ";
+    $display = $display . "  2012 to 2015 Difference In Naturalized Citizen % | ";
+    $array[] = "2012 to 2015 Difference In Naturalized Citizen Population %";
+}
+if (!empty($_POST["not_cit_d"])) {
+    $s_command = $s_command . ", d.not_cit ";
+    $display = $display . "  2012 to 2015 Difference In Non-Citizen Population | ";
+    $array[] = "2012 to 2015 Difference In Non-Citizen Population";
+}
+if (!empty($_POST["not_cit_per_d"])) {
+    $s_command = $s_command . ", d.not_cit_per ";
+    $display = $display . "  2012 to 2015 Difference In Non-Citizen Population % | ";
+    $array[] = "2012 to 2015 Difference In Non-Citizen Population %";
+}
+if (!empty($_POST["bach_or_higher_per_d"])) {
+    $s_command = $s_command . ", d.bach_or_higher_per ";
+    $display = $display . "  2012 to 2015 Difference In Bachelor's Or Higher % | ";
+    $array[] = "2012 to 2015 Difference In Bachelor's Or Higher %";
+}
+if (!empty($_POST["less_than_hs_per_d"])) {
+    $s_command = $s_command . ", d.less_than_hs_per ";
+    $display = $display . "  2012 to 2015 Difference In Less Than High School % | ";
+    $array[] = "2012 to 2015 Difference In Less Than High School %";
+}
+if (!empty($_POST["male_pop_d"])) {
+    $s_command = $s_command . ", d.male_pop ";
+    $display = $display . "  2012 to 2015 Difference In Male Population | ";
+    $array[] = "2012 to 2015 Difference In Male Population";
+}
+if (!empty($_POST["male_per_d"])) {
+    $s_command = $s_command . ", d.male_per ";
+    $display = $display . "  2012 to 2015 Difference In Male Population % | ";
+    $array[] = "2012 to 2015 Difference In Male Population %";
+}
+if (!empty($_POST["female_pop_d"])) {
+    $s_command = $s_command . ", d.female_pop ";
+    $display = $display . "  2012 to 2015 Difference In Female Population | ";
+    $array[] = "2012 to 2015 Difference In Female Population";
+}
+if (!empty($_POST["female_per_d"])) {
+    $s_command = $s_command . ", d.female_per ";
+    $display = $display . "  2012 to 2015 Difference In Female Population % | ";
+    $array[] = "2012 to 2015 Difference In Female Population %";
+} 
+if (!empty($_POST["poverty_d"])) {
+    $s_command = $s_command . ", d.poverty ";
+    $display = $display . "  2012 to 2015 Difference In In Poverty % | ";
+    $array[] = "2012 to 2015 Difference In % In Poverty";
+}  
 
+
+if(!empty($_POST["orderby"])) {
+  $w_command = $w_command . " ORDER BY " . $_POST["orderby"] . " " . $_POST["orderby_direction"] . " ";
+}
 
 
 if(!empty($_POST["diff_criterion"])){
@@ -6682,7 +7449,7 @@ if (empty($w_command)) {
 		$command = $s_command . " " . $f_command . ";" ;
 	}
 	if (!empty($_POST["limit"])) {
-		$command = $s_command . " " . $f_command . " Limit " . $_POST["limit"] . ";" ;
+		$command = $s_command . " " . $f_command . " LIMIT " . $_POST["limit"] . ";" ;
 	}
 }
 if (!empty($w_command)) {
@@ -6696,11 +7463,11 @@ if (!empty($w_command)) {
 $path = '/usr/bin';
 putenv("PYTHONPATH=$path");
 apache_setenv("PYTHONPATH", "$path");
-
 //Regression
-if(!empty($_POST["regression_years"])) {
-  $command2 = "python3 linreg2.py" . " \"" . $_POST["regression_predictor"] . "\" \"" . $_POST["regression_years"] . "\" \"" . $w_command . "\" ". "2>&1";
-  $pid = popen( $command2,"r");
+if(!empty($_POST["outcome"] && !empty($_POST["predictor"]))) {
+  $command2 = "python3 linreg2.py" . " \"" . $_POST["outcome"] . "\" \"" . $_POST["predictor"] . "\" \"" . $w_command . "\" ". "2>&1";
+  //echo $command2;
+  $pid = popen( $command2, "r");
   while( !feof( $pid ) )
   {
   echo fread($pid, 256);
@@ -6710,8 +7477,7 @@ if(!empty($_POST["regression_years"])) {
   }
   pclose($pid);
 }
-//Access database
-$db = new SQLite3('data.db');
+$db = new SQLite3('data1215-full.db');
 if(!$db){
     echo $db->lastErrorMsg();
 } /*else {
@@ -6723,7 +7489,6 @@ $rows = 0;
 if (!empty($command)) {
     $result = $db->query($command);
   }
-
 //Get a count of number of counties to be displayed
 $command_for_count = "SELECT COUNT(*) " . $f_command . $w_command;
 $count = $db->querySingle($command_for_count);
@@ -6732,8 +7497,38 @@ if (!empty($_POST["limit"])) {
 }
 //Display the header
 echo "<b> Counties displayed: ". $count . " </b> <br>";
-echo "<b>" . $display . "</b> <br>";
+$output = "<tr>";
+foreach(array_keys($array) as $key){
+    $output = $output . "<th>" .  $array[$key] . "</th>";
+    //echo $array[$key];
+}
+//var_dump($result->fetchArray());
+$output = $output . "</tr>";
+echo "<table>" . $output;
+while($row = $result->fetchArray()){
+  $count = 0;
+  foreach(array_keys($row) as $key) {
+    if($key == "county" and is_numeric($key) != 1){
+      $output = "<tr>" . "<td>" . $row[$key] . ", ";
+    }
+    if($key == "state"){
+      $output = $output . $row[$key] . "</td>";
+    }
+    elseif($key != 0 && $key != 1){
+      $output = $output . "<td>" . $row[$key] . "</td>";
+    }
+  }
+  $output = $output . "</tr>";
+  echo $output;
+}
+
+
+/*echo "<b>" . $display . "</b> <br>";
 //Print the results from the database
+$test = $result->fetchArray();
+foreach( $test as $key => $value ){
+    echo $key."\t=>\t".$value."<br>";
+}
 while($row = $result->fetchArray()) {
 	$output = "";
 	foreach(array_keys($row) as $key) {
@@ -6747,7 +7542,7 @@ while($row = $result->fetchArray()) {
 	}
 	echo $output . "<br>";
 }
-
+*/
 ?>
 
 
