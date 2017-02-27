@@ -6588,6 +6588,15 @@ tr:nth-child(even) {
 <option value="3112">3112</option>
 </select></li> </ul>
 
+<h3> Visualize Correlation </h3>
+<h4> <b> See a heat map of correlation between demographic data and differences between votes by county </b> </h4> 
+<b> Choose a year of demographic data: <br> </b> <label for="correlationyear"></label>
+<select name="correlationyear" id="correlationyear">
+<option value="">--No Choice--</option>
+<option value="2012">2012</option>
+<option value="2015">2015</option>
+</select>
+
 <h3> Run a Regression </h3>
 <h4> <b> Regression output will be displayed above county raw data </b> </h4> 
 <b> Model one of the data above on another: <br> </b> <label for="outcome"></label>
@@ -7463,6 +7472,20 @@ if (!empty($w_command)) {
 $path = '/usr/bin';
 putenv("PYTHONPATH=$path");
 apache_setenv("PYTHONPATH", "$path");
+//Correlation Heat Map
+if(!empty($_POST["correlationyear"])) {
+  $command2 = "python3 correlationmap.py" . " \"" . $_POST["correlationyear"] . "\" \"" . $w_command . "\" ". "";
+  //echo $command2;
+  $pid = popen( $command2, "r");
+  while( !feof( $pid ) )
+  {
+  echo fread($pid, 256);
+  flush();
+  ob_flush();
+  usleep(100000);
+  }
+  pclose($pid);
+}
 //Regression
 if(!empty($_POST["outcome"] && !empty($_POST["predictor"]))) {
   $command2 = "python3 linreg2.py" . " \"" . $_POST["outcome"] . "\" \"" . $_POST["predictor"] . "\" \"" . $w_command . "\" ". "2>&1";
