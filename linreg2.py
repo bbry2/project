@@ -4,12 +4,15 @@ import os
 import sys
 import json
 import sqlite3
+import pandas as pd
 from math import sqrt
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt, mpld3
 from scipy import stats
+import seaborn as sns
+import statsmodels
  
 
 
@@ -17,8 +20,9 @@ def regression(predictor, outcome, w_command):
     connection = sqlite3.connect("data1215-full.db")
     c = connection.cursor()
     command = construct_sql_command(predictor, outcome, w_command)
-    print(command)
+    #print(command)
     results = c.execute(command).fetchall()
+    df_results = pd.read_sql_query(command, connection)
     connection.close()
     outcomes = []
     predictors = []
@@ -90,6 +94,10 @@ def regression(predictor, outcome, w_command):
     plt.plot(xl, yl, '-r')
     #plt.plot(xd, yerrLower, '--r')
     #plt.plot(xd, yerrUpper, '--r')
+    string = mpld3.fig_to_html(fig,template_type="simple")
+    print(string)
+    fig = plt.figure()
+    fid = sns.regplot(x=predictor[2:], y=outcome[2:], data=df_results)
     string = mpld3.fig_to_html(fig,template_type="simple")
     print(string)
     # #plt.show()

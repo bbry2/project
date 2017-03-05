@@ -16,10 +16,12 @@ def make_plot(year, w_command):
         df = pd.read_sql_query("SELECT * FROM fd15 JOIN election_results ON fd15.fips_code = election_results.fips_code" + w_command + ";", conn)
     elif year == "2012":
         df = pd.read_sql_query("SELECT * FROM fd12 JOIN election_results ON fd12.fips_code = election_results.fips_code" + w_command + ";", conn)
+    elif year == "diff":
+        df = pd.read_sql_query("SELECT * FROM diff_1215 JOIN election_results ON diff_1215.fips_code = election_results.fips_code" + w_command + ";", conn)
     corr = df.corr()
     a = corr.loc["population": "poverty", "diff_0812":"diff_0816"]
     fig = plt.figure()
-    fid = sns.heatmap(a, vmax = 1, vmin= -1, annot=True)
+    fid = sns.heatmap(a, vmax = 1, vmin= -1, cmap='RdBu',annot=True)
     string = mpld3.fig_to_html(fig,template_type="simple")
     print(string)
 
