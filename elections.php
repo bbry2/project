@@ -6589,12 +6589,14 @@ tr:nth-child(even) {
 </select></li> </ul>
 
 <h3> Visualize Correlation </h3>
-<h4> <b> See a heat map of correlation between demographic data and differences between votes by county </b> </h4> 
-<b> Choose a year of demographic data: <br> </b> <label for="correlationyear"></label>
-<select name="correlationyear" id="correlationyear">
+<h4> <b> See a heat map of correlation between the data selected above and selected field below by county </b> </h4> 
+<b> Choose a data field to compare to: <br> </b> <label for="corr_field"></label>
+<select name="corr_field" id="corr_field">
 <option value="">--No Choice--</option>
-<option value="2012">2012</option>
-<option value="2015">2015</option>
+<option value="differences">Difference Between Winning Margins of Given Years</option>
+<option value="winning_margins">Winning Margin Each Election</option>
+<option value="democrat_perc">Democratic Vote Percentage Each Year</option>
+<option value="republican_perc">Republican Vote Percentage Each Year</option>
 </select>
 
 <h3> Run a Regression </h3>
@@ -6939,7 +6941,7 @@ if (!empty($_POST["oth_08_perc"])) {
     $array[] = "2008 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_08"])) {
-    $s_command = $s_command . ", e.abs(win_marg_08)*100 ";
+    $s_command = $s_command . ", abs(e.win_marg_08)*100 ";
     $display = $display . "  2008 Winning Margin % | ";
     $array[] = "2008 Winning Margin %";
   }
@@ -6994,7 +6996,7 @@ if (!empty($_POST["oth_12_perc"])) {
     $array[] = "2012 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_12"])) {
-    $s_command = $s_command . ", e.abs(win_marg_12)*100 ";
+    $s_command = $s_command . ", abs(e.win_marg_12)*100 ";
     $display = $display . "  2012 Winning Margin % ";
     $array[] = "2012 Winning Margin %";
   }
@@ -7473,8 +7475,8 @@ $path = '/usr/bin';
 putenv("PYTHONPATH=$path");
 apache_setenv("PYTHONPATH", "$path");
 //Correlation Heat Map
-if(!empty($_POST["correlationyear"])) {
-  $command2 = "python3 correlationmap.py" . " \"" . $_POST["correlationyear"] . "\" \"" . $w_command . "\" ". "";
+if(!empty($_POST["corr_field"])) {
+  $command2 = "python3 correlationmap.py" . " \"" . $_POST["corr_field"] . "\" \"" . $command . "\" ". " 2>&1";
   //echo $command2;
   $pid = popen( $command2, "r");
   while( !feof( $pid ) )
