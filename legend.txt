@@ -1,0 +1,61 @@
+Dataset: election_results
+fips_code: State FIPS code
+state: Name of state
+county: Name of county
+total_<year>: Number of total voters in <year>
+dem_<year>: Number of votes for democrats in <year>
+gop_<year>: Number of votes for republicans in <year>
+oth_<year>: Number of votes for other candidates in <year>
+dem_<year>_perc: Percentage of votes for democrats in <year>
+gop_<year>_perc: Percentage of votes for republicans in <year>
+oth_<year>_perc: Percentage of votes for other candidates in <year>
+win_marg_<year>: dem_<year>_perc - gop_<year>_perc
+winner_<year>: 'Dem' if win_marg_<year> is positive, 'Gop' otherwise
+diff_0812: win_marg_12 - win_marg_08
+direction_0812: 'Dem' if diff_0812 is positive, 'Gop' otherwise
+diff_1216: win_marg_16 - win_marg_12
+direction_1216: 'Dem' if diff_1216 is positive, 'Gop' otherwise
+diff_0816: win_marg_16 - win_marg_08
+direction_0816: 'Dem' if diff_0816 is positive, 'Gop' otherwise
+
+Datasets: fd12 / fd15 / diff_1215
+fips_code: State FIPS code
+county: Name of county
+population: Population count
+health_cov: Number of people with health coverage
+health_cov_per: Percentage of people with health coverage
+median_age: Median age
+median_inc: Median income of households
+gini: Gini index coefficient
+manu_per: Percentage of manufacturing jobs in the workforce
+salary_workers: Percentage of private-wage workers in the workforce
+self_employed real: Percentage of self-employed people in the workforce
+pop_citizen: Count of U.S. Citizens
+cit_by_nat: Count of naturalized U.S. Citizens
+cit_by_nat_per: Percentage of naturalized U.S.Citizens
+not_cit: Number of non-U.S. Citizens
+not_cit_per: Percentage of non-U.S. Citizens
+bach_or_higher_per: Percentage of people with Bachelor's degree or higher educational attainment
+less_than_hs_per: Percentage of people with educational attainment less than a high-school degree
+male_pop: Male population count
+male_per: Percentage of male population
+female_pop: Female population count
+female_per: Percentage of female population
+unemployment: Percentage of unemployed people over 25 years old
+poverty: Percentage of households in poverty
+white_per: Percentage of people with race "white"
+black_per: Percentage of people with race "black"
+asian_per: Percentage of people with race "Asian"
+hispanic_per: Percentage of people with race "Hispanic"
+
+Dataset: unemployment
+fips_code: State FIPS code
+state: Name of state
+area_name: Name of county
+civilian_labor_force_<year>: Number of people in civilian labor force in <year>
+unemployed_<year>: Number of unemployed people in <year>
+unemployment_rate_<year>: <year> unemployment rate
+unemployment_rate_difference_2008_to_2015: unemployment_rate_2015 - unemployment_rate_2008
+unemployment_rate_difference_2012_to_2015: unemployment_rate_2015 - unemployment_rate_2012
+labor_Force_Percent_Difference_2008_to_2015: Labor force percent difference 2008-2015
+labor_Force_Percent_Difference_2012_to_2015: Labor force percent difference 2012-2015
