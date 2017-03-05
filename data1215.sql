@@ -64,7 +64,11 @@ CREATE TABLE fd12
    female_pop integer,
    female_per real,
    unemployment real,
-   poverty real);
+   poverty real,
+   white_per real,
+   black_per real,
+   asian_per real,
+   hispanic_per real);
 
 CREATE TABLE fd15
   (fips_code integer,
@@ -90,7 +94,11 @@ CREATE TABLE fd15
    female_pop integer,
    female_per real,
    unemployment real,
-   poverty real);
+   poverty real,
+   white_per real,
+   black_per real,
+   asian_per real,
+   hispanic_per real);
 
 CREATE TABLE diff_1215
   (fips_code integer,
@@ -116,7 +124,11 @@ CREATE TABLE diff_1215
    female_pop integer,
    female_per real,
    unemployment real,
-   poverty real);
+   poverty real,
+   white_per real,
+   black_per real,
+   asian_per real,
+   hispanic_per real);
 
 CREATE TABLE unemployment
   (fips_code integer, 
@@ -141,3 +153,4 @@ CREATE TABLE unemployment
 .import fd15.csv fd15
 .import diff_1215.csv diff_1215
 .import Unemployment_Processed.csv unemployment
+
