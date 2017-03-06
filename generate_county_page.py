@@ -9,11 +9,19 @@ import matplotlib.pyplot as plt, mpld3
 import sqlite3
 import statsmodels
 
+DATABASE_NAME = "data1215.db"
 
+'''
+Database file change: Alter DATABASE_NAME file above. Changing tables will require 'command' to be changed.
+How to add data fields: add the appropriate select commands to list_of_selects. Use a python terminal to find the indices needed to choose
+the appropriate commands. Add the data to a list if for multiple on one chart or to the list_of_data if alone. If alone, add indices to waterfall
+if statement in one_line_plot function. Similarly with multiple_line_plot, add indicies_of_selects dictionary.
+Adding a year: Alter the year and lengths in one_line_plot and multiple_line_plot, adding the appropriate year(s) for labeling and in if statements.
+Additional room on charts may be needed. Update commands in generate_table function.
+'''
 
 def generate_page(county_state):
-    list_of_selects = ["e.total_2008","e.dem_2008","e.gop_2008","e.oth_2008","e.dem_08_perc","e.gop_08_perc","e.oth_08_perc","e.win_marg_08","e.winner_08","e.total_2012","e.dem_2012","e.gop_2012","e.oth_2012","e.dem_12_perc","e.gop_12_perc","e.oth_12_perc","e.win_marg_12","e.winner_12","e.total_2016","e.dem_2016","e.gop_2016","e.oth_2016","e.dem_16_perc","e.gop_16_perc","e.oth_16_perc","e.win_marg_16","e.winner_16","e.diff_0812","e.direction_0812","e.diff_1216","e.direction_1216","e.diff_0816","e.direction_0816","fd12.population","fd12.health_cov","fd12.health_cov_per","fd12.median_age","fd12.median_inc","fd12.gini","fd12.manu_per","fd12.salary_workers","fd12.self_employed","fd12.pop_citizen","fd12.cit_by_nat","fd12.cit_by_nat_per","fd12.not_cit","fd12.not_cit_per","fd12.bach_or_higher_per","fd12.less_than_hs_per","fd12.male_pop","fd12.male_per","fd12.female_pop","fd12.female_per","fd12.unemployment","fd12.poverty","fd15.population","fd15.health_cov","fd15.health_cov_per","fd15.median_age","fd15.median_inc","fd15.gini","fd15.manu_per","fd15.salary_workers","fd15.self_employed","fd15.pop_citizen","fd15.cit_by_nat","fd15.cit_by_nat_per","fd15.not_cit","fd15.not_cit_per","fd15.bach_or_higher_per","fd15.less_than_hs_per","fd15.male_pop","fd15.male_per","fd15.female_pop","fd15.female_per","fd15.unemployment","fd15.poverty","d.population","d.health_cov","d.health_cov_per","d.median_age","d.median_inc","d.gini","d.manu_per","d.salary_workers","d.self_employed","d.pop_citizen","d.cit_by_nat","d.cit_by_nat_per","d.not_cit","d.not_cit_per","d.bach_or_higher_per","d.less_than_hs_per","d.male_pop","d.male_per","d.female_pop","d.female_per","d.unemployment","d.poverty","u.area_name","u.civilian_labor_force_2008","u.unemployed_2008 ","u.unemployment_rate_2008  ","u.civilian_labor_force_2012","u.unemployed_2012","u.unemployment_rate_2012","u.civilian_labor_force_2015","u.unemployed_2015","u.unemployment_rate_2015","u.unemployment_rate_difference_2008_to_2015","u.unemployment_rate_difference_2012_to_2015","u.labor_Force_Percent_Difference_2008_to_2015","u.labor_Force_Percent_Difference_2012_to_2015"]
-    list_of_tables = ["election_results", "fd12", "fd15", "diff_1215"]
+    list_of_selects = ["e.total_2008","e.dem_2008","e.gop_2008","e.oth_2008","e.dem_08_perc","e.gop_08_perc","e.oth_08_perc","e.win_marg_08","e.winner_08","e.total_2012","e.dem_2012","e.gop_2012","e.oth_2012","e.dem_12_perc","e.gop_12_perc","e.oth_12_perc","e.win_marg_12","e.winner_12","e.total_2016","e.dem_2016","e.gop_2016","e.oth_2016","e.dem_16_perc","e.gop_16_perc","e.oth_16_perc","e.win_marg_16","e.winner_16","e.diff_0812","e.direction_0812","e.diff_1216","e.direction_1216","e.diff_0816","e.direction_0816","fd12.population","fd12.health_cov","fd12.health_cov_per","fd12.median_age","fd12.median_inc","fd12.gini","fd12.manu_per","fd12.salary_workers","fd12.self_employed","fd12.pop_citizen","fd12.cit_by_nat","fd12.cit_by_nat_per","fd12.not_cit","fd12.not_cit_per","fd12.bach_or_higher_per","fd12.less_than_hs_per","fd12.male_pop","fd12.male_per","fd12.female_pop","fd12.female_per","fd12.unemployment","fd12.poverty","fd15.population","fd15.health_cov","fd15.health_cov_per","fd15.median_age","fd15.median_inc","fd15.gini","fd15.manu_per","fd15.salary_workers","fd15.self_employed","fd15.pop_citizen","fd15.cit_by_nat","fd15.cit_by_nat_per","fd15.not_cit","fd15.not_cit_per","fd15.bach_or_higher_per","fd15.less_than_hs_per","fd15.male_pop","fd15.male_per","fd15.female_pop","fd15.female_per","fd15.unemployment","fd15.poverty","d.population","d.health_cov","d.health_cov_per","d.median_age","d.median_inc","d.gini","d.manu_per","d.salary_workers","d.self_employed","d.pop_citizen","d.cit_by_nat","d.cit_by_nat_per","d.not_cit","d.not_cit_per","d.bach_or_higher_per","d.less_than_hs_per","d.male_pop","d.male_per","d.female_pop","d.female_per","d.unemployment","d.poverty","u.area_name","u.civilian_labor_force_2008","u.unemployed_2008 ","u.unemployment_rate_2008  ","u.civilian_labor_force_2012","u.unemployed_2012","u.unemployment_rate_2012","u.civilian_labor_force_2015","u.unemployed_2015","u.unemployment_rate_2015","u.unemployment_rate_difference_2008_to_2015","u.unemployment_rate_difference_2012_to_2015","u.labor_Force_Percent_Difference_2008_to_2015","u.labor_Force_Percent_Difference_2012_to_2015", "fd12.white_per", "fd12.hispanic_per", "fd12.black_per", "fd12.asian_per", "fd15.white_per", "fd15.hispanic_per", "fd15.black_per", "fd15.asian_per", "d.white_per", "d.hispanic_per", "d.black_per", "d.asian_per" ]
     state = "\"" + county_state[-2:] + "\""
     state = county_state[-2:]
     county = county_state[:-2].replace("_", " ").strip()
@@ -28,12 +36,14 @@ def generate_page(county_state):
     citizen_areas = ["Population of Citizens","Population of Non-Citizens","Population of Naturalized Citizens"]
     votes_by_party_areas = ["Democratic Votes", "Republican Votes", "Third Party Votes"]
     percentage_votes_by_party = ["Percentage Democratic Votes","Percentage Republican Votes","Percentage Third Party Votes"]
+    percent_by_race = ["Percent White", "Percent Hispanic", "Percent Black", "Percent Asian"]
+
     list_of_data = ["Unemployment Rate", "Total Unemployment"]
     list_of_data += ["Civilian Labor Force", "Population", "Median Age", "Health Coverage", "Health Coverage Perc"]
     list_of_data += ["Percent of Population in Poverty","Median Income","Gini Coefficient"]
     list_of_data += ["Percent of Workers on Salary", "Population of Citizens"]
-    multiple_line_data_titles = ["Total Votes by Party", "Percentage of Votes by Party", "Percent Employment by Area", "Citizens and Non-Citizens"]
-    multiple_line_data_lists =[votes_by_party_areas, percentage_votes_by_party, employment_areas, citizen_areas]
+    multiple_line_data_titles = ["Total Votes by Party", "Percentage of Votes by Party", "Percent Employment by Area", "Citizens and Non-Citizens", "Percent by Race/Ethnicity"]
+    multiple_line_data_lists =[votes_by_party_areas, percentage_votes_by_party, employment_areas, citizen_areas, percent_by_race]
     for i in range(0, len(multiple_line_data_titles)):
         multiple_line_plot(multiple_line_data_titles[i], multiple_line_data_lists[i], county, state, list_of_selects)
 
@@ -66,9 +76,14 @@ def multiple_line_plot(title, data_field_list, county, state, list_of_selects):
     if title == "Citizens and Non-Citizens":
         indicies_of_selects["Population of Non-Citizens"] = [45, 67]
         indicies_of_selects["Population of Naturalized Citizens"] = [43, 65]
+    if title == "Percent by Race/Ethnicity":
+        indicies_of_selects["Percent White"] = [113, 117]
+        indicies_of_selects["Percent Hispanic"] = [114, 118]
+        indicies_of_selects["Percent Black"] = [115, 119]
+        indicies_of_selects["Percent Asian"] = [116, 120]
 
     bar_width = .22
-    connection = sqlite3.connect("data1215-full.db")
+    connection = sqlite3.connect(DATABASE_NAME)
     c = connection.cursor()
     fig, ax = plt.subplots()
     length = len(indicies_of_selects)
@@ -99,13 +114,17 @@ def multiple_line_plot(title, data_field_list, county, state, list_of_selects):
             if loops == 1:
                 color_choice = 'c'
             if loops == 2:
-                color_choice = 'm'
+                color_choice = 'r'
+            if loops == 3:
+                color_choice = 'g'
         if loops == 0:
             rects1 = plt.bar(np.arange(len(y_axis)) + loops*bar_width, y_axis, bar_width, color=color_choice, label=title2)
         if loops == 1:
             rects2 = plt.bar(np.arange(len(y_axis)) + loops*bar_width, y_axis, bar_width, color=color_choice, label=title2)
         if loops == 2:
             rects3 = plt.bar(np.arange(len(y_axis)) + loops*bar_width, y_axis, bar_width, color=color_choice, label=title2)
+        if loops == 3:
+            rects4 = plt.bar(np.arange(len(y_axis)) + loops*bar_width, y_axis, bar_width, color=color_choice, label=title2)
         loops += 1
     plt.xlabel('Year')
     plt.ylabel(title, fontsize=13)
@@ -116,7 +135,7 @@ def multiple_line_plot(title, data_field_list, county, state, list_of_selects):
     if length == 2:
         years = ('2012', '2015')
         plt.xticks(np.arange(len(indicies_of_selects)) + bar_width / 2, years)
-    plt.legend()
+    plt.legend(loc='best')
     plt.xlabel("Year", fontsize=13)
     string = mpld3.fig_to_html(fig, template_type="simple")
     print(string)
@@ -153,7 +172,7 @@ def one_line_plot(title, county, state, list_of_selects, count, fig):
         selects += list_of_selects[index] + " , "
     selects = selects[:-2]
     command = "SELECT " +selects+ " FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
-    connection = sqlite3.connect("data1215-full.db")
+    connection = sqlite3.connect(DATABASE_NAME)
     c = connection.cursor()
     result = c.execute(command).fetchall()
     results = result[0]
@@ -185,28 +204,50 @@ def one_line_plot(title, county, state, list_of_selects, count, fig):
 
 
 def generate_table(state, county):
+    connection = sqlite3.connect(DATABASE_NAME)
+
     command = "SELECT e.*, fd12.*, fd15.*, d.*, u.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
-    connection = sqlite3.connect("data1215-full.db")
-    c = connection.cursor()
-    result = c.execute(command).fetchall()
-    results = result[0]
-    header = get_header(c)
-    length = len(header)
-    num_tables = length // 9
-    start = 3
-    repeated_data_indices = [36, 37, 60, 61, 84, 85, 108, 109, 110] 
-    for j in range(0,num_tables):
-        l = 9*j + start
+    command1 = "SELECT e.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
+    command2 = "SELECT u.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
+    command3 = "SELECT fd12.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
+    command4 = "SELECT fd15.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
+    command5 = "SELECT d.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
+
+    list_of_commands = [command1, command2, command3, command4, command5]
+    list_of_table_names = ["Election Data", "Unemployment Data", "2012 Demographic Data", "2015 Demographic Data", "2012 to 2015 Demographic Data Differences"]
+    for command, table_name in zip(list_of_commands, list_of_table_names):
+        c = connection.cursor()
+        result = c.execute(command).fetchall()
+        results = result[0]
+        header = get_header(c)
         output = "<tr>"
-        for i in range(l, l+9):
-            if i not in repeated_data_indices:
-                output += "<th>" +  header[i] + "</th>"
+        for head in header:
+            output += "<th>" +  head + "</th>"
         output += "</tr>"
         output += "<tr>"
-        for i in range(l, l+9):
-            if i not in repeated_data_indices:
-                output += "<td>" + str(results[i]) + "</td>"
+        for data in results:
+            output += "<td>" + str(data) + "</td>"
+
         print("<table>", output, "<br>")
+        print("<h4>", table_name,"</h4>")
+
+    # length = len(header)
+    # num_tables = length // 9
+    # start = 3
+    # #repeated_data_indices = [36, 37, 60, 61, 84, 85, 108, 109, 110] 
+    # repeated_data_indices = []
+    # for j in range(0,num_tables):
+    #     l = 9*j + start
+    #     output = "<tr>"
+    #     for i in range(l, l+9):
+    #         if i not in repeated_data_indices:
+    #             output += "<th>" +  header[i] + "</th>"
+    #     output += "</tr>"
+    #     output += "<tr>"
+    #     for i in range(l, l+9):
+    #         if i not in repeated_data_indices:
+    #             output += "<td>" + str(results[i]) + "</td>"
+    #     print("<table>", output, "<br>")
 
     
 

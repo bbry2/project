@@ -1,4 +1,19 @@
-<?php /* Election Analysis */ ?> 
+<?php /* Election Analysis Template - Ryan Hopkins */ ?> 
+<!-- How to add data: Add checkbox fields below for each data field added. If a new table is added, a new section may be needed.
+Add the fields to the Order By dropdowns. 
+Add data to both Regression Model By/On Dropdowns.
+Add data to Select-command-building if waterfall with desired table header.
+Alter correlationmap.py, linreg2.py, generate_county_page.py files as directed in each.
+How to add a year of election data: Go through the above to add the year's data to be displayed/correlated/regressed.
+As desired, add the winner criterion from the year's election as an additional dropdown to the Filter Results by Winner. 
+Add the criterion fields to the w_command builder.
+Alter correlationmap.py, linreg2.py, generate_county_page.py files as directed in each for year change.
+Database filename change: alter $db_filename variable in php section below to desired filename
+Note: The Election Analysis relies on Python 3 to preform regression analysis and build visuals. To run on a local server, Python must
+be able to access the following modules: sqlite3, numpy, scipy, pandas, matplotlib, statsmodels, seaborn, mpld3
+The Election Analysis Template is written in php5 with sqlite3 enabled. To run on a localhost, the document root must be changed to 
+the folder containing this and the other relevant files.
+ -->
 <style>
 table {
     font-family: arial, sans-serif;
@@ -22,23 +37,23 @@ tr:nth-child(even) {
 
 <h4> <b> Please check all data you would like to see: </b> </h4>
 
-<b>Total Votes</b>
+<b>Total Votes By Year</b>
       <li><label for="total_2008">Total 2008 Votes</label> <input type="checkbox" name="total_2008" id="total_2008" value="total_2008">&emsp;<label for="total_2012">Total 2012 Votes</label> <input type="checkbox" name="total_2012" id="total_2012" value="total_2012">&emsp;<label for="total_2016">Total 2016 Votes</label> <input type="checkbox" name="total_2016" id="total_2016" value="total_2016"></li>
-<b>2008 Data</b>
+<b>2008 Election Data</b>
       <li><label for="dem_2008">Democratic Votes 2008</label> <input type="checkbox" name="dem_2008" id="dem_2008" value="dem_2008">&emsp;<label for="gop_2008">Republican Votes 2008</label> <input type="checkbox" name="gop_2008" id="gop_2008" value="gop_2008">&emsp;<label for="oth_2008">Third Party Votes 2008</label> <input type="checkbox" name="oth_2008" id="oth_2008" value="oth_2008"></li>
 
       <li><label for="dem_08_perc">Percentage Democratic Votes 2008</label> <input type="checkbox" name="dem_08_perc" id="dem_08_perc" value="dem_08_perc">&emsp;<label for="gop_08_perc">Percentage Republican Votes 2008</label> <input type="checkbox" name="gop_08_perc" id="gop_08_perc" value="gop_08_perc">&emsp;<label for="oth_08_perc">Percentage Third Party Votes 2008</label> <input type="checkbox" name="oth_08_perc" id="oth_08_perc" value="oth_08_perc"></li>
 
       <li><label for="winner_08">2008 Winner</label> <input type="checkbox" name="winner_08" id="winner_08" value="winner_08">&emsp;<label for="win_marg_08">Percentage Winning Margin 2008</label> <input type="checkbox" name="win_marg_08" id="win_marg_08" value="win_marg_08"></li>
 
-<b>2012 Data</b>
+<b>2012 Election Data</b>
       <li><label for="dem_2012">Democratic Votes 2012</label> <input type="checkbox" name="dem_2012" id="dem_2012" value="dem_2012">&emsp;<label for="gop_2012">Republican Votes 2012</label> <input type="checkbox" name="gop_2012" id="gop_2012" value="gop_2012">&emsp;<label for="oth_2012">Third Party Votes 2012</label> <input type="checkbox" name="oth_2012" id="oth_2012" value="oth_2012"></li>
 
       <li><label for="dem_12_perc">Percentage Democratic Votes 2012</label> <input type="checkbox" name="dem_12_perc" id="dem_12_perc" value="dem_12_perc">&emsp;<label for="gop_12_perc">Percentage Republican Votes 2012</label> <input type="checkbox" name="gop_12_perc" id="gop_12_perc" value="gop_12_perc">&emsp;<label for="oth_12_perc">Percentage Third Party Votes 2012</label> <input type="checkbox" name="oth_12_perc" id="oth_12_perc" value="oth_12_perc"></li>
 
       <li><label for="winner_12">2012 Winner</label> <input type="checkbox" name="winner_12" id="winner_12" value="winner_12">&emsp;<label for="win_marg_12">Percentage Winning Margin 2012</label> <input type="checkbox" name="win_marg_12" id="win_marg_12" value="win_marg_12"></li>
      
-<b>2016 Data</b>
+<b>2016 Election Data</b>
 
       <li><label for="dem_2016">Democratic Votes 2016</label> <input type="checkbox" name="dem_2016" id="dem_2016" value="dem_2016">&emsp;<label for="gop_2016">Republican Votes 2016</label> <input type="checkbox" name="gop_2016" id="gop_2016" value="gop_2016">&emsp;<label for="oth_2016">Third Party Votes 2016</label> <input type="checkbox" name="oth_2016" id="oth_2016" value="oth_2016"></li>
 
@@ -46,7 +61,7 @@ tr:nth-child(even) {
 
       <li><label for="winner_16">2016 Winner</label> <input type="checkbox" name="winner_16" id="winner_16" value="winner_16">&emsp;<label for="win_marg_16">Percentage Winning Margin 2016</label> <input type="checkbox" name="win_marg_16" id="win_marg_16" value="win_marg_16"></li>
 
-<b>Winning Margins</b>
+<b>Winning Margins Between Years</b>
 
       <li><label for="diff_0812">2008 to 2012 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0812" id="diff_0812" value="diff_0812">&emsp;<label for="diff_0816">2008 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0816" id="diff_0816" value="diff_0816">&emsp;<label for="diff_1216">2012 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_1216" id="diff_1216" value="diff_1216"></li>
 
@@ -67,6 +82,10 @@ tr:nth-child(even) {
 
       <li><label for="health_cov_12">Health Coverage in 2012</label> <input type="checkbox" name="health_cov_12" id="health_cov_12" value="health_cov_12">&emsp;<label for="health_cov_per_12">Health Coverage Percent 2012</label> <input type="checkbox" name="health_cov_per_12" id="health_cov_per_12" value="health_cov_per_12"></li>
      
+      <li><label for="white_per_12">Percent of Population White in 2012</label> <input type="checkbox" name="white_per_12" id="white_per_12" value="white_per_12">&emsp;<label for="hispanic_per_12">Percent of Population Hispanic in 2012</label> <input type="checkbox" name="hispanic_per_12" id="hispanic_per_12" value="hispanic_per_12"></li>
+
+      <li><label for="black_per_12">Percent of Population Black in 2012</label> <input type="checkbox" name="black_per_12" id="black_per_12" value="black_per_12">&emsp;<label for="asian_per_12">Percent of Population Asian in 2012</label> <input type="checkbox" name="asian_per_12" id="asian_per_12" value="asian_per_12"></li>
+
       <li><label for="male_pop_12">Male Population in 2012</label> <input type="checkbox" name="male_pop_12" id="male_pop_12" value="male_pop_12">&emsp;<label for="male_per_12">Percent of Population Male in 2012</label> <input type="checkbox" name="male_per_12" id="male_per_12" value="male_per_12"></li>
 
       <li><label for="female_pop_12">Female Population in 2012</label> <input type="checkbox" name="female_pop_12" id="female_pop_12" value="female_pop_12">&emsp;<label for="female_per_12">Percent of Population Female in 2012</label> <input type="checkbox" name="female_per_12" id="female_per_12" value="female_per_12"></li>
@@ -86,6 +105,10 @@ tr:nth-child(even) {
 
       <li><label for="health_cov_15">Health Coverage in 2015</label> <input type="checkbox" name="health_cov_15" id="health_cov_15" value="health_cov_15">&emsp;<label for="health_cov_per_15">Health Coverage Percent 2015</label> <input type="checkbox" name="health_cov_per_15" id="health_cov_per_15" value="health_cov_per_15"></li>
      
+      <li><label for="white_per_15">Percent of Population White in 2015</label> <input type="checkbox" name="white_per_15" id="white_per_15" value="white_per_15">&emsp;<label for="hispanic_per_15">Percent of Population Hispanic in 2015</label> <input type="checkbox" name="hispanic_per_15" id="hispanic_per_15" value="hispanic_per_15"></li>
+
+      <li><label for="black_per_15">Percent of Population Black in 2015</label> <input type="checkbox" name="black_per_15" id="black_per_15" value="black_per_15">&emsp;<label for="asian_per_15">Percent of Population Asian in 2015</label> <input type="checkbox" name="asian_per_15" id="asian_per_15" value="asian_per_15"></li>
+      
       <li><label for="male_pop_15">Male Population in 2015</label> <input type="checkbox" name="male_pop_15" id="male_pop_15" value="male_pop_15">&emsp;<label for="male_per_15">Percent of Population Male in 2015</label> <input type="checkbox" name="male_per_15" id="male_per_15" value="male_per_15"></li>
 
       <li><label for="female_pop_15">Female Population in 2015</label> <input type="checkbox" name="female_pop_15" id="female_pop_15" value="female_pop_15">&emsp;<label for="female_per_15">Percent of Population Female in 2015</label> <input type="checkbox" name="female_per_15" id="female_per_15" value="female_per_15"></li>
@@ -105,6 +128,10 @@ tr:nth-child(even) {
 
       <li><label for="health_cov_d">Health Coverage</label> <input type="checkbox" name="health_cov_d" id="health_cov_d" value="health_cov_d">&emsp;<label for="health_cov_per_d">Health Coverage Percent</label> <input type="checkbox" name="health_cov_per_d" id="health_cov_per_d" value="health_cov_per_d"></li>
      
+      <li><label for="white_per_d">Percent of Population White</label> <input type="checkbox" name="white_per_d" id="white_per_d" value="white_per_d">&emsp;<label for="hispanic_per_d">Percent of Population Hispanic</label> <input type="checkbox" name="hispanic_per_d" id="hispanic_per_d" value="hispanic_per_d"></li>
+
+      <li><label for="black_per_d">Percent of Population Black</label> <input type="checkbox" name="black_per_d" id="black_per_d" value="black_per_d">&emsp;<label for="asian_per_d">Percent of Population Asian</label> <input type="checkbox" name="asian_per_d" id="asian_per_d" value="asian_per_d"></li>
+
       <li><label for="male_pop_d">Male Population</label> <input type="checkbox" name="male_pop_d" id="male_pop_d" value="male_pop_d">&emsp;<label for="male_per_d">Percent of Population Male</label> <input type="checkbox" name="male_per_d" id="male_per_d" value="male_per_d"></li>
 
       <li><label for="female_pop_d">Female Population</label> <input type="checkbox" name="female_pop_d" id="female_pop_d" value="female_pop_d">&emsp;<label for="female_per_d">Percent of Population Female</label> <input type="checkbox" name="female_per_d" id="female_per_d" value="female_per_d"></li>
@@ -3369,6 +3396,10 @@ tr:nth-child(even) {
 <option value="fd12.median_age">Median Age in 2012</option>
 <option value="fd12.health_cov">Health Coverage in 2012</option>
 <option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.white_per">Percent of Population White in 2012</option>
+<option value="fd12.hispanic_per">Percent of Population Hispanic in 2012</option>
+<option value="fd12.black_per">Percent of Population Black in 2012</option>
+<option value="fd12.asian_per">Percent of Population Asian in 2012</option>
 <option value="fd12.male_pop">Male Population in 2012</option>
 <option value="fd12.male_per">Percent of Population Male in 2012</option>
 <option value="fd12.female_pop">Female Population in 2012</option>
@@ -3390,6 +3421,10 @@ tr:nth-child(even) {
 <option value="fd15.median_age">Median Age in 2015</option>
 <option value="fd15.health_cov">Health Coverage in 2015</option>
 <option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.white_per">Percent of Population White in 2015</option>
+<option value="fd15.hispanic_per">Percent of Population Hispanic in 2015</option>
+<option value="fd15.black_per">Percent of Population Black in 2015</option>
+<option value="fd15.asian_per">Percent of Population Asian in 2015</option>
 <option value="fd15.male_pop">Male Population in 2015</option>
 <option value="fd15.male_per">Percent of Population Male in 2015</option>
 <option value="fd15.female_pop">Female Population in 2015</option>
@@ -3411,6 +3446,10 @@ tr:nth-child(even) {
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
 <option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
 <option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.white_per">Percent of Population White</option>
+<option value="d.hispanic_per">Percent of Population Hispanic</option>
+<option value="d.black_per">Percent of Population Black</option>
+<option value="d.asian_per">Percent of Population Asian</option>
 <option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
 <option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
 <option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
@@ -3436,40 +3475,7 @@ tr:nth-child(even) {
 <option value="">Ascending</option></select>
 </li>
 <br>
-<!-- <ul> <li> <b> Change in vote between years </b> <label for="diff_criterion"></label>
-<select name="diff_criterion" id="diff_criterion">
-<option value="">No preference</option>
-<option value="diff_1216">2012 to 2016</option>
-<option value="diff_0816">2008 to 2016</option>
-<option value="direction_0812">2008 to 2012</option>
-</select><b> favoring </b> <label for="difference_direction"></label>
-<select name="difference_direction" id="difference_direction">
-<option value="">No Preference</option>
-<option value="DESC">Democratic Party</option>
-<option value="">Republican Party</option>
-</select></li> </ul>
-<ul> <li> <b> Change in unemployment rate between years </b> <label for="unemployment_criterion"></label>
-<select name="unemployment_criterion" id="unemployment_criterion">
-<option value="">No preference</option>
-<option value="unemployment_rate_difference_2012_to_2015">2012 to 2015</option>
-<option value="unemployment_rate_difference_2008_to_2015">2008 to 2015</option>
-</select><b> where the rate </b> <label for="unemployment_direction"></label>
-<select name="unemployment_direction" id="unemployment_direction">
-<option value="">No Preference</option>
-<option value="DESC">Increased</option>
-<option value="">Decreased</option>
-</select></li> </ul>
-<ul> <li> <b> Change in labor participation rate between years </b> <label for="labor_force_criterion"></label>
-<select name="labor_force_criterion" id="labor_force_criterion">
-<option value="">No preference</option>
-<option value="labor_Force_Percent_Difference_2012_to_2015">2012 to 2015</option>
-<option value="labor_Force_Percent_Difference_2008_to_2015">2008 to 2015</option>
-</select><b> where the rate </b> <label for="labor_force_direction"></label>
-<select name="labor_force_direction" id="labor_force_direction">
-<option value="">No Preference</option>
-<option value="DESC">Increased</option>
-<option value="">Decreased</option>
-</select></li> </ul> -->
+
 <li> <b> Limit the number of counties displayed: </b> </li>
 <ul> <li> <b> Limit the number of results you see to </b> <label for="limit"></label>
 <select name="limit" id="limit">
@@ -6648,6 +6654,10 @@ tr:nth-child(even) {
 <option value="fd12.median_age">Median Age in 2012</option>
 <option value="fd12.health_cov">Health Coverage in 2012</option>
 <option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.white_per">Percent of Population White in 2012</option>
+<option value="fd12.hispanic_per">Percent of Population Hispanic in 2012</option>
+<option value="fd12.black_per">Percent of Population Black in 2012</option>
+<option value="fd12.asian_per">Percent of Population Asian in 2012</option>
 <option value="fd12.male_pop">Male Population in 2012</option>
 <option value="fd12.male_per">Percent of Population Male in 2012</option>
 <option value="fd12.female_pop">Female Population in 2012</option>
@@ -6669,6 +6679,10 @@ tr:nth-child(even) {
 <option value="fd15.median_age">Median Age in 2015</option>
 <option value="fd15.health_cov">Health Coverage in 2015</option>
 <option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.white_per">Percent of Population White in 2015</option>
+<option value="fd15.hispanic_per">Percent of Population Hispanic in 2015</option>
+<option value="fd15.black_per">Percent of Population Black in 2015</option>
+<option value="fd15.asian_per">Percent of Population Asian in 2015</option>
 <option value="fd15.male_pop">Male Population in 2015</option>
 <option value="fd15.male_per">Percent of Population Male in 2015</option>
 <option value="fd15.female_pop">Female Population in 2015</option>
@@ -6690,6 +6704,10 @@ tr:nth-child(even) {
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
 <option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
 <option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.white_per">Percent of Population White</option>
+<option value="d.hispanic_per">Percent of Population Hispanic</option>
+<option value="d.black_per">Percent of Population Black</option>
+<option value="d.asian_per">Percent of Population Asian</option>
 <option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
 <option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
 <option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
@@ -6755,6 +6773,10 @@ tr:nth-child(even) {
 <option value="fd12.median_age">Median Age in 2012</option>
 <option value="fd12.health_cov">Health Coverage in 2012</option>
 <option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.white_per">Percent of Population White in 2012</option>
+<option value="fd12.hispanic_per">Percent of Population Hispanic in 2012</option>
+<option value="fd12.black_per">Percent of Population Black in 2012</option>
+<option value="fd12.asian_per">Percent of Population Asian in 2012</option>
 <option value="fd12.male_pop">Male Population in 2012</option>
 <option value="fd12.male_per">Percent of Population Male in 2012</option>
 <option value="fd12.female_pop">Female Population in 2012</option>
@@ -6776,6 +6798,10 @@ tr:nth-child(even) {
 <option value="fd15.median_age">Median Age in 2015</option>
 <option value="fd15.health_cov">Health Coverage in 2015</option>
 <option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.white_per">Percent of Population White in 2015</option>
+<option value="fd15.hispanic_per">Percent of Population Hispanic in 2015</option>
+<option value="fd15.black_per">Percent of Population Black in 2015</option>
+<option value="fd15.asian_per">Percent of Population Asian in 2015</option>
 <option value="fd15.male_pop">Male Population in 2015</option>
 <option value="fd15.male_per">Percent of Population Male in 2015</option>
 <option value="fd15.female_pop">Female Population in 2015</option>
@@ -6797,6 +6823,10 @@ tr:nth-child(even) {
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
 <option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
 <option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.white_per">Percent of Population White</option>
+<option value="d.hispanic_per">Percent of Population Hispanic</option>
+<option value="d.black_per">Percent of Population Black</option>
+<option value="d.asian_per">Percent of Population Asian</option>
 <option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
 <option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
 <option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
@@ -6816,19 +6846,7 @@ tr:nth-child(even) {
 <option value="d.less_than_hs_per">2012 to 2015 Difference in Percent of Population with Less Than High School Degree</option>
 </select>
 
-<!-- <h4> <b> Model the change in winning margin on a factor of your choice: </b> </h4> 
-<ul> <li> <b> Model change in winning margin between years </b> <label for="regression_years"></label>
-<select name="regression_years" id="regression_years">
-<option value="">\-\-No Choice\-\-</option>
-<option value="2012 to 2016">2012 to 2016</option>
-<option value="2008 to 2016">2008 to 2016</option>
-</select><b> on </b> <label for="regression_predictor"></label>
-<select name="regression_predictor" id="regression_predictor">
-<option value="">\-\-No Choice\-\-</option>
-<option value="unemployment">Unemployment rate</option>
-<option value="labor">Labor force participation rate</option>
-</select></li> </ul>
- -->
+
 <br>
 <input type="submit" value="submit" />
 <br>
@@ -6898,7 +6916,7 @@ if(!empty($_POST["winner_08_criterion"]) || !empty($_POST["winner_12_criterion"]
 	$w_command = substr($w_command, 0, -5);
 }
 
-//election_results=e, fd12, fd15, diff12_15=d, unemployment=u
+//Table names: election_results=e, fd12, fd15, diff12_15=d, unemployment=u
 $f_command = " FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code ";
 $s_command = "SELECT e.county, e.state";
 $display = "<b> County, State | </b>";
@@ -7200,6 +7218,26 @@ if (!empty($_POST["less_than_hs_per_12"])) {
     $display = $display . "  2012 Less Than High School % | ";
     $array[] = "2012 Less Than High School %";
 }
+if (!empty($_POST["white_per_12"])) {
+    $s_command = $s_command . ", fd12.white_per ";
+    $display = $display . "  2012 White % | ";
+    $array[] = "2012 White %";
+}
+if (!empty($_POST["hispanic_per_12"])) {
+    $s_command = $s_command . ", fd12.hispanic_per ";
+    $display = $display . "  2012 Hispanic % | ";
+    $array[] = "2012 Hispanic %";
+}
+if (!empty($_POST["black_per_12"])) {
+    $s_command = $s_command . ", fd12.black_per ";
+    $display = $display . "  2012 Black % | ";
+    $array[] = "2012 Black %";
+}
+if (!empty($_POST["asian_per_12"])) {
+    $s_command = $s_command . ", fd12.asian_per ";
+    $display = $display . "  2012 Asian % | ";
+    $array[] = "2012 Asian %";
+}
 if (!empty($_POST["male_pop_12"])) {
     $s_command = $s_command . ", fd12.male_pop ";
     $display = $display . "  2012 Male Population | ";
@@ -7304,6 +7342,26 @@ if (!empty($_POST["less_than_hs_per_15"])) {
     $s_command = $s_command . ", fd15.less_than_hs_per ";
     $display = $display . "  2015 Less Than High School % | ";
     $array[] = "2015 Less Than High School %";
+}
+if (!empty($_POST["white_per_15"])) {
+    $s_command = $s_command . ", fd15.white_per ";
+    $display = $display . "  2015 White % | ";
+    $array[] = "2015 White %";
+}
+if (!empty($_POST["hispanic_per_15"])) {
+    $s_command = $s_command . ", fd15.hispanic_per ";
+    $display = $display . "  2015 Hispanic % | ";
+    $array[] = "2015 Hispanic %";
+}
+if (!empty($_POST["black_per_15"])) {
+    $s_command = $s_command . ", fd15.black_per ";
+    $display = $display . "  2015 Black % | ";
+    $array[] = "2015 Black %";
+}
+if (!empty($_POST["asian_per_15"])) {
+    $s_command = $s_command . ", fd15.asian_per ";
+    $display = $display . "  2015 Asian % | ";
+    $array[] = "2015 Asian %";
 }
 if (!empty($_POST["male_pop_15"])) {
     $s_command = $s_command . ", fd15.male_pop ";
@@ -7410,6 +7468,26 @@ if (!empty($_POST["less_than_hs_per_d"])) {
     $display = $display . "  2012 to 2015 Difference In Less Than High School % | ";
     $array[] = "2012 to 2015 Difference In Less Than High School %";
 }
+if (!empty($_POST["white_per_d"])) {
+    $s_command = $s_command . ", d.white_per ";
+    $display = $display . "  2012 to 2015 White %  Difference | ";
+    $array[] = "2012 to 2015 White %  Difference";
+}
+if (!empty($_POST["hispanic_per_d"])) {
+    $s_command = $s_command . ", d.hispanic_per ";
+    $display = $display . "  2012 to 2015 Hispanic %  Difference | ";
+    $array[] = "2012 to 2015 Hispanic %  Difference";
+}
+if (!empty($_POST["black_per_d"])) {
+    $s_command = $s_command . ", d.black_per ";
+    $display = $display . "  2012 to 2015 Black %  Difference | ";
+    $array[] = "2012 to 2015 Black %  Difference";
+}
+if (!empty($_POST["asian_per_d"])) {
+    $s_command = $s_command . ", d.asian_per ";
+    $display = $display . "  2012 to 2015 Asian %  Difference | ";
+    $array[] = "2012 to 2015 Asian %  Difference";
+}
 if (!empty($_POST["male_pop_d"])) {
     $s_command = $s_command . ", d.male_pop ";
     $display = $display . "  2012 to 2015 Difference In Male Population | ";
@@ -7440,19 +7518,6 @@ if (!empty($_POST["poverty_d"])) {
 if(!empty($_POST["orderby"])) {
   $w_command = $w_command . " ORDER BY " . $_POST["orderby"] . " " . $_POST["orderby_direction"] . " ";
 }
-
-
-if(!empty($_POST["diff_criterion"])){
-	$w_command = $w_command . " ORDER BY " . $_POST["diff_criterion"] . " " . $_POST["difference_direction"];
-  }
-if(!empty($_POST["unemployment_criterion"])){
-  $w_command = $w_command . " ORDER BY " . $_POST["unemployment_criterion"] . " " . $_POST["unemployment_direction"];
-  }
-if(!empty($_POST["labor_force_criterion"])){
-  $w_command = $w_command . " ORDER BY " . $_POST["labor_force_criterion"] . " " . $_POST["labor_force_direction"];
-  }
-
-
 
 //Add LIMIT if applicable and put command together
 if (empty($w_command)) {
@@ -7502,14 +7567,15 @@ if(!empty($_POST["outcome"] && !empty($_POST["predictor"]))) {
   }
   pclose($pid);
 }
-$db = new SQLite3('data1215-full.db');
+$db_filename = 'data1215.db';
+$db = new SQLite3($db_filename);
 if(!$db){
     echo $db->lastErrorMsg();
 } /*else {
     echo "Opened database successfully\n";
 }*/
 $rows = 0;
-echo $command;
+//echo $command;
 //Conduct query on database
 if (!empty($command)) {
     $result = $db->query($command);
@@ -7549,27 +7615,6 @@ while($row = $result->fetchArray()){
   echo $output;
 }
 
-
-/*echo "<b>" . $display . "</b> <br>";
-//Print the results from the database
-$test = $result->fetchArray();
-foreach( $test as $key => $value ){
-    echo $key."\t=>\t".$value."<br>";
-}
-while($row = $result->fetchArray()) {
-	$output = "";
-	foreach(array_keys($row) as $key) {
-		if (! is_numeric($key)) {
-			if ($key == "county") {
-			 $output = $output . $row["county"] . ", ";
-			} else {
-			$output = $output . $row[$key] . " | ";
-			}
-		}
-	}
-	echo $output . "<br>";
-}
-*/
 ?>
 
 
