@@ -34,7 +34,7 @@ tr:nth-child(even) {
 <div id="primary"> <div id="content" role="main"> </div><!-- #content -->
 <form method="post" id="election_analysis" action="">
 <h1> 2016 Election Analysis by County </h1> 
-
+<h3> Information about the data used as well as the source for the data can be found at our <a href="http://localhost/information.php">information page</a>. </h3>
 <h4> <i> Steps 1-4 create the raw data table displayed below. This data is used to generate optional correlation/regression analysis in steps 5-6.</i> </h4>
 
 <h2> 1. Select States or a Particular County </h2>
@@ -3283,7 +3283,7 @@ tr:nth-child(even) {
 <b>2012 Demographic Data</b>
       <li><label for="population_12">Total Population in 2012</label> <input type="checkbox" name="population_12" id="population_12" value="population_12">&emsp;<label for="median_age_12">Median Age in 2012</label> <input type="checkbox" name="median_age_12" id="median_age_12" value="median_age_12"></li>
 
-      <li><label for="health_cov_12">Health Coverage in 2012</label> <input type="checkbox" name="health_cov_12" id="health_cov_12" value="health_cov_12">&emsp;<label for="health_cov_per_12">Health Coverage Percent 2012</label> <input type="checkbox" name="health_cov_per_12" id="health_cov_per_12" value="health_cov_per_12"></li>
+      <li><label for="health_cov_12">Medicare Coverage in 2012</label> <input type="checkbox" name="health_cov_12" id="health_cov_12" value="health_cov_12">&emsp;<label for="health_cov_per_12">Medicare Coverage Percent 2012</label> <input type="checkbox" name="health_cov_per_12" id="health_cov_per_12" value="health_cov_per_12"></li>
      
       <li><label for="white_per_12">Percent of Population White in 2012</label> <input type="checkbox" name="white_per_12" id="white_per_12" value="white_per_12">&emsp;<label for="hispanic_per_12">Percent of Population Hispanic in 2012</label> <input type="checkbox" name="hispanic_per_12" id="hispanic_per_12" value="hispanic_per_12"></li>
 
@@ -3306,7 +3306,7 @@ tr:nth-child(even) {
 <b>2015 Demographic Data</b>
       <li><label for="population_15">Total Population in 2015</label> <input type="checkbox" name="population_15" id="population_15" value="population_15">&emsp;<label for="median_age_15">Median Age in 2015</label> <input type="checkbox" name="median_age_15" id="median_age_15" value="median_age_15"></li>
 
-      <li><label for="health_cov_15">Health Coverage in 2015</label> <input type="checkbox" name="health_cov_15" id="health_cov_15" value="health_cov_15">&emsp;<label for="health_cov_per_15">Health Coverage Percent 2015</label> <input type="checkbox" name="health_cov_per_15" id="health_cov_per_15" value="health_cov_per_15"></li>
+      <li><label for="health_cov_15">Medicare Coverage in 2015</label> <input type="checkbox" name="health_cov_15" id="health_cov_15" value="health_cov_15">&emsp;<label for="health_cov_per_15">Medicare Coverage Percent 2015</label> <input type="checkbox" name="health_cov_per_15" id="health_cov_per_15" value="health_cov_per_15"></li>
      
       <li><label for="white_per_15">Percent of Population White in 2015</label> <input type="checkbox" name="white_per_15" id="white_per_15" value="white_per_15">&emsp;<label for="hispanic_per_15">Percent of Population Hispanic in 2015</label> <input type="checkbox" name="hispanic_per_15" id="hispanic_per_15" value="hispanic_per_15"></li>
 
@@ -3400,8 +3400,8 @@ tr:nth-child(even) {
 <option value="abs(u.labor_Force_Percent_Difference_2012_to_2015)">Difference in Labor Force Participation Rate 2012 to 2015</option>
 <option value="fd12.population">Total Population in 2012</option>
 <option value="fd12.median_age">Median Age in 2012</option>
-<option value="fd12.health_cov">Health Coverage in 2012</option>
-<option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.health_cov">Medicare Coverage in 2012</option>
+<option value="fd12.health_cov_per">Medicare Coverage Percent 2012</option>
 <option value="fd12.white_per">Percent of Population White in 2012</option>
 <option value="fd12.hispanic_per">Percent of Population Hispanic in 2012</option>
 <option value="fd12.black_per">Percent of Population Black in 2012</option>
@@ -3425,8 +3425,8 @@ tr:nth-child(even) {
 <option value="fd12.less_than_hs_per">Percent of Population with Less Than High School Degree in 2012</option>
 <option value="fd15.population">Total Population in 2015</option>
 <option value="fd15.median_age">Median Age in 2015</option>
-<option value="fd15.health_cov">Health Coverage in 2015</option>
-<option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.health_cov">Medicare Coverage in 2015</option>
+<option value="fd15.health_cov_per">Medicare Coverage Percent 2015</option>
 <option value="fd15.white_per">Percent of Population White in 2015</option>
 <option value="fd15.hispanic_per">Percent of Population Hispanic in 2015</option>
 <option value="fd15.black_per">Percent of Population Black in 2015</option>
@@ -3450,8 +3450,8 @@ tr:nth-child(even) {
 <option value="fd15.less_than_hs_per">Percent of Population with Less Than High School Degree in 2015</option>
 <option value="d.population">2012 to 2015 Difference in Total Population</option>
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
-<option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
-<option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.health_cov">2012 to 2015 Difference in Medicare Coverage</option>
+<option value="d.health_cov_per">2012 to 2015 Difference in Medicare Coverage Percent</option>
 <option value="d.white_per">Percent of Population White</option>
 <option value="d.hispanic_per">Percent of Population Hispanic</option>
 <option value="d.black_per">Percent of Population Black</option>
@@ -6659,8 +6659,8 @@ tr:nth-child(even) {
 <option value="abs(u.labor_Force_Percent_Difference_2012_to_2015)">Difference in Labor Force Participation Rate 2012 to 2015</option>
 <option value="fd12.population">Total Population in 2012</option>
 <option value="fd12.median_age">Median Age in 2012</option>
-<option value="fd12.health_cov">Health Coverage in 2012</option>
-<option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.health_cov">Medicare Coverage in 2012</option>
+<option value="fd12.health_cov_per">Medicare Coverage Percent 2012</option>
 <option value="fd12.white_per">Percent of Population White in 2012</option>
 <option value="fd12.hispanic_per">Percent of Population Hispanic in 2012</option>
 <option value="fd12.black_per">Percent of Population Black in 2012</option>
@@ -6684,8 +6684,8 @@ tr:nth-child(even) {
 <option value="fd12.less_than_hs_per">Percent of Population with Less Than High School Degree in 2012</option>
 <option value="fd15.population">Total Population in 2015</option>
 <option value="fd15.median_age">Median Age in 2015</option>
-<option value="fd15.health_cov">Health Coverage in 2015</option>
-<option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.health_cov">Medicare Coverage in 2015</option>
+<option value="fd15.health_cov_per">Medicare Coverage Percent 2015</option>
 <option value="fd15.white_per">Percent of Population White in 2015</option>
 <option value="fd15.hispanic_per">Percent of Population Hispanic in 2015</option>
 <option value="fd15.black_per">Percent of Population Black in 2015</option>
@@ -6709,8 +6709,8 @@ tr:nth-child(even) {
 <option value="fd15.less_than_hs_per">Percent of Population with Less Than High School Degree in 2015</option>
 <option value="d.population">2012 to 2015 Difference in Total Population</option>
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
-<option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
-<option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.health_cov">2012 to 2015 Difference in Medicare Coverage</option>
+<option value="d.health_cov_per">2012 to 2015 Difference in Medicare Coverage Percent</option>
 <option value="d.white_per">Percent of Population White</option>
 <option value="d.hispanic_per">Percent of Population Hispanic</option>
 <option value="d.black_per">Percent of Population Black</option>
@@ -6778,8 +6778,8 @@ tr:nth-child(even) {
 <option value="abs(u.labor_Force_Percent_Difference_2012_to_2015)">Difference in Labor Force Participation Rate 2012 to 2015</option>
 <option value="fd12.population">Total Population in 2012</option>
 <option value="fd12.median_age">Median Age in 2012</option>
-<option value="fd12.health_cov">Health Coverage in 2012</option>
-<option value="fd12.health_cov_per">Health Coverage Percent 2012</option>
+<option value="fd12.health_cov">Medicare Coverage in 2012</option>
+<option value="fd12.health_cov_per">Medicare Coverage Percent 2012</option>
 <option value="fd12.white_per">Percent of Population White in 2012</option>
 <option value="fd12.hispanic_per">Percent of Population Hispanic in 2012</option>
 <option value="fd12.black_per">Percent of Population Black in 2012</option>
@@ -6803,8 +6803,8 @@ tr:nth-child(even) {
 <option value="fd12.less_than_hs_per">Percent of Population with Less Than High School Degree in 2012</option>
 <option value="fd15.population">Total Population in 2015</option>
 <option value="fd15.median_age">Median Age in 2015</option>
-<option value="fd15.health_cov">Health Coverage in 2015</option>
-<option value="fd15.health_cov_per">Health Coverage Percent 2015</option>
+<option value="fd15.health_cov">Medicare Coverage in 2015</option>
+<option value="fd15.health_cov_per">Medicare Coverage Percent 2015</option>
 <option value="fd15.white_per">Percent of Population White in 2015</option>
 <option value="fd15.hispanic_per">Percent of Population Hispanic in 2015</option>
 <option value="fd15.black_per">Percent of Population Black in 2015</option>
@@ -6828,8 +6828,8 @@ tr:nth-child(even) {
 <option value="fd15.less_than_hs_per">Percent of Population with Less Than High School Degree in 2015</option>
 <option value="d.population">2012 to 2015 Difference in Total Population</option>
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
-<option value="d.health_cov">2012 to 2015 Difference in Health Coverage</option>
-<option value="d.health_cov_per">2012 to 2015 Difference in Health Coverage Percent</option>
+<option value="d.health_cov">2012 to 2015 Difference in Medicare Coverage</option>
+<option value="d.health_cov_per">2012 to 2015 Difference in Medicare Coverage Percent</option>
 <option value="d.white_per">Percent of Population White</option>
 <option value="d.hispanic_per">Percent of Population Hispanic</option>
 <option value="d.black_per">Percent of Population Black</option>
@@ -7158,13 +7158,13 @@ if (!empty($_POST["population_12"])) {
   }
 if (!empty($_POST["health_cov_12"])) {
     $s_command = $s_command . ", fd12.health_cov ";
-    $display = $display . "  2012 Health Coverage | ";
-    $array[] = "2012 Health Coverage";
+    $display = $display . "  2012 Medicare Coverage | ";
+    $array[] = "2012 Medicare Coverage";
   }
 if (!empty($_POST["health_cov_per_12"])) {
     $s_command = $s_command . ", fd12.health_cov_per ";
-    $display = $display . "  2012 Health Coverage % | ";
-    $array[] = "2012 Health Coverage %";
+    $display = $display . "  2012 Medicare Coverage % | ";
+    $array[] = "2012 Medicare Coverage %";
   }
 if (!empty($_POST["median_age_12"])) {
     $s_command = $s_command . ", fd12.median_age ";
@@ -7283,13 +7283,13 @@ if (!empty($_POST["population_15"])) {
   }
 if (!empty($_POST["health_cov_15"])) {
     $s_command = $s_command . ", fd15.health_cov ";
-    $display = $display . "  2015 Health Coverage | ";
-    $array[] = "2015 Health Coverage";
+    $display = $display . "  2015 Medicare Coverage | ";
+    $array[] = "2015 Medicare Coverage";
   }
 if (!empty($_POST["health_cov_per_15"])) {
     $s_command = $s_command . ", fd15.health_cov_per ";
-    $display = $display . "  2015 Health Coverage % | ";
-    $array[] = "2015 Health Coverage %";
+    $display = $display . "  2015 Medicare Coverage % | ";
+    $array[] = "2015 Medicare Coverage %";
   }
 if (!empty($_POST["median_age_15"])) {
     $s_command = $s_command . ", fd15.median_age ";
@@ -7408,13 +7408,13 @@ if (!empty($_POST["population_d"])) {
   }
 if (!empty($_POST["health_cov_d"])) {
     $s_command = $s_command . ", d.health_cov ";
-    $display = $display . "  2012 to 2015 Difference In Health Coverage | ";
-    $array[] = "2012 to 2015 Difference In Health Coverage";
+    $display = $display . "  2012 to 2015 Difference In Medicare Coverage | ";
+    $array[] = "2012 to 2015 Difference In Medicare Coverage";
   }
 if (!empty($_POST["health_cov_per_d"])) {
     $s_command = $s_command . ", d.health_cov_per ";
-    $display = $display . "  2012 to 2015 Difference In Health Coverage % | ";
-    $array[] = "2012 to 2015 Difference In Health Coverage %";
+    $display = $display . "  2012 to 2015 Difference In Medicare Coverage % | ";
+    $array[] = "2012 to 2015 Difference In Medicare Coverage %";
   }
 if (!empty($_POST["median_age_d"])) {
     $s_command = $s_command . ", d.median_age ";
@@ -7635,7 +7635,8 @@ if(!empty($_POST["display_map"])){
         $command3 = $command3 . " \"" . $state . "\"";
     }
    } 
-  //echo $command2;
+  echo $command3;
+  $command3 = $command3 . " 2>&1";
   $pid = popen( $command3, "r");
   while( !feof( $pid ) )
   {
