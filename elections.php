@@ -7632,7 +7632,7 @@ if(!empty($_POST["display_map"])){
     $command3 = "python2 plot_counties.py";
     foreach($state_array as $state){
     if(!empty($state)){
-        $command3 = $command3 . " \"" . $state . "\"";
+        $command3 = $command3 . " " . $state . " ";
     }
    } 
   echo $command3;
@@ -7646,6 +7646,8 @@ if(!empty($_POST["display_map"])){
   usleep(100000);
   }
   pclose($pid);
+  $output = shell_exec($command3);
+  echo $output;
 }
 ?>
 
