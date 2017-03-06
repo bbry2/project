@@ -7621,7 +7621,25 @@ while($row = $result->fetchArray()){
   $output = $output . "</tr>";
   echo $output;
 }
-
+//mapping the counties
+if(!empty($_POST["display_map"])){
+    $command3 = "python2 plot_counties.py";
+    foreach($state_array as $state){
+    if(!empty($state)){
+        $command3 = $command3 . " \"" . $state . "\"";
+    }
+   } 
+  //echo $command2;
+  $pid = popen( $command3, "r");
+  while( !feof( $pid ) )
+  {
+  echo fread($pid, 256);
+  flush();
+  ob_flush();
+  usleep(100000);
+  }
+  pclose($pid);
+}
 ?>
 
 
