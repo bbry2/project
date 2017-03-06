@@ -23,6 +23,7 @@ def regression(predictor, outcome, w_command):
     #print(command)
     results = c.execute(command).fetchall()
     df_results = pd.read_sql_query(command, connection)
+    headers = get_header(c)
     connection.close()
     outcomes = []
     predictors = []
@@ -37,17 +38,19 @@ def regression(predictor, outcome, w_command):
     lower_b1 = slope - 1.96*std_err
     upper_b1 = slope + 1.96*std_err
     p_value = float(p_value)
-    outcome_label = outcome[2:]
-    outcome_label = outcome_label.replace("_", " ")
+    #outcome_label = outcome[2:]
+    outcome_label = headers[1]
+    #outcome_label = outcome_label.replace("_", " ")
     outcome_label = outcome_label.title()
-    predictor_label = predictor[2:]
-    predictor_label = predictor_label.replace("_", " ")
+    #predictor_label = predictor[2:]
+    #predictor_label = predictor_label.replace("_", " ")
+    predictor_label = headers[0]
     predictor_label = predictor_label.title()
     print("<br> <b> <u> Regression </u> </b> <br>")	
     #print("A positive change in winning margin is a move toward the Democratic candiate, a negative change is toward the Republican canidate <br>")
     print('Our model for the <b>',len(results),'</b> counties you\'ve selected is: <br>')
     print('<b> (' + outcome_label + ') = ',round(intercept, 2), '+', round(slope, 2), '(' + predictor_label + ')</b> <br>')
-    print('There is a<b>', str(round(100*p_value,2)), '% </b>chance the slope is 0. If the slope is zero, we do not have statistically significant evidence of an association between', predictor_label, 'and', outcome_label, '<br>')
+    print('There is a<b>', str(round(100*p_value, 6)), '% </b>chance the slope is 0. If the slope is zero, we do not have statistically significant evidence of an association between', predictor_label, 'and', outcome_label, '<br>')
     if p_value > .05:
         print("A statistician would say that there <b> is not </b> a statistically significant association here. <br>")
     else:
@@ -96,10 +99,10 @@ def regression(predictor, outcome, w_command):
     #plt.plot(xd, yerrUpper, '--r')
     string = mpld3.fig_to_html(fig,template_type="simple")
     print(string)
-    fig = plt.figure()
-    fid = sns.regplot(x=predictor[2:], y=outcome[2:], data=df_results)
-    string = mpld3.fig_to_html(fig,template_type="simple")
-    print(string)
+    # fig = plt.figure()
+    # fid = sns.regplot(x=predictor[2:], y=outcome[2:], data=df_results)
+    # string = mpld3.fig_to_html(fig,template_type="simple")
+    # print(string)
     # #plt.show()
     #os.chmod('./', 0o044)
     #plt.show()
@@ -116,6 +119,27 @@ def regression(predictor, outcome, w_command):
 	# 	print("A statistician would normally consider this a <b> weak relationship</b>. <br>")
 	# else:
 	# 	print("A statistician would normally <b> not </b> consider this a significant relationship. <br> <br>")
+
+
+def get_header(cursor):
+    '''
+    Given a cursor object, returns the appropriate header (column names)
+    '''
+    desc = cursor.description
+    header = ()
+    for i in desc:
+        header = header + (clean_header(i[0]),)
+    return list(header)
+
+def clean_header(s):
+    '''
+    Removes table name from header
+    '''
+    for i in range(len(s)):
+        if s[i] == ".":
+            s = s[i+1:]
+            break
+    return s 
 
 def construct_sql_command(predictor, outcome, w_command):
     f_command = " FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code ";
