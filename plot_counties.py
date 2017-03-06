@@ -3,7 +3,9 @@
 import sys
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt, mpld3
 import shapefile as sf
 from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
@@ -84,7 +86,8 @@ def plot_counties(df, states):
     ax2.set_ylabel('Lattitude ($^{\circ}$N)')
     ax2.autoscale_view()
     ax2.set_title('Difference in Votes Cast by County Between 2012 and 2016')
-    plt.show()
+    html_fig = mpld3.fig_to_html(fig1, template_type = "simple")
+    print(html_fig)
 
 
 if __name__=="__main__":
