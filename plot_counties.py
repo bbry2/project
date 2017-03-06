@@ -67,7 +67,7 @@ def get_polygon_lists(df, states):
 def plot_counties(df, states):
     bu_list, rd_list, diff_rd, diff_bu, z_rd, z_bu = get_polygon_lists(df, states)
     z = np.array([10])
-    fig1 = plt.figure(figsize = (11, 11))
+    fig1 = plt.figure()
     ax1=fig1.add_subplot(121)
     bu_collection1 = PatchCollection(bu_list, array = z, cmap=plt.get_cmap('bwr'), alpha=1)
     rd_collection1 = PatchCollection(rd_list, array = z, cmap = plt.get_cmap('bwr_r'), alpha = 1)
@@ -86,10 +86,9 @@ def plot_counties(df, states):
     ax2.set_ylabel('Lattitude ($^{\circ}$N)')
     ax2.autoscale_view()
     ax2.set_title('Difference in Votes Cast by County Between 2012 and 2016')
-    html_fig = mpld3.fig_to_html(fig1, template_type = "simple")
+    html_fig = mpld3.fig_to_html(fig1, template_type = "general")
     print(html_fig)
-
-
+    
 if __name__=="__main__":
     args = sys.argv[1:]
     df = pd.read_csv('e.csv', delimiter = ',', usecols = [0,1,2,29,32], names = ['fips', 'state', 'county', 'winner', 'diff1216'])
