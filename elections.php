@@ -6852,8 +6852,14 @@ tr:nth-child(even) {
 <option value="d.bach_or_higher_per">2012 to 2015 Difference in Percent of Population with a Bachelor's Degree or Higher</option>
 <option value="d.less_than_hs_per">2012 to 2015 Difference in Percent of Population with Less Than High School Degree</option>
 </select>
+<h4> 7. Display Map </h4>
+<label for="display_map"></label>
+<select name="display_map" id="display_map">
+<option value="">--No--</option>
+<option value="Yes">Yes</option>
+</select>
 
-
+<br>
 <br>
 <input type="submit" value="submit" />
 <br>
