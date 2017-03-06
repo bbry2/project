@@ -1,3 +1,4 @@
+
 import sqlite3
 import sys
 import numpy as np
@@ -12,7 +13,7 @@ import statsmodels
 DATABASE_NAME = "data1215.db"
 
 '''
-Database file change: Alter DATABASE_NAME file above. Changing tables will require 'command' to be changed.
+Database filename change: Alter DATABASE_NAME file above. 
 How to add data fields: add the appropriate select commands to list_of_selects. Use a python terminal to find the indices needed to choose
 the appropriate commands. Add the data to a list if for multiple on one chart or to the list_of_data if alone. If alone, add indices to waterfall
 if statement in one_line_plot function. Similarly with multiple_line_plot, add indicies_of_selects dictionary.
@@ -27,10 +28,20 @@ def generate_page(county_state):
     county = county_state[:-2].replace("_", " ").strip()
     if county[-1] == ",":
         county = county[:-1]
+    county_and_state = [county, state]
+    connection = sqlite3.connect(DATABASE_NAME)
+    c = connection.cursor()
+    command = "SELECT COUNT(*) FROM election_results WHERE county=? AND state=?" #safely put user typed input in SQL
+    result = c.execute(command, county_and_state).fetchall()
+    if result[0][0] != 1: #output a warning if the county entered is not found
+        print("<h2> The county entered is not found. Make sure the county name is followed by the two letter state abbreviation")
+        print("<br> For example: county=Orange County, FL")
+        return True
+    print("Go back to the <a href=\"http://localhost/elections.php\">home page</a> <br>")
     print("<h1> Data for", county + ",", state , "</h1> <br>")
     print("<h3> Please be patient while the tables and raw data table load. </h3> <br>")
-    print("<h5> Below you will find charts which give a visual representation of the data. At the bottom of the page is a table of the raw data for the county. </h5> <br>")
-    
+    print("<h5> Below you will find charts which give a visual representation of the data. At the bottom of the page is a table of the raw data for the county. </h5>")
+
     
     employment_areas = ["Percent of Workers on Salary","Percent of Workers Self-Employed","Percent Employment in Manufacturing"]
     citizen_areas = ["Population of Citizens","Population of Non-Citizens","Population of Naturalized Citizens"]
@@ -126,17 +137,20 @@ def multiple_line_plot(title, data_field_list, county, state, list_of_selects):
         if loops == 3:
             rects4 = plt.bar(np.arange(len(y_axis)) + loops*bar_width, y_axis, bar_width, color=color_choice, label=title2)
         loops += 1
-    plt.xlabel('Year')
+    #plt.xlabel('Year')
     plt.ylabel(title, fontsize=13)
     plt.title(title, fontsize = 16)
-    if length == 3:
-        years = ('2008', '2012', '2016')
-        plt.xticks(np.arange(len(indicies_of_selects)) + bar_width / 2, years)
-    if length == 2:
+    if length == 4: #race/ethnicity data
         years = ('2012', '2015')
-        plt.xticks(np.arange(len(indicies_of_selects)) + bar_width / 2, years)
+        plt.xticks(np.arange(len(years)) + bar_width / 2, years)
+    if length == 3: #election data 
+        years = ('2008', '2012', '2016')
+        plt.xticks(np.arange(len(years)) + bar_width / 2, years)
+    if length == 2: #demographic data
+        years = ('2012', '2015')
+        plt.xticks(np.arange(len(years)) + bar_width / 2, years)
     plt.legend(loc='best')
-    plt.xlabel("Year", fontsize=13)
+    #plt.xlabel("Year", fontsize=13)
     string = mpld3.fig_to_html(fig, template_type="simple")
     print(string)
 
@@ -213,6 +227,7 @@ def generate_table(state, county):
     command4 = "SELECT fd15.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
     command5 = "SELECT d.* FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code WHERE e.county =\"" + county + "\" AND e.state=\"" + state + "\";";
 
+    print("<a href=\"#table\">")
     list_of_commands = [command1, command2, command3, command4, command5]
     list_of_table_names = ["Election Data", "Unemployment Data", "2012 Demographic Data", "2015 Demographic Data", "2012 to 2015 Demographic Data Differences"]
     for command, table_name in zip(list_of_commands, list_of_table_names):

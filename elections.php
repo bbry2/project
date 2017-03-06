@@ -3452,10 +3452,10 @@ tr:nth-child(even) {
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
 <option value="d.health_cov">2012 to 2015 Difference in Medicare Coverage</option>
 <option value="d.health_cov_per">2012 to 2015 Difference in Medicare Coverage Percent</option>
-<option value="d.white_per">Percent of Population White</option>
-<option value="d.hispanic_per">Percent of Population Hispanic</option>
-<option value="d.black_per">Percent of Population Black</option>
-<option value="d.asian_per">Percent of Population Asian</option>
+<option value="d.white_per">2012 to 2015 Difference in Percent of Population White</option>
+<option value="d.hispanic_per">2012 to 2015 Difference in Percent of Population Hispanic</option>
+<option value="d.black_per">2012 to 2015 Difference in Percent of Population Black</option>
+<option value="d.asian_per">2012 to 2015 Difference in Percent of Population Asian</option>
 <option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
 <option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
 <option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
@@ -7635,17 +7635,6 @@ if(!empty($_POST["display_map"])){
         $command3 = $command3 . " " . $state . " ";
     }
    } 
-  echo $command3;
-  $command3 = $command3 . " 2>&1";
-  $pid = popen( $command3, "r");
-  while( !feof( $pid ) )
-  {
-  echo fread($pid, 256);
-  flush();
-  ob_flush();
-  usleep(100000);
-  }
-  pclose($pid);
   $output = shell_exec($command3);
   echo $output;
 }
