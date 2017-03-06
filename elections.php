@@ -35,129 +35,13 @@ tr:nth-child(even) {
 <form method="post" id="election_analysis" action="">
 <h1> 2016 Election Analysis by County </h1> 
 
-<h4> <b> Please check all data you would like to see: </b> </h4>
+<h4> <i> Steps 1-4 create the raw data table displayed below. This data is used to generate optional correlation/regression analysis in steps 5-6.</i> </h4>
 
-<b>Total Votes By Year</b>
-      <li><label for="total_2008">Total 2008 Votes</label> <input type="checkbox" name="total_2008" id="total_2008" value="total_2008">&emsp;<label for="total_2012">Total 2012 Votes</label> <input type="checkbox" name="total_2012" id="total_2012" value="total_2012">&emsp;<label for="total_2016">Total 2016 Votes</label> <input type="checkbox" name="total_2016" id="total_2016" value="total_2016"></li>
-<b>2008 Election Data</b>
-      <li><label for="dem_2008">Democratic Votes 2008</label> <input type="checkbox" name="dem_2008" id="dem_2008" value="dem_2008">&emsp;<label for="gop_2008">Republican Votes 2008</label> <input type="checkbox" name="gop_2008" id="gop_2008" value="gop_2008">&emsp;<label for="oth_2008">Third Party Votes 2008</label> <input type="checkbox" name="oth_2008" id="oth_2008" value="oth_2008"></li>
+<h2> 1. Select States or a Particular County </h2>
 
-      <li><label for="dem_08_perc">Percentage Democratic Votes 2008</label> <input type="checkbox" name="dem_08_perc" id="dem_08_perc" value="dem_08_perc">&emsp;<label for="gop_08_perc">Percentage Republican Votes 2008</label> <input type="checkbox" name="gop_08_perc" id="gop_08_perc" value="gop_08_perc">&emsp;<label for="oth_08_perc">Percentage Third Party Votes 2008</label> <input type="checkbox" name="oth_08_perc" id="oth_08_perc" value="oth_08_perc"></li>
-
-      <li><label for="winner_08">2008 Winner</label> <input type="checkbox" name="winner_08" id="winner_08" value="winner_08">&emsp;<label for="win_marg_08">Percentage Winning Margin 2008</label> <input type="checkbox" name="win_marg_08" id="win_marg_08" value="win_marg_08"></li>
-
-<b>2012 Election Data</b>
-      <li><label for="dem_2012">Democratic Votes 2012</label> <input type="checkbox" name="dem_2012" id="dem_2012" value="dem_2012">&emsp;<label for="gop_2012">Republican Votes 2012</label> <input type="checkbox" name="gop_2012" id="gop_2012" value="gop_2012">&emsp;<label for="oth_2012">Third Party Votes 2012</label> <input type="checkbox" name="oth_2012" id="oth_2012" value="oth_2012"></li>
-
-      <li><label for="dem_12_perc">Percentage Democratic Votes 2012</label> <input type="checkbox" name="dem_12_perc" id="dem_12_perc" value="dem_12_perc">&emsp;<label for="gop_12_perc">Percentage Republican Votes 2012</label> <input type="checkbox" name="gop_12_perc" id="gop_12_perc" value="gop_12_perc">&emsp;<label for="oth_12_perc">Percentage Third Party Votes 2012</label> <input type="checkbox" name="oth_12_perc" id="oth_12_perc" value="oth_12_perc"></li>
-
-      <li><label for="winner_12">2012 Winner</label> <input type="checkbox" name="winner_12" id="winner_12" value="winner_12">&emsp;<label for="win_marg_12">Percentage Winning Margin 2012</label> <input type="checkbox" name="win_marg_12" id="win_marg_12" value="win_marg_12"></li>
-     
-<b>2016 Election Data</b>
-
-      <li><label for="dem_2016">Democratic Votes 2016</label> <input type="checkbox" name="dem_2016" id="dem_2016" value="dem_2016">&emsp;<label for="gop_2016">Republican Votes 2016</label> <input type="checkbox" name="gop_2016" id="gop_2016" value="gop_2016">&emsp;<label for="oth_2016">Third Party Votes 2016</label> <input type="checkbox" name="oth_2016" id="oth_2016" value="oth_2016"></li>
-
-      <li><label for="dem_16_perc">Percentage Democratic Votes 2016</label> <input type="checkbox" name="dem_16_perc" id="dem_16_perc" value="dem_16_perc">&emsp;<label for="gop_16_perc">Percentage Republican Votes 2016</label> <input type="checkbox" name="gop_16_perc" id="gop_16_perc" value="gop_16_perc">&emsp;<label for="oth_16_perc">Percentage Third Party Votes 2016</label> <input type="checkbox" name="oth_16_perc" id="oth_16_perc" value="oth_16_perc"></li>
-
-      <li><label for="winner_16">2016 Winner</label> <input type="checkbox" name="winner_16" id="winner_16" value="winner_16">&emsp;<label for="win_marg_16">Percentage Winning Margin 2016</label> <input type="checkbox" name="win_marg_16" id="win_marg_16" value="win_marg_16"></li>
-
-<b>Winning Margins Between Years</b>
-
-      <li><label for="diff_0812">2008 to 2012 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0812" id="diff_0812" value="diff_0812">&emsp;<label for="diff_0816">2008 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0816" id="diff_0816" value="diff_0816">&emsp;<label for="diff_1216">2012 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_1216" id="diff_1216" value="diff_1216"></li>
-
-<b>Unemployment and Labor Force Data</b>
-
-	<li><label for="unemployment_rate_2008">2008 Unemployment Rate</label> <input type="checkbox" name="unemployment_rate_2008" id="unemployment_rate_2008" value="unemployment_rate_2008">&emsp;<label for="unemployment_rate_2012">2012 Unemployment Rate</label> <input type="checkbox" name="unemployment_rate_2012" id="unemployment_rate_2012" value="unemployment_rate_2012">&emsp;<label for="unemployment_rate_2015">2015 Unemployment Rate</label> <input type="checkbox" name="unemployment_rate_2015" id="unemployment_rate_2015" value="unemployment_rate_2015"></li>
-
-	<li><label for="unemployed_2008">2008 Total Unemployment</label> <input type="checkbox" name="unemployed_2008" id="unemployed_2008" value="unemployed_2008">&emsp;<label for="unemployed_2012">2012 Total Unemployment</label> <input type="checkbox" name="unemployed_2012" id="unemployed_2012" value="unemployed_2012">&emsp;<label for="unemployed_2015">2015 Total Unemployment</label> <input type="checkbox" name="unemployed_2015" id="unemployed_2015" value="unemployed_2015"></li>
-
-	<li><label for="unemployment_rate_difference_2008_to_2015">Difference in Unemployment Rate 2008 to 2015</label> <input type="checkbox" name="unemployment_rate_difference_2008_to_2015" id="unemployment_rate_difference_2008_to_2015" value="unemployment_rate_difference_2008_to_2015">&emsp;<label for="unemployment_rate_difference_2012_to_2015">Difference in Unemployment Rate 2012 to 2015</label> <input type="checkbox" name="unemployment_rate_difference_2012_to_2015" id="unemployment_rate_difference_2012_to_2015" value="unemployment_rate_difference_2012_to_2015"></li>	
-
-	<li><label for="civilian_labor_force_2008">Civilian Labor Force in 2008</label> <input type="checkbox" name="civilian_labor_force_2008" id="civilian_labor_force_2008" value="civilian_labor_force_2008">&emsp;<label for="civilian_labor_force_2012">Civilian Labor Force in 2012</label> <input type="checkbox" name="civilian_labor_force_2012" id="civilian_labor_force_2012" value="civilian_labor_force_2012">&emsp;<label for="civilian_labor_force_2016">Civilian Labor Force in 2015</label> <input type="checkbox" name="civilian_labor_force_2015" id="civilian_labor_force_2015" value="civilian_labor_force_2015"></li>
-
-	<li><label for="labor_Force_Percent_Difference_2008_to_2015">Difference in Labor Force Participation Rate 2008 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2008_to_2015" id="labor_Force_Percent_Difference_2008_to_2015" value="labor_Force_Percent_Difference_2008_to_2015">&emsp;<label for="labor_Force_Percent_Difference_2012_to_2015">Difference in Labor Force Participation Rate 2012 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2012_to_2015" id="labor_Force_Percent_Difference_2012_to_2015" value="labor_Force_Percent_Difference_2012_to_2015"></li>
-
-<b>2012 Demographic Data</b>
-      <li><label for="population_12">Total Population in 2012</label> <input type="checkbox" name="population_12" id="population_12" value="population_12">&emsp;<label for="median_age_12">Median Age in 2012</label> <input type="checkbox" name="median_age_12" id="median_age_12" value="median_age_12"></li>
-
-      <li><label for="health_cov_12">Health Coverage in 2012</label> <input type="checkbox" name="health_cov_12" id="health_cov_12" value="health_cov_12">&emsp;<label for="health_cov_per_12">Health Coverage Percent 2012</label> <input type="checkbox" name="health_cov_per_12" id="health_cov_per_12" value="health_cov_per_12"></li>
-     
-      <li><label for="white_per_12">Percent of Population White in 2012</label> <input type="checkbox" name="white_per_12" id="white_per_12" value="white_per_12">&emsp;<label for="hispanic_per_12">Percent of Population Hispanic in 2012</label> <input type="checkbox" name="hispanic_per_12" id="hispanic_per_12" value="hispanic_per_12"></li>
-
-      <li><label for="black_per_12">Percent of Population Black in 2012</label> <input type="checkbox" name="black_per_12" id="black_per_12" value="black_per_12">&emsp;<label for="asian_per_12">Percent of Population Asian in 2012</label> <input type="checkbox" name="asian_per_12" id="asian_per_12" value="asian_per_12"></li>
-
-      <li><label for="male_pop_12">Male Population in 2012</label> <input type="checkbox" name="male_pop_12" id="male_pop_12" value="male_pop_12">&emsp;<label for="male_per_12">Percent of Population Male in 2012</label> <input type="checkbox" name="male_per_12" id="male_per_12" value="male_per_12"></li>
-
-      <li><label for="female_pop_12">Female Population in 2012</label> <input type="checkbox" name="female_pop_12" id="female_pop_12" value="female_pop_12">&emsp;<label for="female_per_12">Percent of Population Female in 2012</label> <input type="checkbox" name="female_per_12" id="female_per_12" value="female_per_12"></li>
-      
-      <li><label for="poverty_12">Percent of Population in Poverty in 2012</label> <input type="checkbox" name="poverty_12" id="poverty_12" value="poverty_12">&emsp;<label for="median_inc_12">Median Income in 2012</label> <input type="checkbox" name="median_inc_12" id="median_inc_12" value="median_inc_12">&emsp;<label for="gini_12">Gini Coefficient in 2012</label> <input type="checkbox" name="gini_12" id="gini_12" value="gini_12"></li>
-
-      <li><label for="manu_per_12">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_12" id="manu_per_12" value="manu_per_12">&emsp;<label for="salary_workers_12">Percent of Workers on Salary in 2012</label> <input type="checkbox" name="salary_workers_12" id="salary_workers_12" value="salary_workers_12">&emsp;<label for="self_employed_12">Percent of Workers Self-Employed in 2012</label> <input type="checkbox" name="self_employed_12" id="self_employed_12" value="self_employed_12"></li>
-    
-      <li><label for="pop_citizen_12">Population of Citizens in 2012</label> <input type="checkbox" name="pop_citizen_12" id="pop_citizen_12" value="pop_citizen_12">&emsp;<label for="not_cit_12">Population of Non-Citizens in 2012</label> <input type="checkbox" name="not_cit_12" id="not_cit_12" value="not_cit_12">&emsp;<label for="cit_by_nat_12">Population of Naturalized Citizens in 2012</label> <input type="checkbox" name="cit_by_nat_12" id="cit_by_nat_12" value="cit_by_nat_12"></li>
-
-      <li><label for="cit_by_nat_per_12">Citizen by Naturalization Percent 2012</label> <input type="checkbox" name="cit_by_nat_per_12" id="cit_by_nat_per_12" value="cit_by_nat_per_12">&emsp;<label for="not_cit_per_12">Percentage of Non-Citizens in 2012</label> <input type="checkbox" name="not_cit_per_12" id="not_cit_per_12" value="not_cit_per_12"></li>
-
-      <li><label for="bach_or_higher_per_12">Percent of Population with a Bachelor's Degree or Higher in 2012</label> <input type="checkbox" name="bach_or_higher_per_12" id="bach_or_higher_per_12" value="bach_or_higher_per_12">&emsp;<label for="less_than_hs_per_12">Percent of Population with Less Than High School Degree in 2012</label> <input type="checkbox" name="less_than_hs_per_12" id="less_than_hs_per_12" value="less_than_hs_per_12"></li>
-
-<b>2015 Demographic Data</b>
-      <li><label for="population_15">Total Population in 2015</label> <input type="checkbox" name="population_15" id="population_15" value="population_15">&emsp;<label for="median_age_15">Median Age in 2015</label> <input type="checkbox" name="median_age_15" id="median_age_15" value="median_age_15"></li>
-
-      <li><label for="health_cov_15">Health Coverage in 2015</label> <input type="checkbox" name="health_cov_15" id="health_cov_15" value="health_cov_15">&emsp;<label for="health_cov_per_15">Health Coverage Percent 2015</label> <input type="checkbox" name="health_cov_per_15" id="health_cov_per_15" value="health_cov_per_15"></li>
-     
-      <li><label for="white_per_15">Percent of Population White in 2015</label> <input type="checkbox" name="white_per_15" id="white_per_15" value="white_per_15">&emsp;<label for="hispanic_per_15">Percent of Population Hispanic in 2015</label> <input type="checkbox" name="hispanic_per_15" id="hispanic_per_15" value="hispanic_per_15"></li>
-
-      <li><label for="black_per_15">Percent of Population Black in 2015</label> <input type="checkbox" name="black_per_15" id="black_per_15" value="black_per_15">&emsp;<label for="asian_per_15">Percent of Population Asian in 2015</label> <input type="checkbox" name="asian_per_15" id="asian_per_15" value="asian_per_15"></li>
-      
-      <li><label for="male_pop_15">Male Population in 2015</label> <input type="checkbox" name="male_pop_15" id="male_pop_15" value="male_pop_15">&emsp;<label for="male_per_15">Percent of Population Male in 2015</label> <input type="checkbox" name="male_per_15" id="male_per_15" value="male_per_15"></li>
-
-      <li><label for="female_pop_15">Female Population in 2015</label> <input type="checkbox" name="female_pop_15" id="female_pop_15" value="female_pop_15">&emsp;<label for="female_per_15">Percent of Population Female in 2015</label> <input type="checkbox" name="female_per_15" id="female_per_15" value="female_per_15"></li>
-      
-      <li><label for="poverty_15">Percent of Population in Poverty in 2015</label> <input type="checkbox" name="poverty_15" id="poverty_15" value="poverty_15">&emsp;<label for="median_inc_15">Median Income in 2015</label> <input type="checkbox" name="median_inc_15" id="median_inc_15" value="median_inc_15">&emsp;<label for="gini_15">Gini Coefficient in 2015</label> <input type="checkbox" name="gini_15" id="gini_15" value="gini_15"></li>
-
-      <li><label for="manu_per_15">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_15" id="manu_per_15" value="manu_per_15">&emsp;<label for="salary_workers_15">Percent of Workers on Salary in 2015</label> <input type="checkbox" name="salary_workers_15" id="salary_workers_15" value="salary_workers_15">&emsp;<label for="self_employed_15">Percent of Workers Self-Employed in 2015</label> <input type="checkbox" name="self_employed_15" id="self_employed_15" value="self_employed_15"></li>
-    
-      <li><label for="pop_citizen_15">Population of Citizens in 2015</label> <input type="checkbox" name="pop_citizen_15" id="pop_citizen_15" value="pop_citizen_15">&emsp;<label for="not_cit_15">Population of Non-Citizens in 2015</label> <input type="checkbox" name="not_cit_15" id="not_cit_15" value="not_cit_15">&emsp;<label for="cit_by_nat_15">Population of Naturalized Citizens in 2015</label> <input type="checkbox" name="cit_by_nat_15" id="cit_by_nat_15" value="cit_by_nat_15"></li>
-
-      <li><label for="cit_by_nat_per_15">Citizen by Naturalization Percent 2015</label> <input type="checkbox" name="cit_by_nat_per_15" id="cit_by_nat_per_15" value="cit_by_nat_per_15">&emsp;<label for="not_cit_per_15">Percentage of Non-Citizens in 2015</label> <input type="checkbox" name="not_cit_per_15" id="not_cit_per_15" value="not_cit_per_15"></li>
-
-      <li><label for="bach_or_higher_per_15">Percent of Population with a Bachelor's Degree or Higher in 2015</label> <input type="checkbox" name="bach_or_higher_per_15" id="bach_or_higher_per_15" value="bach_or_higher_per_15">&emsp;<label for="less_than_hs_per_15">Percent of Population with Less Than High School Degree in 2015</label> <input type="checkbox" name="less_than_hs_per_15" id="less_than_hs_per_15" value="less_than_hs_per_15"></li>
-
-<b>Difference Between 2012 and 2015 in Demographic Data</b>
-      <li><label for="population_d">Total Population</label> <input type="checkbox" name="population_d" id="population_d" value="population_d">&emsp;<label for="median_age_d">Median Age</label> <input type="checkbox" name="median_age_d" id="median_age_d" value="median_age_d"></li>
-
-      <li><label for="health_cov_d">Health Coverage</label> <input type="checkbox" name="health_cov_d" id="health_cov_d" value="health_cov_d">&emsp;<label for="health_cov_per_d">Health Coverage Percent</label> <input type="checkbox" name="health_cov_per_d" id="health_cov_per_d" value="health_cov_per_d"></li>
-     
-      <li><label for="white_per_d">Percent of Population White</label> <input type="checkbox" name="white_per_d" id="white_per_d" value="white_per_d">&emsp;<label for="hispanic_per_d">Percent of Population Hispanic</label> <input type="checkbox" name="hispanic_per_d" id="hispanic_per_d" value="hispanic_per_d"></li>
-
-      <li><label for="black_per_d">Percent of Population Black</label> <input type="checkbox" name="black_per_d" id="black_per_d" value="black_per_d">&emsp;<label for="asian_per_d">Percent of Population Asian</label> <input type="checkbox" name="asian_per_d" id="asian_per_d" value="asian_per_d"></li>
-
-      <li><label for="male_pop_d">Male Population</label> <input type="checkbox" name="male_pop_d" id="male_pop_d" value="male_pop_d">&emsp;<label for="male_per_d">Percent of Population Male</label> <input type="checkbox" name="male_per_d" id="male_per_d" value="male_per_d"></li>
-
-      <li><label for="female_pop_d">Female Population</label> <input type="checkbox" name="female_pop_d" id="female_pop_d" value="female_pop_d">&emsp;<label for="female_per_d">Percent of Population Female</label> <input type="checkbox" name="female_per_d" id="female_per_d" value="female_per_d"></li>
-      
-      <li><label for="poverty_d">Percent of Population in Poverty</label> <input type="checkbox" name="poverty_d" id="poverty_d" value="poverty_d">&emsp;<label for="median_inc_d">Median Income</label> <input type="checkbox" name="median_inc_d" id="median_inc_d" value="median_inc_d">&emsp;<label for="gini_d">Gini Coefficient</label> <input type="checkbox" name="gini_d" id="gini_d" value="gini_d"></li>
-
-      <li><label for="manu_per_d">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_d" id="manu_per_d" value="manu_per_d">&emsp;<label for="salary_workers_d">Percent of Workers on Salary</label> <input type="checkbox" name="salary_workers_d" id="salary_workers_d" value="salary_workers_d">&emsp;<label for="self_employed_d">Percent of Workers Self-Employed</label> <input type="checkbox" name="self_employed_d" id="self_employed_d" value="self_employed_d"></li>
-    
-      <li><label for="pop_citizen_d">Population of Citizens</label> <input type="checkbox" name="pop_citizen_d" id="pop_citizen_d" value="pop_citizen_d">&emsp;<label for="not_cit_d">Population of Non-Citizens</label> <input type="checkbox" name="not_cit_d" id="not_cit_d" value="not_cit_d">&emsp;<label for="cit_by_nat_d">Population of Naturalized Citizens</label> <input type="checkbox" name="cit_by_nat_d" id="cit_by_nat_d" value="cit_by_nat_d"></li>
-
-      <li><label for="cit_by_nat_per_d">Citizen by Naturalization Percent</label> <input type="checkbox" name="cit_by_nat_per_d" id="cit_by_nat_per_d" value="cit_by_nat_per_d">&emsp;<label for="not_cit_per_d">Percentage of Non-Citizens</label> <input type="checkbox" name="not_cit_per_d" id="not_cit_per_d" value="not_cit_per_d"></li>
-
-      <li><label for="bach_or_higher_per_d">Percent of Population with a Bachelor's Degree or Higher</label> <input type="checkbox" name="bach_or_higher_per_d" id="bach_or_higher_per_d" value="bach_or_higher_per_d">&emsp;<label for="less_than_hs_per_d">Percent of Population with Less Than High School Degree</label> <input type="checkbox" name="less_than_hs_per_d" id="less_than_hs_per_d" value="less_than_hs_per_d"></li>
-
-      
-
-
-
-    </ul>
-  </li>
-</ul>
-
-<h3> <b> Filter your results </b> </h3>
-<h4> <b> Leave state and county fields blank to display all counties </b> </h4> 
-<ul>
 <h4> <b> Check all states you'd like to see counties from: </b></h4>
+<h5> <i> Leave state and county fields blank to display all counties </i> </h5> 
+
 <li><label for="AL">AL</label> <input type="checkbox" name="AL" id="AL" value="AL">&emsp;<label for="AZ">AZ</label> <input type="checkbox" name="AZ" id="AZ" value="AZ">&emsp;<label for="AR">AR</label> <input type="checkbox" name="AR" id="AR" value="AR">&emsp;<label for="CA">CA</label> <input type="checkbox" name="CA" id="CA" value="CA">&emsp;<label for="CO">CO</label> <input type="checkbox" name="CO" id="CO" value="CO">&emsp;<label for="CT">CT</label> <input type="checkbox" name="CT" id="CT" value="CT">&emsp;<label for="DE">DE</label> <input type="checkbox" name="DE" id="DE" value="DE">&emsp;<label for="DC">DC</label> <input type="checkbox" name="DC" id="DC" value="DC">&emsp;<label for="FL">FL</label> <input type="checkbox" name="FL" id="FL" value="FL">&emsp;<label for="GA">GA</label> <input type="checkbox" name="GA" id="GA" value="GA">&emsp;<label for="HI">HI</label> <input type="checkbox" name="HI" id="HI" value="HI">&emsp;<label for="ID">ID</label> <input type="checkbox" name="ID" id="ID" value="ID">&emsp;<label for="IL">IL</label> <input type="checkbox" name="IL" id="IL" value="IL">&emsp;<label for="IN">IN</label> <input type="checkbox" name="IN" id="IN" value="IN">&emsp;<label for="IA">IA</label> <input type="checkbox" name="IA" id="IA" value="IA">&emsp;<label for="KS">KS</label> <input type="checkbox" name="KS" id="KS" value="KS">&emsp;<label for="KY">KY</label> <input type="checkbox" name="KY" id="KY" value="KY">&emsp;<li><label for="LA">LA</label> <input type="checkbox" name="LA" id="LA" value="LA">&emsp;<label for="ME">ME</label> <input type="checkbox" name="ME" id="ME" value="ME">&emsp;<label for="MD">MD</label> <input type="checkbox" name="MD" id="MD" value="MD">&emsp;<label for="MA">MA</label> <input type="checkbox" name="MA" id="MA" value="MA">&emsp;<label for="MI">MI</label> <input type="checkbox" name="MI" id="MI" value="MI">&emsp;<label for="MN">MN</label> <input type="checkbox" name="MN" id="MN" value="MN">&emsp;<label for="MS">MS</label> <input type="checkbox" name="MS" id="MS" value="MS">&emsp;<label for="MO">MO</label> <input type="checkbox" name="MO" id="MO" value="MO">&emsp;<label for="MT">MT</label> <input type="checkbox" name="MT" id="MT" value="MT">&emsp;<label for="NE">NE</label> <input type="checkbox" name="NE" id="NE" value="NE">&emsp;<label for="NV">NV</label> <input type="checkbox" name="NV" id="NV" value="NV">&emsp;<label for="MH">MH</label> <input type="checkbox" name="MH" id="MH" value="MH">&emsp;<label for="NJ">NJ</label> <input type="checkbox" name="NJ" id="NJ" value="NJ">&emsp;<label for="NM">NM</label> <input type="checkbox" name="NM" id="NM" value="NM">&emsp;<label for="NY">NY</label> <input type="checkbox" name="NY" id="NY" value="NY">&emsp;<label for="NC">NC</label> <input type="checkbox" name="NC" id="NC" value="NC">&emsp;<li><label for="ND">ND</label> <input type="checkbox" name="ND" id="ND" value="ND">&emsp;<label for="OH">OH</label> <input type="checkbox" name="OH" id="OH" value="OH">&emsp;<label for="OK">OK</label> <input type="checkbox" name="OK" id="OK" value="OK">&emsp;<label for="OR">OR</label> <input type="checkbox" name="OR" id="OR" value="OR">&emsp;<label for="PA">PA</label> <input type="checkbox" name="PA" id="PA" value="PA">&emsp;<label for="RI">RI</label> <input type="checkbox" name="RI" id="RI" value="RI">&emsp;<label for="SC">SC</label> <input type="checkbox" name="SC" id="SC" value="SC">&emsp;<label for="SD">SD</label> <input type="checkbox" name="SD" id="SD" value="SD">&emsp;<label for="TN">TN</label> <input type="checkbox" name="TN" id="TN" value="TN">&emsp;<label for="TX">TX</label> <input type="checkbox" name="TX" id="TX" value="TX">&emsp;<label for="UT">UT</label> <input type="checkbox" name="UT" id="UT" value="UT">&emsp;<label for="VT">VT</label> <input type="checkbox" name="VT" id="VT" value="VT">&emsp;<label for="VA">VA</label> <input type="checkbox" name="VA" id="VA" value="VA">&emsp;<label for="WA">WA</label> <input type="checkbox" name="WA" id="WA" value="WA">&emsp;<label for="WV">WV</label> <input type="checkbox" name="WV" id="WV" value="WV">&emsp;<label for="WI">WI</label> <input type="checkbox" name="WI" id="WI" value="WI">&emsp;<label for="WY">WY</label> <input type="checkbox" name="WY" id="WY" value="WY">
 
 <h4> <b> Or choose a particular county: </b></h4>
@@ -3330,8 +3214,12 @@ tr:nth-child(even) {
 </ul>
 
 
-<li> <b> Display counties with a specified winner in each year: </b> </li>
-<ul> <li> <b> 2008: </b> <label for="winner_08_criterion"></label>
+<h3> <b> Filter your results </b> </h3>
+
+
+
+<b> Display counties with a specified winner in each year: <br> </b>
+<b> 2008: </b> <label for="winner_08_criterion"></label>
 <select name="winner_08_criterion" id="winner_08_criterion">
 <option value="">Any Party</option>
 <option value="Dem">Democratic Party</option>
@@ -3346,9 +3234,127 @@ tr:nth-child(even) {
 <option value="">Any Party</option>
 <option value="Dem">Democratic Party</option>
 <option value="Gop">Republican Party</option>
-</select></li> </ul> 
+</select> </ul>
 
-<li> <b> Order results by any data above: </b> 
+<h2> 2. Select Election Data </h2>
+
+<b>Total Votes By Year</b>
+      <li><label for="total_2008">Total 2008 Votes</label> <input type="checkbox" name="total_2008" id="total_2008" value="total_2008">&emsp;<label for="total_2012">Total 2012 Votes</label> <input type="checkbox" name="total_2012" id="total_2012" value="total_2012">&emsp;<label for="total_2016">Total 2016 Votes</label> <input type="checkbox" name="total_2016" id="total_2016" value="total_2016"></li>
+<b>2008 Election Data</b>
+      <li><label for="dem_2008">Democratic Votes 2008</label> <input type="checkbox" name="dem_2008" id="dem_2008" value="dem_2008">&emsp;<label for="gop_2008">Republican Votes 2008</label> <input type="checkbox" name="gop_2008" id="gop_2008" value="gop_2008">&emsp;<label for="oth_2008">Third Party Votes 2008</label> <input type="checkbox" name="oth_2008" id="oth_2008" value="oth_2008"></li>
+
+      <li><label for="dem_08_perc">Percentage Democratic Votes 2008</label> <input type="checkbox" name="dem_08_perc" id="dem_08_perc" value="dem_08_perc">&emsp;<label for="gop_08_perc">Percentage Republican Votes 2008</label> <input type="checkbox" name="gop_08_perc" id="gop_08_perc" value="gop_08_perc">&emsp;<label for="oth_08_perc">Percentage Third Party Votes 2008</label> <input type="checkbox" name="oth_08_perc" id="oth_08_perc" value="oth_08_perc"></li>
+
+      <li><label for="winner_08">2008 Winner</label> <input type="checkbox" name="winner_08" id="winner_08" value="winner_08">&emsp;<label for="win_marg_08">Percentage Winning Margin 2008</label> <input type="checkbox" name="win_marg_08" id="win_marg_08" value="win_marg_08"></li>
+
+<b>2012 Election Data</b>
+      <li><label for="dem_2012">Democratic Votes 2012</label> <input type="checkbox" name="dem_2012" id="dem_2012" value="dem_2012">&emsp;<label for="gop_2012">Republican Votes 2012</label> <input type="checkbox" name="gop_2012" id="gop_2012" value="gop_2012">&emsp;<label for="oth_2012">Third Party Votes 2012</label> <input type="checkbox" name="oth_2012" id="oth_2012" value="oth_2012"></li>
+
+      <li><label for="dem_12_perc">Percentage Democratic Votes 2012</label> <input type="checkbox" name="dem_12_perc" id="dem_12_perc" value="dem_12_perc">&emsp;<label for="gop_12_perc">Percentage Republican Votes 2012</label> <input type="checkbox" name="gop_12_perc" id="gop_12_perc" value="gop_12_perc">&emsp;<label for="oth_12_perc">Percentage Third Party Votes 2012</label> <input type="checkbox" name="oth_12_perc" id="oth_12_perc" value="oth_12_perc"></li>
+
+      <li><label for="winner_12">2012 Winner</label> <input type="checkbox" name="winner_12" id="winner_12" value="winner_12">&emsp;<label for="win_marg_12">Percentage Winning Margin 2012</label> <input type="checkbox" name="win_marg_12" id="win_marg_12" value="win_marg_12"></li>
+     
+<b>2016 Election Data</b>
+
+      <li><label for="dem_2016">Democratic Votes 2016</label> <input type="checkbox" name="dem_2016" id="dem_2016" value="dem_2016">&emsp;<label for="gop_2016">Republican Votes 2016</label> <input type="checkbox" name="gop_2016" id="gop_2016" value="gop_2016">&emsp;<label for="oth_2016">Third Party Votes 2016</label> <input type="checkbox" name="oth_2016" id="oth_2016" value="oth_2016"></li>
+
+      <li><label for="dem_16_perc">Percentage Democratic Votes 2016</label> <input type="checkbox" name="dem_16_perc" id="dem_16_perc" value="dem_16_perc">&emsp;<label for="gop_16_perc">Percentage Republican Votes 2016</label> <input type="checkbox" name="gop_16_perc" id="gop_16_perc" value="gop_16_perc">&emsp;<label for="oth_16_perc">Percentage Third Party Votes 2016</label> <input type="checkbox" name="oth_16_perc" id="oth_16_perc" value="oth_16_perc"></li>
+
+      <li><label for="winner_16">2016 Winner</label> <input type="checkbox" name="winner_16" id="winner_16" value="winner_16">&emsp;<label for="win_marg_16">Percentage Winning Margin 2016</label> <input type="checkbox" name="win_marg_16" id="win_marg_16" value="win_marg_16"></li>
+
+<b>Winning Margins Between Years</b>
+
+      <li><label for="diff_0812">2008 to 2012 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0812" id="diff_0812" value="diff_0812">&emsp;<label for="diff_0816">2008 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_0816" id="diff_0816" value="diff_0816">&emsp;<label for="diff_1216">2012 to 2016 Difference in Percent Winning Margin</label> <input type="checkbox" name="diff_1216" id="diff_1216" value="diff_1216"></li>
+
+<h2> 3. Select Demographic Data </h2>
+
+<b>Unemployment and Labor Force Data</b>
+
+	<li><label for="unemployment_rate_2008">2008 Unemployment Rate</label> <input type="checkbox" name="unemployment_rate_2008" id="unemployment_rate_2008" value="unemployment_rate_2008">&emsp;<label for="unemployment_rate_2012">2012 Unemployment Rate</label> <input type="checkbox" name="unemployment_rate_2012" id="unemployment_rate_2012" value="unemployment_rate_2012">&emsp;<label for="unemployment_rate_2015">2015 Unemployment Rate</label> <input type="checkbox" name="unemployment_rate_2015" id="unemployment_rate_2015" value="unemployment_rate_2015"></li>
+
+	<li><label for="unemployed_2008">2008 Total Unemployment</label> <input type="checkbox" name="unemployed_2008" id="unemployed_2008" value="unemployed_2008">&emsp;<label for="unemployed_2012">2012 Total Unemployment</label> <input type="checkbox" name="unemployed_2012" id="unemployed_2012" value="unemployed_2012">&emsp;<label for="unemployed_2015">2015 Total Unemployment</label> <input type="checkbox" name="unemployed_2015" id="unemployed_2015" value="unemployed_2015"></li>
+
+	<li><label for="unemployment_rate_difference_2008_to_2015">Difference in Unemployment Rate 2008 to 2015</label> <input type="checkbox" name="unemployment_rate_difference_2008_to_2015" id="unemployment_rate_difference_2008_to_2015" value="unemployment_rate_difference_2008_to_2015">&emsp;<label for="unemployment_rate_difference_2012_to_2015">Difference in Unemployment Rate 2012 to 2015</label> <input type="checkbox" name="unemployment_rate_difference_2012_to_2015" id="unemployment_rate_difference_2012_to_2015" value="unemployment_rate_difference_2012_to_2015"></li>	
+
+	<li><label for="civilian_labor_force_2008">Civilian Labor Force in 2008</label> <input type="checkbox" name="civilian_labor_force_2008" id="civilian_labor_force_2008" value="civilian_labor_force_2008">&emsp;<label for="civilian_labor_force_2012">Civilian Labor Force in 2012</label> <input type="checkbox" name="civilian_labor_force_2012" id="civilian_labor_force_2012" value="civilian_labor_force_2012">&emsp;<label for="civilian_labor_force_2016">Civilian Labor Force in 2015</label> <input type="checkbox" name="civilian_labor_force_2015" id="civilian_labor_force_2015" value="civilian_labor_force_2015"></li>
+
+	<li><label for="labor_Force_Percent_Difference_2008_to_2015">Difference in Labor Force Participation Rate 2008 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2008_to_2015" id="labor_Force_Percent_Difference_2008_to_2015" value="labor_Force_Percent_Difference_2008_to_2015">&emsp;<label for="labor_Force_Percent_Difference_2012_to_2015">Difference in Labor Force Participation Rate 2012 to 2015</label> <input type="checkbox" name="labor_Force_Percent_Difference_2012_to_2015" id="labor_Force_Percent_Difference_2012_to_2015" value="labor_Force_Percent_Difference_2012_to_2015"></li>
+
+<b>2012 Demographic Data</b>
+      <li><label for="population_12">Total Population in 2012</label> <input type="checkbox" name="population_12" id="population_12" value="population_12">&emsp;<label for="median_age_12">Median Age in 2012</label> <input type="checkbox" name="median_age_12" id="median_age_12" value="median_age_12"></li>
+
+      <li><label for="health_cov_12">Health Coverage in 2012</label> <input type="checkbox" name="health_cov_12" id="health_cov_12" value="health_cov_12">&emsp;<label for="health_cov_per_12">Health Coverage Percent 2012</label> <input type="checkbox" name="health_cov_per_12" id="health_cov_per_12" value="health_cov_per_12"></li>
+     
+      <li><label for="white_per_12">Percent of Population White in 2012</label> <input type="checkbox" name="white_per_12" id="white_per_12" value="white_per_12">&emsp;<label for="hispanic_per_12">Percent of Population Hispanic in 2012</label> <input type="checkbox" name="hispanic_per_12" id="hispanic_per_12" value="hispanic_per_12"></li>
+
+      <li><label for="black_per_12">Percent of Population Black in 2012</label> <input type="checkbox" name="black_per_12" id="black_per_12" value="black_per_12">&emsp;<label for="asian_per_12">Percent of Population Asian in 2012</label> <input type="checkbox" name="asian_per_12" id="asian_per_12" value="asian_per_12"></li>
+
+      <li><label for="male_pop_12">Male Population in 2012</label> <input type="checkbox" name="male_pop_12" id="male_pop_12" value="male_pop_12">&emsp;<label for="male_per_12">Percent of Population Male in 2012</label> <input type="checkbox" name="male_per_12" id="male_per_12" value="male_per_12"></li>
+
+      <li><label for="female_pop_12">Female Population in 2012</label> <input type="checkbox" name="female_pop_12" id="female_pop_12" value="female_pop_12">&emsp;<label for="female_per_12">Percent of Population Female in 2012</label> <input type="checkbox" name="female_per_12" id="female_per_12" value="female_per_12"></li>
+      
+      <li><label for="poverty_12">Percent of Population in Poverty in 2012</label> <input type="checkbox" name="poverty_12" id="poverty_12" value="poverty_12">&emsp;<label for="median_inc_12">Median Income in 2012</label> <input type="checkbox" name="median_inc_12" id="median_inc_12" value="median_inc_12">&emsp;<label for="gini_12">Gini Coefficient in 2012</label> <input type="checkbox" name="gini_12" id="gini_12" value="gini_12"></li>
+
+      <li><label for="manu_per_12">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_12" id="manu_per_12" value="manu_per_12">&emsp;<label for="salary_workers_12">Percent of Workers on Salary in 2012</label> <input type="checkbox" name="salary_workers_12" id="salary_workers_12" value="salary_workers_12">&emsp;<label for="self_employed_12">Percent of Workers Self-Employed in 2012</label> <input type="checkbox" name="self_employed_12" id="self_employed_12" value="self_employed_12"></li>
+    
+      <li><label for="pop_citizen_12">Population of Citizens in 2012</label> <input type="checkbox" name="pop_citizen_12" id="pop_citizen_12" value="pop_citizen_12">&emsp;<label for="not_cit_12">Population of Non-Citizens in 2012</label> <input type="checkbox" name="not_cit_12" id="not_cit_12" value="not_cit_12">&emsp;<label for="cit_by_nat_12">Population of Naturalized Citizens in 2012</label> <input type="checkbox" name="cit_by_nat_12" id="cit_by_nat_12" value="cit_by_nat_12"></li>
+
+      <li><label for="cit_by_nat_per_12">Citizen by Naturalization Percent 2012</label> <input type="checkbox" name="cit_by_nat_per_12" id="cit_by_nat_per_12" value="cit_by_nat_per_12">&emsp;<label for="not_cit_per_12">Percentage of Non-Citizens in 2012</label> <input type="checkbox" name="not_cit_per_12" id="not_cit_per_12" value="not_cit_per_12"></li>
+
+      <li><label for="bach_or_higher_per_12">Percent of Population with a Bachelor's Degree or Higher in 2012</label> <input type="checkbox" name="bach_or_higher_per_12" id="bach_or_higher_per_12" value="bach_or_higher_per_12">&emsp;<label for="less_than_hs_per_12">Percent of Population with Less Than High School Degree in 2012</label> <input type="checkbox" name="less_than_hs_per_12" id="less_than_hs_per_12" value="less_than_hs_per_12"></li>
+
+<b>2015 Demographic Data</b>
+      <li><label for="population_15">Total Population in 2015</label> <input type="checkbox" name="population_15" id="population_15" value="population_15">&emsp;<label for="median_age_15">Median Age in 2015</label> <input type="checkbox" name="median_age_15" id="median_age_15" value="median_age_15"></li>
+
+      <li><label for="health_cov_15">Health Coverage in 2015</label> <input type="checkbox" name="health_cov_15" id="health_cov_15" value="health_cov_15">&emsp;<label for="health_cov_per_15">Health Coverage Percent 2015</label> <input type="checkbox" name="health_cov_per_15" id="health_cov_per_15" value="health_cov_per_15"></li>
+     
+      <li><label for="white_per_15">Percent of Population White in 2015</label> <input type="checkbox" name="white_per_15" id="white_per_15" value="white_per_15">&emsp;<label for="hispanic_per_15">Percent of Population Hispanic in 2015</label> <input type="checkbox" name="hispanic_per_15" id="hispanic_per_15" value="hispanic_per_15"></li>
+
+      <li><label for="black_per_15">Percent of Population Black in 2015</label> <input type="checkbox" name="black_per_15" id="black_per_15" value="black_per_15">&emsp;<label for="asian_per_15">Percent of Population Asian in 2015</label> <input type="checkbox" name="asian_per_15" id="asian_per_15" value="asian_per_15"></li>
+      
+      <li><label for="male_pop_15">Male Population in 2015</label> <input type="checkbox" name="male_pop_15" id="male_pop_15" value="male_pop_15">&emsp;<label for="male_per_15">Percent of Population Male in 2015</label> <input type="checkbox" name="male_per_15" id="male_per_15" value="male_per_15"></li>
+
+      <li><label for="female_pop_15">Female Population in 2015</label> <input type="checkbox" name="female_pop_15" id="female_pop_15" value="female_pop_15">&emsp;<label for="female_per_15">Percent of Population Female in 2015</label> <input type="checkbox" name="female_per_15" id="female_per_15" value="female_per_15"></li>
+      
+      <li><label for="poverty_15">Percent of Population in Poverty in 2015</label> <input type="checkbox" name="poverty_15" id="poverty_15" value="poverty_15">&emsp;<label for="median_inc_15">Median Income in 2015</label> <input type="checkbox" name="median_inc_15" id="median_inc_15" value="median_inc_15">&emsp;<label for="gini_15">Gini Coefficient in 2015</label> <input type="checkbox" name="gini_15" id="gini_15" value="gini_15"></li>
+
+      <li><label for="manu_per_15">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_15" id="manu_per_15" value="manu_per_15">&emsp;<label for="salary_workers_15">Percent of Workers on Salary in 2015</label> <input type="checkbox" name="salary_workers_15" id="salary_workers_15" value="salary_workers_15">&emsp;<label for="self_employed_15">Percent of Workers Self-Employed in 2015</label> <input type="checkbox" name="self_employed_15" id="self_employed_15" value="self_employed_15"></li>
+    
+      <li><label for="pop_citizen_15">Population of Citizens in 2015</label> <input type="checkbox" name="pop_citizen_15" id="pop_citizen_15" value="pop_citizen_15">&emsp;<label for="not_cit_15">Population of Non-Citizens in 2015</label> <input type="checkbox" name="not_cit_15" id="not_cit_15" value="not_cit_15">&emsp;<label for="cit_by_nat_15">Population of Naturalized Citizens in 2015</label> <input type="checkbox" name="cit_by_nat_15" id="cit_by_nat_15" value="cit_by_nat_15"></li>
+
+      <li><label for="cit_by_nat_per_15">Citizen by Naturalization Percent 2015</label> <input type="checkbox" name="cit_by_nat_per_15" id="cit_by_nat_per_15" value="cit_by_nat_per_15">&emsp;<label for="not_cit_per_15">Percentage of Non-Citizens in 2015</label> <input type="checkbox" name="not_cit_per_15" id="not_cit_per_15" value="not_cit_per_15"></li>
+
+      <li><label for="bach_or_higher_per_15">Percent of Population with a Bachelor's Degree or Higher in 2015</label> <input type="checkbox" name="bach_or_higher_per_15" id="bach_or_higher_per_15" value="bach_or_higher_per_15">&emsp;<label for="less_than_hs_per_15">Percent of Population with Less Than High School Degree in 2015</label> <input type="checkbox" name="less_than_hs_per_15" id="less_than_hs_per_15" value="less_than_hs_per_15"></li>
+
+<b>Difference Between 2012 and 2015 in Demographic Data</b>
+      <li><label for="population_d">Total Population</label> <input type="checkbox" name="population_d" id="population_d" value="population_d">&emsp;<label for="median_age_d">Median Age</label> <input type="checkbox" name="median_age_d" id="median_age_d" value="median_age_d"></li>
+
+      <li><label for="health_cov_d">Health Coverage</label> <input type="checkbox" name="health_cov_d" id="health_cov_d" value="health_cov_d">&emsp;<label for="health_cov_per_d">Health Coverage Percent</label> <input type="checkbox" name="health_cov_per_d" id="health_cov_per_d" value="health_cov_per_d"></li>
+     
+      <li><label for="white_per_d">Percent of Population White</label> <input type="checkbox" name="white_per_d" id="white_per_d" value="white_per_d">&emsp;<label for="hispanic_per_d">Percent of Population Hispanic</label> <input type="checkbox" name="hispanic_per_d" id="hispanic_per_d" value="hispanic_per_d"></li>
+
+      <li><label for="black_per_d">Percent of Population Black</label> <input type="checkbox" name="black_per_d" id="black_per_d" value="black_per_d">&emsp;<label for="asian_per_d">Percent of Population Asian</label> <input type="checkbox" name="asian_per_d" id="asian_per_d" value="asian_per_d"></li>
+
+      <li><label for="male_pop_d">Male Population</label> <input type="checkbox" name="male_pop_d" id="male_pop_d" value="male_pop_d">&emsp;<label for="male_per_d">Percent of Population Male</label> <input type="checkbox" name="male_per_d" id="male_per_d" value="male_per_d"></li>
+
+      <li><label for="female_pop_d">Female Population</label> <input type="checkbox" name="female_pop_d" id="female_pop_d" value="female_pop_d">&emsp;<label for="female_per_d">Percent of Population Female</label> <input type="checkbox" name="female_per_d" id="female_per_d" value="female_per_d"></li>
+      
+      <li><label for="poverty_d">Percent of Population in Poverty</label> <input type="checkbox" name="poverty_d" id="poverty_d" value="poverty_d">&emsp;<label for="median_inc_d">Median Income</label> <input type="checkbox" name="median_inc_d" id="median_inc_d" value="median_inc_d">&emsp;<label for="gini_d">Gini Coefficient</label> <input type="checkbox" name="gini_d" id="gini_d" value="gini_d"></li>
+
+      <li><label for="manu_per_d">Percent Employment in Manufacturing</label> <input type="checkbox" name="manu_per_d" id="manu_per_d" value="manu_per_d">&emsp;<label for="salary_workers_d">Percent of Workers on Salary</label> <input type="checkbox" name="salary_workers_d" id="salary_workers_d" value="salary_workers_d">&emsp;<label for="self_employed_d">Percent of Workers Self-Employed</label> <input type="checkbox" name="self_employed_d" id="self_employed_d" value="self_employed_d"></li>
+    
+      <li><label for="pop_citizen_d">Population of Citizens</label> <input type="checkbox" name="pop_citizen_d" id="pop_citizen_d" value="pop_citizen_d">&emsp;<label for="not_cit_d">Population of Non-Citizens</label> <input type="checkbox" name="not_cit_d" id="not_cit_d" value="not_cit_d">&emsp;<label for="cit_by_nat_d">Population of Naturalized Citizens</label> <input type="checkbox" name="cit_by_nat_d" id="cit_by_nat_d" value="cit_by_nat_d"></li>
+
+      <li><label for="cit_by_nat_per_d">Citizen by Naturalization Percent</label> <input type="checkbox" name="cit_by_nat_per_d" id="cit_by_nat_per_d" value="cit_by_nat_per_d">&emsp;<label for="not_cit_per_d">Percentage of Non-Citizens</label> <input type="checkbox" name="not_cit_per_d" id="not_cit_per_d" value="not_cit_per_d"></li>
+
+      <li><label for="bach_or_higher_per_d">Percent of Population with a Bachelor's Degree or Higher</label> <input type="checkbox" name="bach_or_higher_per_d" id="bach_or_higher_per_d" value="bach_or_higher_per_d">&emsp;<label for="less_than_hs_per_d">Percent of Population with Less Than High School Degree</label> <input type="checkbox" name="less_than_hs_per_d" id="less_than_hs_per_d" value="less_than_hs_per_d"></li>
+    </ul>
+  </li>
+</ul>
+
+<h2> 4. Order/Limit Results </h2>
+
+<b> Order results by any data above: </b> 
 <label for="orderby"></label>
 <select name="orderby" id="orderby">
 <option value="">--No Choice--</option>
@@ -3473,11 +3479,10 @@ tr:nth-child(even) {
 <option value="">--(Default)--</option>
 <option value="DESC">Descending</option>
 <option value="">Ascending</option></select>
-</li>
+<br>
 <br>
 
-<li> <b> Limit the number of counties displayed: </b> </li>
-<ul> <li> <b> Limit the number of results you see to </b> <label for="limit"></label>
+<b> Limit the number of counties displayed: </b> <label for="limit"></label>
 <select name="limit" id="limit">
 <option value="">No Limit</option>
 <option value="1">1</option>
@@ -6592,10 +6597,11 @@ tr:nth-child(even) {
 <option value="3110">3110</option>
 <option value="3111">3111</option>
 <option value="3112">3112</option>
-</select></li> </ul>
+</select>
 
-<h3> Visualize Correlation </h3>
-<h4> <b> See a heat map of correlation between the data selected above and selected field below by county </b> </h4> 
+<h2> 5. Correlation Analysis </h2>
+
+<h4> <b> See a heat map of correlation between the data selected above and selected field below </b> </h4> 
 <b> Choose a data field to compare to: <br> </b> <label for="corr_field"></label>
 <select name="corr_field" id="corr_field">
 <option value="">--No Choice--</option>
@@ -6605,7 +6611,8 @@ tr:nth-child(even) {
 <option value="republican_perc">Republican Vote Percentage Each Year</option>
 </select>
 
-<h3> Run a Regression </h3>
+<h2> 6. Regression Analysis </h2>
+
 <h4> <b> Regression output will be displayed above county raw data </b> </h4> 
 <b> Model one of the data above on another: <br> </b> <label for="outcome"></label>
 <select name="outcome" id="outcome">
