@@ -3382,7 +3382,7 @@ tr:nth-child(even) {
 <option value="e.dem_16_perc">Percentage Democratic Votes 2016</option>
 <option value="e.gop_16_perc">Percentage Republican Votes 2016</option>
 <option value="e.oth_16_perc">Percentage Third Party Votes 2016</option>
-<option value="e.oth_16_perc">Percentage Winning Margin 2016</option>
+<option value="e.win_marg_16">Percentage Winning Margin 2016</option>
 <option value="abs(e.diff_0812)">2008 to 2012 Shift in Winning Margin</option>
 <option value="abs(e.diff_0816)">2008 to 2016 Shift in Winning Margin</option>
 <option value="abs(e.diff_1216)">2012 to 2016 Shift in Winning Margin</option>
@@ -6641,7 +6641,7 @@ tr:nth-child(even) {
 <option value="e.dem_16_perc">Percentage Democratic Votes 2016</option>
 <option value="e.gop_16_perc">Percentage Republican Votes 2016</option>
 <option value="e.oth_16_perc">Percentage Third Party Votes 2016</option>
-<option value="e.oth_16_perc">Percentage Winning Margin 2016</option>
+<option value="e.win_marg_16">Percentage Winning Margin 2016</option>
 <option value="abs(e.diff_0812)">2008 to 2012 Shift in Winning Margin</option>
 <option value="abs(e.diff_0816)">2008 to 2016 Shift in Winning Margin</option>
 <option value="abs(e.diff_1216)">2012 to 2016 Shift in Winning Margin</option>
