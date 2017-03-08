@@ -34,7 +34,8 @@ tr:nth-child(even) {
 <div id="primary"> <div id="content" role="main"> </div><!-- #content -->
 <form method="post" id="election_analysis" action="">
 <h1> 2016 Election Analysis by County </h1> 
-<h3> Information about the data used as well as the source for the data can be found at our <a href="http://localhost/information.php">information page</a>. </h3>
+<h3> Information about the data used as well as our sources can be found at our <a href="http://localhost/information.php">information page</a>. </h3>
+<h5> You can access our <a href="http://localhost/regression.php">regression tool</a> directly or below with other tools. </h5>
 <h4> <i> Steps 1-4 create the raw data table displayed below. This data is used to generate optional correlation/regression analysis in steps 5-6.</i> </h4>
 
 <h2> 1. Select States or a Particular County </h2>
@@ -7554,7 +7555,8 @@ putenv("PYTHONPATH=$path");
 apache_setenv("PYTHONPATH", "$path");
 //Correlation Heat Map
 if(!empty($_POST["corr_field"])) {
-  $command2 = "python3 correlationmap.py" . " \"" . $_POST["corr_field"] . "\" \"" . $command . "\" ". " 2>&1";
+  echo "<center>";
+  $command2 = "python3 correlationmap.py" . " \"" . $_POST["corr_field"] . "\" \"" . $command . "\" 2>&1";
   //echo $command2;
   $pid = popen( $command2, "r");
   while( !feof( $pid ) )
@@ -7565,10 +7567,11 @@ if(!empty($_POST["corr_field"])) {
   usleep(100000);
   }
   pclose($pid);
+  echo "</center>";
 }
 //Regression
 if(!empty($_POST["outcome"] && !empty($_POST["predictor"]))) {
-  $command2 = "python3 linreg2.py" . " \"" . $_POST["outcome"] . "\" \"" . $_POST["predictor"] . "\" \"" . $w_command . "\" ". "2>&1";
+  $command2 = "python3 linreg2.py" . " \"" . $_POST["outcome"] . "\" \"" . $_POST["predictor"] . "\" \"" . $w_command . "\" ";
   //echo $command2;
   $pid = popen( $command2, "r");
   while( !feof( $pid ) )
