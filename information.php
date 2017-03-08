@@ -23,7 +23,7 @@
 <b> diff_1216 </b>: win_marg_16 - win_marg_12 <br>
 <b> direction_1216 </b>: 'Dem' if diff_1216 is positive, 'Gop' otherwise <br>
 <b> diff_0816 </b>: win_marg_16 - win_marg_08 <br>
-<b> direction_0816 </b>: 'Dem' if diff_0816 is positive, 'Gop' otherwise <br>"
+<b> direction_0816 </b>: 'Dem' if diff_0816 is positive, 'Gop' otherwise <br>
 <h3> Demographic Data </h3>
 <h4>All data is from United States Government agencies </h4>
 <h5> Find more data at the United States Census Bureau's <a href="https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml">Fact Finder</a> and <a href="https://data.gov">Data.gov</a></h5>
@@ -36,7 +36,7 @@
 <b> median_inc </b>: Median income (by household) <br>
 <li> For more income and poverty data and an interactive map, see <a href="https://www.census.gov/did/www/saipe/data/">US Census SAIPE Data</a>  <br>
 <b> gini </b>: Gini index coefficient; a measure of weatlh <br>
-<li> Ranges from 0 to 1, 1 being the most unequal and 0 being least. See <a href="https://en.wikipedia.org/wiki/Gini_coefficient">here</a> for more.</li> <br>
+<li> Ranges from 0 to 1, 1 being the most unequal and 0 being least. See <a href="https://en.wikipedia.org/wiki/Gini_coefficient">here</a> for more.</li> 
 <b> manu_per </b>: Percent labor force employed in manufacturing <br>
 <li> Reported on American Community Survey, see the ACS program <a href="https://www.census.gov/programs-surveys/acs/">here</a> <br>
 <b> salary_workers </b>: Percent labor force employed in salaried occupations <br>
@@ -76,8 +76,8 @@
 <li> Unemployment rate (U-3). Find more at <a href="https://www.bls.gov/lau/#cntyaa">BLS Data at the county level</a>.  See <a href="#Notes">Notes</a>. <br>
 <b> unemployment_rate_difference_2008_to_2015 </b>: unemployment_rate_2015 - unemployment_rate_2008 <br>
 <b> unemployment_rate_difference_2012_to_2015 </b>: unemployment_rate_2015 - unemployment_rate_2012 <br>
-<b> labor_Force_Percent_Difference_2008_to_2015 </b>: Labor force percent difference 2008-2015 <br>
-<b> labor_Force_Percent_Difference_2012_to_2015 </b>: Labor force percent difference 2012-2015
+<b> labor_Force_Percent_Difference_2008_to_2015 </b>: Difference in labor force participation rate from 2008-2015 <br>
+<b> labor_Force_Percent_Difference_2012_to_2015 </b>: Difference in labor force participation rate from 2012-2015
 <br>
 <br>
 <b> Notes:</b> <a name="Notes"></a> The Bureau of Labor Statistics revised its estimation methodology for 

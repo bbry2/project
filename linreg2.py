@@ -32,8 +32,7 @@ def regression(predictor, outcome, w_command):
     for result in results:
         predictors.append(result[0])
         outcomes.append(result[1])
-    elif sys.version[:1] == '3':
-        slope, intercept, r_value, p_value, std_err = stats.linregress(predictors, outcomes)
+    slope, intercept, r_value, p_value, std_err = stats.linregress(predictors, outcomes)
     lower_b1 = slope - 1.96*std_err
     upper_b1 = slope + 1.96*std_err
     p_value = float(p_value)
@@ -72,7 +71,6 @@ def regression(predictor, outcome, w_command):
     string = mpld3.fig_to_html(fig,template_type="simple")
 
     print(string)
-    print("<b> <u> Raw Data </u> </b> <br>")	
 	
 
 
