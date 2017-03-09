@@ -6712,10 +6712,10 @@ tr:nth-child(even) {
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
 <option value="d.health_cov">2012 to 2015 Difference in Medicare Coverage</option>
 <option value="d.health_cov_per">2012 to 2015 Difference in Medicare Coverage Percent</option>
-<option value="d.white_per">Percent of Population White</option>
-<option value="d.hispanic_per">Percent of Population Hispanic</option>
-<option value="d.black_per">Percent of Population Black</option>
-<option value="d.asian_per">Percent of Population Asian</option>
+<option value="d.white_per">2012 to 2015 Difference in Percent of Population White</option>
+<option value="d.hispanic_per">2012 to 2015 Difference in Percent of Population Hispanic</option>
+<option value="d.black_per">2012 to 2015 Difference in Percent of Population Black</option>
+<option value="d.asian_per">2012 to 2015 Difference in Percent of Population Asian</option>
 <option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
 <option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
 <option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
@@ -6760,23 +6760,23 @@ tr:nth-child(even) {
 <option value="e.dem_16_perc">Percentage Democratic Votes 2016</option>
 <option value="e.gop_16_perc">Percentage Republican Votes 2016</option>
 <option value="e.oth_16_perc">Percentage Third Party Votes 2016</option>
-<option value="e.oth_16_perc">Percentage Winning Margin 2016</option>
-<option value="abs(e.diff_0812)">2008 to 2012 Shift in Winning Margin</option>
-<option value="abs(e.diff_0816)">2008 to 2016 Shift in Winning Margin</option>
-<option value="abs(e.diff_1216)">2012 to 2016 Shift in Winning Margin</option>
+<option value="e.win_marg_16">Percentage Winning Margin 2016</option>
+<option value="e.diff_0812">2008 to 2012 Shift in Winning Margin</option>
+<option value="e.diff_0816">2008 to 2016 Shift in Winning Margin</option>
+<option value="e.diff_1216">2012 to 2016 Shift in Winning Margin</option>
 <option value="u.unemployment_rate_2008">2008 Unemployment Rate</option>
 <option value="u.unemployment_rate_2012">2012 Unemployment Rate</option>
 <option value="u.unemployment_rate_2015">2015 Unemployment Rate</option>
 <option value="u.unemployed_2008">2008 Total Unemployment</option>
 <option value="u.unemployed_2012">2012 Total Unemployment</option>
 <option value="u.unemployed_2015">2015 Total Unemployment</option>
-<option value="abs(u.unemployment_rate_difference_2008_to_2015)">Difference in Unemployment Rate 2008 to 2015</option>
-<option value="abs(u.unemployment_rate_difference_2012_to_2015)">Difference in Unemployment Rate 2012 to 2015</option>
+<option value="u.unemployment_rate_difference_2008_to_2015">Difference in Unemployment Rate 2008 to 2015</option>
+<option value="u.unemployment_rate_difference_2012_to_2015">Difference in Unemployment Rate 2012 to 2015</option>
 <option value="u.civilian_labor_force_2008">Civilian Labor Force in 2008</option>
 <option value="u.civilian_labor_force_2012">Civilian Labor Force in 2012</option>
 <option value="u.civilian_labor_force_2015">Civilian Labor Force in 2015</option>
-<option value="abs(u.labor_Force_Percent_Difference_2008_to_2015)">Difference in Labor Force Participation Rate 2008 to 2015</option>
-<option value="abs(u.labor_Force_Percent_Difference_2012_to_2015)">Difference in Labor Force Participation Rate 2012 to 2015</option>
+<option value="u.labor_Force_Percent_Difference_2008_to_2015">Difference in Labor Force Participation Rate 2008 to 2015</option>
+<option value="u.labor_Force_Percent_Difference_2012_to_2015">Difference in Labor Force Participation Rate 2012 to 2015</option>
 <option value="fd12.population">Total Population in 2012</option>
 <option value="fd12.median_age">Median Age in 2012</option>
 <option value="fd12.health_cov">Medicare Coverage in 2012</option>
@@ -6831,10 +6831,10 @@ tr:nth-child(even) {
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
 <option value="d.health_cov">2012 to 2015 Difference in Medicare Coverage</option>
 <option value="d.health_cov_per">2012 to 2015 Difference in Medicare Coverage Percent</option>
-<option value="d.white_per">Percent of Population White</option>
-<option value="d.hispanic_per">Percent of Population Hispanic</option>
-<option value="d.black_per">Percent of Population Black</option>
-<option value="d.asian_per">Percent of Population Asian</option>
+<option value="d.white_per">2012 to 2015 Difference in Percent of Population White</option>
+<option value="d.hispanic_per">2012 to 2015 Difference inPercent of Population Hispanic</option>
+<option value="d.black_per">2012 to 2015 Difference inPercent of Population Black</option>
+<option value="d.asian_per">2012 to 2015 Difference inPercent of Population Asian</option>
 <option value="d.male_pop">2012 to 2015 Difference in Male Population</option>
 <option value="d.male_per">2012 to 2015 Difference in Percent of Population Male</option>
 <option value="d.female_pop">2012 to 2015 Difference in Female Population</option>
@@ -6933,598 +6933,598 @@ if(!empty($_POST["winner_08_criterion"]) || !empty($_POST["winner_12_criterion"]
 //Table names: election_results=e, fd12, fd15, diff12_15=d, unemployment=u
 $f_command = " FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code ";
 $s_command = "SELECT e.county, e.state";
-$display = "<b> County, State | </b>";
+$summary_data_commands = array();
 $array = array();
 $array[] = "County, State";
 //Put together SELECT command and header
 if (!empty($_POST["total_2008"])) {
     $s_command = $s_command . ", total_2008 ";
-    $display = $display . "  2008 Total Votes | ";
+    $summary_data[] = ", AVG(total_2008) ";
     $array[] = "2008 Total Votes";
   }
 if (!empty($_POST["dem_2008"])) {
     $s_command = $s_command . ", dem_2008 ";
-    $display = $display . "  2008 Democratic Votes | ";
+    $summary_data[] = ", AVG(dem_2008) ";
     $array[] = "2008 Democratic Votes";
   }
 if (!empty($_POST["gop_2008"])) {
     $s_command = $s_command . ", gop_2008 ";
-    $display = $display . "  2008 Republican Votes | ";
+    $summary_data[] = ", AVG(gop_2008) ";
     $array[] = "2008 Republican Votes";
   }
 if (!empty($_POST["oth_2008"])) {
     $s_command = $s_command . ", oth_2008 ";
-    $display = $display . "  2008 Third Party Votes | ";
+    $summary_data[] = ", AVG(oth_2008) ";
     $array[] = "2008 Third Party Votes";
   }
 if (!empty($_POST["dem_08_perc"])) {
     $s_command = $s_command . ", e.dem_08_perc*100 ";
-    $display = $display . "  2008 Democratic Vote Proportion | ";
+    $summary_data[] = ", AVG(e.dem_08_perc*100) ";
     $array[] = "2008 Democratic Vote %";
   }
 if (!empty($_POST["gop_08_perc"])) {
     $s_command = $s_command . ", e.gop_08_perc*100 ";
-    $display = $display . "  2008 Republican Vote Proportion | ";
+    $summary_data[] = ", AVG(e.gop_08_perc*100) ";
     $array[] = "2008 Republican Vote %";
   }
 if (!empty($_POST["oth_08_perc"])) {
     $s_command = $s_command . ", e.oth_08_perc*100 ";
-    $display = $display . "  2008 Third Party Vote Proportion | ";
+    $summary_data[] = ", AVG(e.oth_08_perc*100) ";
     $array[] = "2008 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_08"])) {
-    $s_command = $s_command . ", abs(e.win_marg_08)*100 ";
-    $display = $display . "  2008 Winning Margin % | ";
+    $s_command = $s_command . ", e.win_marg_08*100 ";
+    $summary_data[] = ", AVG(e.win_marg_08*100) ";
     $array[] = "2008 Winning Margin %";
   }
 if (!empty($_POST["winner_08"])) {
     $s_command = $s_command . ", winner_08 ";
-    $display = $display . "  2008 Winner | ";
+    $summary_data[] = ", 9999999999 ";
     $array[] = "2008 Winner";
   }
 if (!empty($_POST["winner_12"])) {
     $s_command = $s_command . ", winner_12 ";
-    $display = $display . "  2012 Winner | ";
+    $summary_data[] = ", 9999999999 ";
     $array[] = "2012 Winner";
   }
 if (!empty($_POST["winner_16"])) {
     $s_command = $s_command . ", winner_16 ";
-    $display = $display . "  2016 Winner | ";
+    $summary_data[] = ", 9999999999 ";
     $array[] = "2016 Winner";
   }
 if (!empty($_POST["total_2012"])) {
     $s_command = $s_command . ", total_2012 ";
-    $display = $display . "  2012 Total Votes | ";
+    $summary_data[] = ", AVG(total_2012) ";
     $array[] = "2012 Total Votes";
   }
 if (!empty($_POST["dem_2012"])) {
     $s_command = $s_command . ", dem_2012 ";
-    $display = $display . "  2012 Total Democratic Votes | ";
+    $summary_data[] = ", AVG(dem_2012) ";
     $array[] = "2012 Total Democratic Votes";
   }
 if (!empty($_POST["gop_2012"])) {
     $s_command = $s_command . ", gop_2012 ";
-    $display = $display . "  2012 Total Republican Votes | ";
+    $summary_data[] = ", AVG(gop_2012) ";
     $array[] = "2012 Total Republican Votes";
   }
 if (!empty($_POST["oth_2012"])) {
     $s_command = $s_command . ", oth_2012 ";
-    $display = $display . "  2012 Total Third Party Votes | ";
+    $summary_data[] = ", AVG(oth_2012) ";
     $array[] = "2012 Total Third Party Votes";
   }
 if (!empty($_POST["dem_12_perc"])) {
     $s_command = $s_command . ", e.dem_12_perc*100 ";
-    $display = $display . "  2012 Democratic Vote Proportion | ";
+    $summary_data[] = ", AVG(e.dem_12_perc*100) ";
     $array[] = "2012 Democratic Vote %";
   }
 if (!empty($_POST["gop_12_perc"])) {
     $s_command = $s_command . ", e.gop_12_perc*100 ";
-    $display = $display . "  2012 Republican Vote Proportion | ";
+    $summary_data[] = ", AVG(e.gop_12_perc*100) ";
     $array[] = "2012 Republican Vote %";
   }
 if (!empty($_POST["oth_12_perc"])) {
     $s_command = $s_command . ", e.oth_12_perc*100 ";
-    $display = $display . "  2012 Third Party Vote Proportion | ";
+    $summary_data[] = ", AVG(e.oth_12_perc*100) ";
     $array[] = "2012 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_12"])) {
-    $s_command = $s_command . ", abs(e.win_marg_12)*100 ";
-    $display = $display . "  2012 Winning Margin % ";
+    $s_command = $s_command . ", e.win_marg_12*100 ";
+    $summary_data[] = ", AVG(e.win_marg_12*100) ";
     $array[] = "2012 Winning Margin %";
   }
 if (!empty($_POST["total_2016"])) {
     $s_command = $s_command . ", total_2016 ";
-    $display = $display . "  2016 Total Votes | ";
+    $summary_data[] = ", AVG(total_2016) ";
     $array[] = "2016 Total Votes";
   }
 if (!empty($_POST["dem_2016"])) {
     $s_command = $s_command . ", dem_2016 ";
-    $display = $display . "  2016 Total Democratic Votes | ";
+    $summary_data[] = ", AVG(dem_2016) ";
     $array[] = "2016 Total Democratic Votes";
   }
 if (!empty($_POST["gop_2016"])) {
     $s_command = $s_command . ", gop_2016 ";
-    $display = $display . "  2016 Total Republican Votes | ";
+    $summary_data[] = ", AVG(gop_2016) ";
     $array[] = "2016 Total Republican Votes";
   }
 if (!empty($_POST["oth_2016"])) {
     $s_command = $s_command . ", oth_2016 ";
-    $display = $display . "  2016 Total Third Party Votes | ";
+    $summary_data[] = ", AVG(oth_2016) ";
     $array[] = "2016 Total Third Party Votes";
   }
 if (!empty($_POST["dem_16_perc"])) {
     $s_command = $s_command . ", e.dem_16_perc*100 ";
-    $display = $display . "  2016 Democratic Vote Proportion | ";
+    $summary_data[] = ", AVG(e.dem_16_perc*100) ";
     $array[] = "2016 Democratic Vote %";
   }
 if (!empty($_POST["gop_16_perc"])) {
     $s_command = $s_command . ", e.gop_16_perc*100 ";
-    $display = $display . "  2016 Republican Vote Proportion | ";
+    $summary_data[] = ", AVG(e.gop_16_perc*100) ";
     $array[] = "2016 Republican Vote %";
   }
 if (!empty($_POST["oth_16_perc"])) {
     $s_command = $s_command . ", e.oth_16_perc*100 ";
-    $display = $display . "  2016 Third Party Vote Proportion | ";
+    $summary_data[] = ", AVG(e.oth_16_perc*100) ";
     $array[] = "2016 Third Party Vote %";
   }
 if (!empty($_POST["win_marg_16"])) {
-    $s_command = $s_command . ", abs(e.win_marg_16)*100 ";
-    $display = $display . "  2016 Winning Margin % | ";
+    $s_command = $s_command . ", e.win_marg_16*100 ";
+    $summary_data[] = ", AVG(e.win_marg_16*100) ";
     $array[] = "2016 Winning Margin %";
   }
 if (!empty($_POST["diff_0816"])) {
     $s_command = $s_command . ", e.diff_0816*100 ";
-    $display = $display . "  % Difference 2008 to 2016 in Winning Margin | ";
+    $summary_data[] = ", AVG(e.diff_0816*100) ";
     $array[] = "2008 to 2016 Difference In Winning Margin %";
   }
 if (!empty($_POST["diff_0812"])) {
     $s_command = $s_command . ", e.diff_0812*100 ";
-    $display = $display . " % Difference 2008 to 2012 in Winning Margin | ";
+    $summary_data[] = ", AVG(e.diff_0812*100) ";
     $array[] = "2008 to 2012 Difference In Winning Margin %";
   }
 if (!empty($_POST["diff_1216"])) {
     $s_command = $s_command . ", e.diff_1216*100 ";
-    $display = $display . "  % Difference 2012 to 2016 in Winning Margin | ";
+    $summary_data[] = ", AVG(e.diff_0812*100) ";
     $array[] = "2012 to 2016 Difference In Winning Margin %";
   }
 if (!empty($_POST["civilian_labor_force_2008"])) {
     $s_command = $s_command . ", civilian_labor_force_2008 ";
-    $display = $display . "  2008 Civ Labor Force | ";
+    $summary_data[] = ", AVG(civilian_labor_force_2008) ";
     $array[] = "2008 Civilian Labor Force";
   }
 if (!empty($_POST["civilian_labor_force_2012"])) {
     $s_command = $s_command . ", civilian_labor_force_2012 ";
-    $display = $display . "  2012 Civ Labor Force | ";
+    $summary_data[] = ", AVG(civilian_labor_force_2012) ";
     $array[] = "2012 Civilian Labor Force";
   }
 if (!empty($_POST["civilian_labor_force_2015"])) {
     $s_command = $s_command . ", civilian_labor_force_2015 ";
-    $display = $display . "  2015 Civ Labor Force | ";
+    $summary_data[] = ", AVG(civilian_labor_force_2015) ";
     $array[] = "2015 Civilian Labor Force";
   }
 if (!empty($_POST["unemployed_2008"])) {
     $s_command = $s_command . ", unemployed_2008 ";
-    $display = $display . "  2008 Total Unemployed | ";
+    $summary_data[] = ", AVG(unemployed_2008) ";
     $array[] = "2008 Unemployed";
   }
 if (!empty($_POST["unemployed_2012"])) {
     $s_command = $s_command . ", unemployed_2012 ";
-    $display = $display . "  2012 Total Unemployed | ";
+    $summary_data[] = ", AVG(unemployed_2012) ";
     $array[] = "2012 Unemployed";
   }
 if (!empty($_POST["unemployed_2015"])) {
     $s_command = $s_command . ", unemployed_2015 ";
-    $display = $display . "  2015 Total Unemployed | ";
+    $summary_data[] = ", AVG(unemployed_2015) ";
     $array[] = "2015 Unemployed";
   }
 if (!empty($_POST["unemployment_rate_2008"])) {
     $s_command = $s_command . ", unemployment_rate_2008 ";
-    $display = $display . "  2008 Unemployment % | ";
+    $summary_data[] = ", AVG(unemployment_rate_2008) ";
     $array[] = "2008 Unemployed Rate %";
   }
 if (!empty($_POST["unemployment_rate_2012"])) {
     $s_command = $s_command . ", unemployment_rate_2012 ";
-    $display = $display . "  2012 Unemployment % | ";
+    $summary_data[] = ", AVG(unemployment_rate_2012) ";
     $array[] = "2012 Unemployed Rate %";
   }
 if (!empty($_POST["unemployment_rate_2015"])) {
     $s_command = $s_command . ", unemployment_rate_2015 ";
-    $display = $display . "  2015 Unemployment % | ";
+    $summary_data[] = ", AVG(unemployment_rate_2015) ";
     $array[] = "2015 Unemployed Rate %";
   }
 if (!empty($_POST["unemployment_rate_difference_2008_to_2015"])) {
     $s_command = $s_command . ", unemployment_rate_difference_2008_to_2015 ";
-    $display = $display . "  2008 to 2015 Unemployment % Difference | ";
+    $summary_data[] = ", AVG(unemployment_rate_difference_2008_to_2015) ";
     $array[] = "2008 to 2015 Unemployed Rate % Difference";
   }
 if (!empty($_POST["unemployment_rate_difference_2012_to_2015"])) {
     $s_command = $s_command . ", unemployment_rate_difference_2012_to_2015 ";
-    $display = $display . "  2012 to 2015 Unemployment % Difference | ";
+    $summary_data[] = ", AVG(unemployment_rate_difference_2012_to_2015) ";
     $array[] = "2012 to 2015 Unemployed Rate % Difference";
   }
 if (!empty($_POST["labor_Force_Percent_Difference_2008_to_2015"])) {
     $s_command = $s_command . ", labor_Force_Percent_Difference_2008_to_2015 ";
-    $display = $display . "  2008 to 2015 Labor Force % Difference | ";
+    $summary_data[] = ", AVG(labor_Force_Percent_Difference_2008_to_2015) ";
     $array[] = "2008 to 2015 Labor Force % Difference";
   }
 if (!empty($_POST["labor_Force_Percent_Difference_2012_to_2015"])) {
     $s_command = $s_command . ", labor_Force_Percent_Difference_2012_to_2015 ";
-    $display = $display . "  2012 to 2015 Labor Force % Difference | ";
+    $summary_data[] = ", AVG(labor_Force_Percent_Difference_2012_to_2015) ";
     $array[] = "2012 to 2015 Labor Force % Difference";
   }
 if (!empty($_POST["population_12"])) {
     $s_command = $s_command . ", fd12.population ";
-    $display = $display . "  2012 Population | ";
+    $summary_data[] = ", AVG(fd12.population) ";
     $array[] = "2012 Population";
   }
 if (!empty($_POST["health_cov_12"])) {
     $s_command = $s_command . ", fd12.health_cov ";
-    $display = $display . "  2012 Medicare Coverage | ";
+    $summary_data[] = ", AVG(fd12.health_cov) ";
     $array[] = "2012 Medicare Coverage";
   }
 if (!empty($_POST["health_cov_per_12"])) {
     $s_command = $s_command . ", fd12.health_cov_per ";
-    $display = $display . "  2012 Medicare Coverage % | ";
+    $summary_data[] = ", AVG(fd12.health_cov_per) ";
     $array[] = "2012 Medicare Coverage %";
   }
 if (!empty($_POST["median_age_12"])) {
     $s_command = $s_command . ", fd12.median_age ";
-    $display = $display . "  2012 Median Age | ";
+    $summary_data[] = ", AVG(fd12.median_age) ";
     $array[] = "2012 Median Age";
   }
 if (!empty($_POST["median_inc_12"])) {
     $s_command = $s_command . ", fd12.median_inc ";
-    $display = $display . "  2012 Median Income | ";
+    $summary_data[] = ", AVG(fd12.median_inc) ";
     $array[] = "2012 Median Income";
   }
 if (!empty($_POST["gini_12"])) {
     $s_command = $s_command . ", fd12.gini ";
-    $display = $display . "  2012 Gini Coefficient | ";
+    $summary_data[] = ", AVG(fd12.gini) ";
     $array[] = "2012 Gini Coefficient";
 }
 if (!empty($_POST["manu_per_12"])) {
     $s_command = $s_command . ", fd12.manu_per ";
-    $display = $display . "  2012 Manufacturing % | ";
+    $summary_data[] = ", AVG(fd12.manu_per) ";
     $array[] = "2012 % of Workforce in Manufacturing ";
 }
 if (!empty($_POST["salary_workers_12"])) {
     $s_command = $s_command . ", fd12.salary_workers ";
-    $display = $display . "  2012 Salaried Workers % | ";
+    $summary_data[] = ", AVG(fd12.salary_workers) ";
     $array[] = "2012 % of Workforce Salaried ";
 }
 if (!empty($_POST["self_employed_12"])) {
     $s_command = $s_command . ", fd12.self_employed ";
-    $display = $display . "  2012 Self-Employed % | ";
+    $summary_data[] = ", AVG(fd12.self_employed) ";
     $array[] = "2012 % of Workforce Self-Employed ";
 }
 if (!empty($_POST["pop_citizen_12"])) {
     $s_command = $s_command . ", fd12.pop_citizen ";
-    $display = $display . "  2012 Citizen Population | ";
+    $summary_data[] = ", AVG(fd12.pop_citizen) ";
     $array[] = "2012 Citizen Population";
 }
 if (!empty($_POST["cit_by_nat_12"])) {
     $s_command = $s_command . ", fd12.cit_by_nat ";
-    $display = $display . "  2012 Naturalized Citizen | ";
+    $summary_data[] = ", AVG(fd12.cit_by_nat) ";
     $array[] = "2012 Naturalized Citizen Population";
 }
 if (!empty($_POST["cit_by_nat_per_12"])) {
     $s_command = $s_command . ", fd12.cit_by_nat_per ";
-    $display = $display . "  2012 Naturalized Citizen % | ";
+    $summary_data[] = ", AVG(fd12.cit_by_nat_per) ";
     $array[] = "2012 Naturalized Citizen Population %";
 }
 if (!empty($_POST["not_cit_12"])) {
     $s_command = $s_command . ", fd12.not_cit ";
-    $display = $display . "  2012 Non-Citizen Population | ";
+    $summary_data[] = ", AVG(fd12.not_cit) ";
     $array[] = "2012 Non-Citizen Population";
 }
 if (!empty($_POST["not_cit_per_12"])) {
     $s_command = $s_command . ", fd12.not_cit_per ";
-    $display = $display . "  2012 Non-Citizen Population % | ";
+    $summary_data[] = ", AVG(fd12.not_cit_per) ";
     $array[] = "2012 Non-Citizen Population %";
 }
 if (!empty($_POST["bach_or_higher_per_12"])) {
     $s_command = $s_command . ", fd12.bach_or_higher_per ";
-    $display = $display . "  2012 Bachelor's Or Higher % | ";
+    $summary_data[] = ", AVG(fd12.bach_or_higher_per) ";
     $array[] = "2012 Bachelor's Or Higher %";
 }
 if (!empty($_POST["less_than_hs_per_12"])) {
     $s_command = $s_command . ", fd12.less_than_hs_per ";
-    $display = $display . "  2012 Less Than High School % | ";
+    $summary_data[] = ", AVG(fd12.less_than_hs_per) ";
     $array[] = "2012 Less Than High School %";
 }
 if (!empty($_POST["white_per_12"])) {
     $s_command = $s_command . ", fd12.white_per ";
-    $display = $display . "  2012 White % | ";
+    $summary_data[] = ", AVG(fd12.white_per) ";
     $array[] = "2012 White %";
 }
 if (!empty($_POST["hispanic_per_12"])) {
     $s_command = $s_command . ", fd12.hispanic_per ";
-    $display = $display . "  2012 Hispanic % | ";
+    $summary_data[] = ", AVG(fd12.hispanic_per) ";
     $array[] = "2012 Hispanic %";
 }
 if (!empty($_POST["black_per_12"])) {
     $s_command = $s_command . ", fd12.black_per ";
-    $display = $display . "  2012 Black % | ";
+    $summary_data[] = ", AVG(fd12.black_per) ";
     $array[] = "2012 Black %";
 }
 if (!empty($_POST["asian_per_12"])) {
     $s_command = $s_command . ", fd12.asian_per ";
-    $display = $display . "  2012 Asian % | ";
+    $summary_data[] = ", AVG(fd12.asian_per) ";
     $array[] = "2012 Asian %";
 }
 if (!empty($_POST["male_pop_12"])) {
     $s_command = $s_command . ", fd12.male_pop ";
-    $display = $display . "  2012 Male Population | ";
+    $summary_data[] = ", AVG(fd12.male_pop) ";
     $array[] = "2012 Male Population";
 }
 if (!empty($_POST["male_per_12"])) {
     $s_command = $s_command . ", fd12.male_per ";
-    $display = $display . "  2012 Male Population % | ";
+    $summary_data[] = ", AVG(fd12.male_per) ";
     $array[] = "2012 Male Population %";
 }
 if (!empty($_POST["female_pop_12"])) {
     $s_command = $s_command . ", fd12.female_pop ";
-    $display = $display . "  2012 Female Population | ";
+    $summary_data[] = ", AVG(fd12.female_pop) ";
     $array[] = "2012 Female Population";
 }
 if (!empty($_POST["female_per_12"])) {
     $s_command = $s_command . ", fd12.female_per ";
-    $display = $display . "  2012 Female Population % | ";
+    $summary_data[] = ", AVG(fd12.female_per) ";
     $array[] = "2012 Female Population %";
 } 
 if (!empty($_POST["poverty_12"])) {
     $s_command = $s_command . ", fd12.poverty ";
-    $display = $display . "  2012 In Poverty % | ";
+    $summary_data[] = ", AVG(fd12.poverty) ";
     $array[] = "2012 % In Poverty";
 } 
 if (!empty($_POST["population_15"])) {
     $s_command = $s_command . ", fd15.population ";
-    $display = $display . "  2015 Population | ";
+    $summary_data[] = ", AVG(fd15.population) ";
     $array[] = "2015 Population";
   }
 if (!empty($_POST["health_cov_15"])) {
     $s_command = $s_command . ", fd15.health_cov ";
-    $display = $display . "  2015 Medicare Coverage | ";
+    $summary_data[] = ", AVG(fd15.health_cov) ";
     $array[] = "2015 Medicare Coverage";
   }
 if (!empty($_POST["health_cov_per_15"])) {
     $s_command = $s_command . ", fd15.health_cov_per ";
-    $display = $display . "  2015 Medicare Coverage % | ";
+    $summary_data[] = ", AVG(fd15.health_cov_per) ";
     $array[] = "2015 Medicare Coverage %";
   }
 if (!empty($_POST["median_age_15"])) {
     $s_command = $s_command . ", fd15.median_age ";
-    $display = $display . "  2015 Median Age | ";
+    $summary_data[] = ", AVG(fd15.median_age) ";
     $array[] = "2015 Median Age";
   }
 if (!empty($_POST["median_inc_15"])) {
     $s_command = $s_command . ", fd15.median_inc ";
-    $display = $display . "  2015 Median Income | ";
+    $summary_data[] = ", AVG(fd15.median_inc) ";
     $array[] = "2015 Median Income";
   }
 if (!empty($_POST["gini_15"])) {
     $s_command = $s_command . ", fd15.gini ";
-    $display = $display . "  2015 Gini Coefficient | ";
+    $summary_data[] = ", AVG(fd15.gini) ";
     $array[] = "2015 Gini Coefficient";
 }
 if (!empty($_POST["manu_per_15"])) {
     $s_command = $s_command . ", fd15.manu_per ";
-    $display = $display . "  2015 Manufacturing % | ";
+    $summary_data[] = ", AVG(fd15.manu_per) ";
     $array[] = "2015 % of Workforce in Manufacturing ";
 }
 if (!empty($_POST["salary_workers_15"])) {
     $s_command = $s_command . ", fd15.salary_workers ";
-    $display = $display . "  2015 Salaried Workers % | ";
+    $summary_data[] = ", AVG(fd15.salary_workers) ";
     $array[] = "2015 % of Workforce Salaried ";
 }
 if (!empty($_POST["self_employed_15"])) {
     $s_command = $s_command . ", fd15.self_employed ";
-    $display = $display . "  2015 Self-Employed % | ";
+    $summary_data[] = ", AVG(fd15.self_employed) ";
     $array[] = "2015 % of Workforce Self-Employed ";
 }
 if (!empty($_POST["pop_citizen_15"])) {
     $s_command = $s_command . ", fd15.pop_citizen ";
-    $display = $display . "  2015 Citizen Population | ";
+    $summary_data[] = ", AVG(fd15.pop_citizen) ";
     $array[] = "2015 Citizen Population";
 }
 if (!empty($_POST["cit_by_nat_15"])) {
     $s_command = $s_command . ", fd15.cit_by_nat ";
-    $display = $display . "  2015 Naturalized Citizen | ";
+    $summary_data[] = ", AVG(fd15.cit_by_nat) ";
     $array[] = "2015 Naturalized Citizen Population";
 }
 if (!empty($_POST["cit_by_nat_per_15"])) {
     $s_command = $s_command . ", fd15.cit_by_nat_per ";
-    $display = $display . "  2015 Naturalized Citizen % | ";
+    $summary_data[] = ", AVG(fd15.cit_by_nat_per) ";
     $array[] = "2015 Naturalized Citizen Population %";
 }
 if (!empty($_POST["not_cit_15"])) {
     $s_command = $s_command . ", fd15.not_cit ";
-    $display = $display . "  2015 Non-Citizen Population | ";
+    $summary_data[] = ", AVG(fd15.not_cit) ";
     $array[] = "2015 Non-Citizen Population";
 }
 if (!empty($_POST["not_cit_per_15"])) {
     $s_command = $s_command . ", fd15.not_cit_per ";
-    $display = $display . "  2015 Non-Citizen Population % | ";
+    $summary_data[] = ", AVG(fd15.not_cit_per) ";
     $array[] = "2015 Non-Citizen Population %";
 }
 if (!empty($_POST["bach_or_higher_per_15"])) {
     $s_command = $s_command . ", fd15.bach_or_higher_per ";
-    $display = $display . "  2015 Bachelor's Or Higher % | ";
+    $summary_data[] = ", AVG(fd15.bach_or_higher_per) ";
     $array[] = "2015 Bachelor's Or Higher %";
 }
 if (!empty($_POST["less_than_hs_per_15"])) {
     $s_command = $s_command . ", fd15.less_than_hs_per ";
-    $display = $display . "  2015 Less Than High School % | ";
+    $summary_data[] = ", AVG(fd15.less_than_hs_per) ";
     $array[] = "2015 Less Than High School %";
 }
 if (!empty($_POST["white_per_15"])) {
     $s_command = $s_command . ", fd15.white_per ";
-    $display = $display . "  2015 White % | ";
+    $summary_data[] = ", AVG(fd15.white_per) ";
     $array[] = "2015 White %";
 }
 if (!empty($_POST["hispanic_per_15"])) {
     $s_command = $s_command . ", fd15.hispanic_per ";
-    $display = $display . "  2015 Hispanic % | ";
+    $summary_data[] = ", AVG(fd15.hispanic_per) ";
     $array[] = "2015 Hispanic %";
 }
 if (!empty($_POST["black_per_15"])) {
     $s_command = $s_command . ", fd15.black_per ";
-    $display = $display . "  2015 Black % | ";
+    $summary_data[] = ", AVG(fd15.black_per) ";
     $array[] = "2015 Black %";
 }
 if (!empty($_POST["asian_per_15"])) {
     $s_command = $s_command . ", fd15.asian_per ";
-    $display = $display . "  2015 Asian % | ";
+    $summary_data[] = ", AVG(fd15.asian_per) ";
     $array[] = "2015 Asian %";
 }
 if (!empty($_POST["male_pop_15"])) {
     $s_command = $s_command . ", fd15.male_pop ";
-    $display = $display . "  2015 Male Population | ";
+    $summary_data[] = ", AVG(fd15.male_pop) ";
     $array[] = "2015 Male Population";
 }
 if (!empty($_POST["male_per_15"])) {
     $s_command = $s_command . ", fd15.male_per ";
-    $display = $display . "  2015 Male Population % | ";
+    $summary_data[] = ", AVG(fd15.male_per) ";
     $array[] = "2015 Male Population %";
 }
 if (!empty($_POST["female_pop_15"])) {
     $s_command = $s_command . ", fd15.female_pop ";
-    $display = $display . "  2015 Female Population | ";
+    $summary_data[] = ", AVG(fd15.female_pop) ";
     $array[] = "2015 Female Population";
 }
 if (!empty($_POST["female_per_15"])) {
     $s_command = $s_command . ", fd15.female_per ";
-    $display = $display . "  2015 Female Population % | ";
+    $summary_data[] = ", AVG(fd15.female_per) ";
     $array[] = "2015 Female Population %";
 } 
 if (!empty($_POST["poverty_15"])) {
     $s_command = $s_command . ", fd15.poverty ";
-    $display = $display . "  2015 In Poverty % | ";
+    $summary_data[] = ", AVG(fd15.poverty) ";
     $array[] = "2015 % In Poverty";
 }  
 if (!empty($_POST["population_d"])) {
     $s_command = $s_command . ", d.population ";
-    $display = $display . "  2012 to 2015 Difference In Population | ";
+    $summary_data[] = ", AVG(d.population) ";
     $array[] = "2012 to 2015 Difference In Population";
   }
 if (!empty($_POST["health_cov_d"])) {
     $s_command = $s_command . ", d.health_cov ";
-    $display = $display . "  2012 to 2015 Difference In Medicare Coverage | ";
+    $summary_data[] = ", AVG(d.health_cov) ";
     $array[] = "2012 to 2015 Difference In Medicare Coverage";
   }
 if (!empty($_POST["health_cov_per_d"])) {
     $s_command = $s_command . ", d.health_cov_per ";
-    $display = $display . "  2012 to 2015 Difference In Medicare Coverage % | ";
+    $summary_data[] = ", AVG(d.health_cov_per) ";
     $array[] = "2012 to 2015 Difference In Medicare Coverage %";
   }
 if (!empty($_POST["median_age_d"])) {
     $s_command = $s_command . ", d.median_age ";
-    $display = $display . "  2012 to 2015 Difference In Median Age | ";
+    $summary_data[] = ", AVG(d.median_age) ";
     $array[] = "2012 to 2015 Difference In Median Age";
   }
 if (!empty($_POST["median_inc_d"])) {
     $s_command = $s_command . ", d.median_inc ";
-    $display = $display . "  2012 to 2015 Difference In Median Income | ";
+    $summary_data[] = ", AVG(d.median_inc) ";
     $array[] = "2012 to 2015 Difference In Median Income";
   }
 if (!empty($_POST["gini_d"])) {
     $s_command = $s_command . ", d.gini ";
-    $display = $display . "  2012 to 2015 Difference In Gini Coefficient | ";
+    $summary_data[] = ", AVG(d.gini) ";
     $array[] = "2012 to 2015 Difference In Gini Coefficient";
 }
 if (!empty($_POST["manu_per_d"])) {
     $s_command = $s_command . ", d.manu_per ";
-    $display = $display . "  2012 to 2015 Difference In Manufacturing % | ";
+    $summary_data[] = ", AVG(d.manu_per) ";
     $array[] = "2012 to 2015 Difference In % of Workforce in Manufacturing ";
 }
 if (!empty($_POST["salary_workers_d"])) {
     $s_command = $s_command . ", d.salary_workers ";
-    $display = $display . "  2012 to 2015 Difference In Salaried Workers % | ";
+    $summary_data[] = ", AVG(d.salary_workers) ";
     $array[] = "2012 to 2015 Difference In % of Workforce Salaried ";
 }
 if (!empty($_POST["self_employed_d"])) {
     $s_command = $s_command . ", d.self_employed ";
-    $display = $display . "  2012 to 2015 Difference In Self-Employed % | ";
+    $summary_data[] = ", AVG(d.self_employed) ";
     $array[] = "2012 to 2015 Difference In % of Workforce Self-Employed ";
 }
 if (!empty($_POST["pop_citizen_d"])) {
     $s_command = $s_command . ", d.pop_citizen ";
-    $display = $display . "  2012 to 2015 Difference In Citizen Population | ";
+    $summary_data[] = ", AVG(d.pop_citizen) ";
     $array[] = "2012 to 2015 Difference In Citizen Population";
 }
 if (!empty($_POST["cit_by_nat_d"])) {
     $s_command = $s_command . ", d.cit_by_nat ";
-    $display = $display . "  2012 to 2015 Difference In Naturalized Citizen | ";
+    $summary_data[] = ", AVG(d.cit_by_nat) ";
     $array[] = "2012 to 2015 Difference In Naturalized Citizen Population";
 }
 if (!empty($_POST["cit_by_nat_per_d"])) {
     $s_command = $s_command . ", d.cit_by_nat_per ";
-    $display = $display . "  2012 to 2015 Difference In Naturalized Citizen % | ";
+    $summary_data[] = ", AVG(d.cit_by_nat_per) ";
     $array[] = "2012 to 2015 Difference In Naturalized Citizen Population %";
 }
 if (!empty($_POST["not_cit_d"])) {
     $s_command = $s_command . ", d.not_cit ";
-    $display = $display . "  2012 to 2015 Difference In Non-Citizen Population | ";
+    $summary_data[] = ", AVG(d.not_cit) ";
     $array[] = "2012 to 2015 Difference In Non-Citizen Population";
 }
 if (!empty($_POST["not_cit_per_d"])) {
     $s_command = $s_command . ", d.not_cit_per ";
-    $display = $display . "  2012 to 2015 Difference In Non-Citizen Population % | ";
+    $summary_data[] = ", AVG(d.not_cit_per) ";
     $array[] = "2012 to 2015 Difference In Non-Citizen Population %";
 }
 if (!empty($_POST["bach_or_higher_per_d"])) {
     $s_command = $s_command . ", d.bach_or_higher_per ";
-    $display = $display . "  2012 to 2015 Difference In Bachelor's Or Higher % | ";
+    $summary_data[] = ", AVG(d.bach_or_higher_per) ";
     $array[] = "2012 to 2015 Difference In Bachelor's Or Higher %";
 }
 if (!empty($_POST["less_than_hs_per_d"])) {
     $s_command = $s_command . ", d.less_than_hs_per ";
-    $display = $display . "  2012 to 2015 Difference In Less Than High School % | ";
+    $summary_data[] = ", AVG(d.less_than_hs_per) ";
     $array[] = "2012 to 2015 Difference In Less Than High School %";
 }
 if (!empty($_POST["white_per_d"])) {
     $s_command = $s_command . ", d.white_per ";
-    $display = $display . "  2012 to 2015 White %  Difference | ";
+    $summary_data[] = ", AVG(d.white_per) ";
     $array[] = "2012 to 2015 White %  Difference";
 }
 if (!empty($_POST["hispanic_per_d"])) {
     $s_command = $s_command . ", d.hispanic_per ";
-    $display = $display . "  2012 to 2015 Hispanic %  Difference | ";
+    $summary_data[] = ", AVG(d.hispanic_per) ";
     $array[] = "2012 to 2015 Hispanic %  Difference";
 }
 if (!empty($_POST["black_per_d"])) {
     $s_command = $s_command . ", d.black_per ";
-    $display = $display . "  2012 to 2015 Black %  Difference | ";
+    $summary_data[] = ", AVG(d.black_per) ";
     $array[] = "2012 to 2015 Black %  Difference";
 }
 if (!empty($_POST["asian_per_d"])) {
     $s_command = $s_command . ", d.asian_per ";
-    $display = $display . "  2012 to 2015 Asian %  Difference | ";
+    $summary_data[] = ", AVG(d.asian_per) ";
     $array[] = "2012 to 2015 Asian %  Difference";
 }
 if (!empty($_POST["male_pop_d"])) {
     $s_command = $s_command . ", d.male_pop ";
-    $display = $display . "  2012 to 2015 Difference In Male Population | ";
+    $summary_data[] = ", AVG(d.male_pop) ";
     $array[] = "2012 to 2015 Difference In Male Population";
 }
 if (!empty($_POST["male_per_d"])) {
     $s_command = $s_command . ", d.male_per ";
-    $display = $display . "  2012 to 2015 Difference In Male Population % | ";
+    $summary_data[] = ", AVG(d.male_per) ";
     $array[] = "2012 to 2015 Difference In Male Population %";
 }
 if (!empty($_POST["female_pop_d"])) {
     $s_command = $s_command . ", d.female_pop ";
-    $display = $display . "  2012 to 2015 Difference In Female Population | ";
+    $summary_data[] = ", AVG(d.female_pop) ";
     $array[] = "2012 to 2015 Difference In Female Population";
 }
 if (!empty($_POST["female_per_d"])) {
     $s_command = $s_command . ", d.female_per ";
-    $display = $display . "  2012 to 2015 Difference In Female Population % | ";
+    $summary_data[] = ", AVG(d.female_per) ";
     $array[] = "2012 to 2015 Difference In Female Population %";
 } 
 if (!empty($_POST["poverty_d"])) {
     $s_command = $s_command . ", d.poverty ";
-    $display = $display . "  2012 to 2015 Difference In In Poverty % | ";
+    $summary_data[] = ", AVG(d.poverty) ";
     $array[] = "2012 to 2015 Difference In % In Poverty";
 }  
 
@@ -7612,6 +7612,31 @@ foreach(array_keys($array) as $key){
 //var_dump($result->fetchArray());
 $output = $output . "</tr>";
 echo "<table>" . $output;
+//Get summary statistics
+$summary_command = "";
+foreach($summary_data as $summary_select){
+    $summary_command = $summary_command . $summary_select;
+}
+$summary_command = substr($summary_command, 2);
+$summary_command = "SELECT " . $summary_command;
+$summary_command = $summary_command . $f_command . $w_command . ";";
+//echo $summary_command;
+$summary_array = $db->query($summary_command);
+//var_dump($summary_array);
+while($row = $summary_array->fetchArray()){
+  //var_dump($row);
+  $output = "<tr> <td> <b> Column Average </b> </td>";
+  foreach(array_keys($row) as $key) {
+    if($key == 9999999999 && $row[$key] == "9999999999"){
+          $output = $output . "<td>(categorical data)</td>";
+      }
+    elseif(is_numeric($key) != 1){
+          $output = $output . "<td>" . round($row[$key], 2). "</td>";
+      }
+    }
+  $output = $output . "</tr>";
+  echo $output;
+}
 $county_link_temp = "";
 while($row = $result->fetchArray()){
   $count = 0;
