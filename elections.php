@@ -6870,20 +6870,26 @@ tr:nth-child(even) {
 <option value="W">--No Choice--</option>
 <option value="W">Winning Party</option>
 <option value="w">Winning Margin</option>
-<option value="d">Difference in Votes Cast for Democratic Party between 2012 and 2016</option>
-<option value="i">Median Income</option>
-<option value="a">Median Age</option>
-<option value="n">Percent of Population Not Citizens</option>
+<option value="d">Shift in Winning Margin between 2012 and 2016</option>
+<option value="i">2012 to 2015 Difference in Median Income</option>
+<option value="a">2012 to 2015 Difference in Median Age</option>
+<option value="n">2012 to 2015 Difference in Percent of Population Not Citizens</option>
+<option value="m">2012 to 2015 Difference in Percent Employment in Manufacturing</option>
+<option value="u">2012 to 2015 Difference in Unemployment Rate</option>
 </select>
 <label for="map_vars2"></label>
 <select name="map_vars2" id="map_vars2">
 <option value="W">--No Choice--</option>
 <option value="W">Winning Party</option>
 <option value="w">Winning Margin</option>
-<option value="d">Difference in Votes Cast for Democratic Party between 2012 and 2016</option>
-<option value="i">Median Income</option>
-<option value="a">Median Age</option>
-<option value="n">Percent of Population Not Citizens</option>
+<option value="d">Shift in Winning Margin between 2012 and 2016</option>
+<option value="i">2012 to 2015 Difference in Median Income</option>
+<option value="a">2012 to 2015 Difference in Median Age</option>
+<option value="n">2012 to 2015 Difference in Percent of Population Not Citizens</option>
+<option value="m">2012 to 2015 Difference in Percent Employment in Manufacturing</option>
+<option value="u">2012 to 2015 Difference in Unemployment Rate</option>
+
+
 </select>
 
 
