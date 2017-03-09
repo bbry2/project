@@ -152,5 +152,4 @@ CREATE TABLE unemployment
 .import fd12.csv fd12
 .import fd15.csv fd15
 .import diff_1215.csv diff_1215
-.import Unemployment_Processed.csv unemployment
-
+.import Unemployment_Processed2.csv unemployment

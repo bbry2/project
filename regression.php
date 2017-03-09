@@ -16,7 +16,7 @@ the folder containing this and the other relevant files.
  -->
  <div id="primary"> <div id="content" role="main"> </div><!-- #content -->
 <form method="post" id="election_analysis" action="">
-<h1> 2016 Election Analysis by County </h1> 
+<h1> 2016 Election Analysis by County Regression </h1> 
 <h4> <b> Check all states you'd like to see counties from: </b></h4>
 <h5> <i> Leave state and county fields blank to display all counties </i> </h5> 
 
