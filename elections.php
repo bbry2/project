@@ -7695,7 +7695,7 @@ if(!empty($_POST["map_vars1"]) && !empty($_POST["map_vars2"])){
     if(!empty($state)){
         $command3 = $command3 . " " . $state . " ";
     }
-    $command3 = $command3 . " 2>&1";
+    //$command3 = $command3 . " 2>&1";
    } 
   $output = shell_exec($command3);
   echo $output;
