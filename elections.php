@@ -7578,7 +7578,7 @@ apache_setenv("PYTHONPATH", "$path");
 //Correlation Heat Map
 if(!empty($_POST["corr_field"])) {
   echo "<center>";
-  $command2 = "python3 correlationmap.py" . " \"" . $_POST["corr_field"] . "\" \"" . $command . "\" 2>&1";
+  $command2 = "python3 correlationmap.py" . " \"" . $_POST["corr_field"] . "\" \"" . $command . "\"";
   //echo $command2;
   $pid = popen( $command2, "r");
   while( !feof( $pid ) )
