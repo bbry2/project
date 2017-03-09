@@ -1,5 +1,8 @@
 <?php ?>
 <!-- Adding Data: Add the variable names and descriptions below. -->
+<head>
+<title>Information and Sources</title>
+</head>
 <div id="primary">
 <h1> Information and Sources </h1>
 <h2> Election Data </h2>
@@ -54,8 +57,8 @@
 <li> Uses population at the age of 25 or older with Bachelor's degree. See how this compares to the United States as a whole  <a href="https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_1YR_S1501&prodType=table">here</a>. <br> 
 <b> male_pop </b>: Total male population <br>
 <b> male_per </b>: Percent of population male <br>
-<b> female_pop </b>: Total female population <br>
-<b> female_per </b>: Percent of population female <br>
+<b> female_pop </b>: Total female population (citizens) <br>
+<b> female_per </b>: Percent of population female (citizens) <br>
 <b> unemployment </b>: Percent of population unemployed and over 25 years old <br>
 <b> poverty </b>: Percentage of households in poverty <br>
 <b> white_per </b>: Percent of population identifying their race as "white" (This includes those identifying ethinicty as "Hispanic")<br>

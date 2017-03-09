@@ -14,6 +14,10 @@ be able to access the following modules: sqlite3, numpy, scipy, pandas, matplotl
 The Election Analysis Template is written in php5 with sqlite3 enabled. To run on a localhost, the document root must be changed to 
 the folder containing this and the other relevant files.
  -->
+ <head>
+<title>Election Analyzer Home</title>
+</head>
+
 <style>
 table {
     font-family: arial, sans-serif;

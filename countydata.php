@@ -1,3 +1,6 @@
+<head>
+<title>County Data</title>
+</head>
 <style>
 table {
     font-family: arial, sans-serif;
