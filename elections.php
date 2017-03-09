@@ -7679,7 +7679,8 @@ while($row = $result->fetchArray()){
 }
 //mapping the counties
 if(!empty($_POST["display_map"])){
-    $command3 = "python2 plot_counties.py";
+    $command3 = "python2 plot_counties.py ";
+    $command3 = $command3 . $_POST["map_vars1"] . $_POST["map_vars2"];
     foreach($state_array as $state){
     if(!empty($state)){
         $command3 = $command3 . " " . $state . " ";
