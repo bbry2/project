@@ -6858,18 +6858,13 @@ tr:nth-child(even) {
 <option value="d.bach_or_higher_per">2012 to 2015 Difference in Percent of Population with a Bachelor's Degree or Higher</option>
 <option value="d.less_than_hs_per">2012 to 2015 Difference in Percent of Population with Less Than High School Degree</option>
 </select>
-<h4> 7. Display Map </h4>
-<label for="display_map"></label>
-<select name="display_map" id="display_map">
-<option value="">--No--</option>
-<option value="Yes">Yes</option>
-</select>
-<h4> If Yes, Choose Two Variables You'd Like to See Mapped </h4>
+<h2> 7. Display Maps </h2>
+<h4> Display maps of selected variables by county in states selected. </h4>
 <label for="map_vars1"></label>
 <select name="map_vars1" id="map_vars1">
-<option value="W">--No Choice--</option>
-<option value="W">Winning Party</option>
-<option value="w">Winning Margin</option>
+<option value="">--No Choice--</option>
+<option value="W">Winning Party in 2016</option>
+<option value="w">Winning Margin 2016</option>
 <option value="d">Shift in Winning Margin between 2012 and 2016</option>
 <option value="i">2012 to 2015 Difference in Median Income</option>
 <option value="a">2012 to 2015 Difference in Median Age</option>
@@ -6879,7 +6874,7 @@ tr:nth-child(even) {
 </select>
 <label for="map_vars2"></label>
 <select name="map_vars2" id="map_vars2">
-<option value="W">--No Choice--</option>
+<option value="">--No Choice--</option>
 <option value="W">Winning Party</option>
 <option value="w">Winning Margin</option>
 <option value="d">Shift in Winning Margin between 2012 and 2016</option>
@@ -6888,8 +6883,6 @@ tr:nth-child(even) {
 <option value="n">2012 to 2015 Difference in Percent of Population Not Citizens</option>
 <option value="m">2012 to 2015 Difference in Percent Employment in Manufacturing</option>
 <option value="u">2012 to 2015 Difference in Unemployment Rate</option>
-
-
 </select>
 
 
@@ -7695,7 +7688,7 @@ while($row = $result->fetchArray()){
   echo $output;
 }
 //mapping the counties
-if(!empty($_POST["display_map"])){
+if(!empty($_POST["map_vars1"]) && !empty($_POST["map_vars2"])){
     $command3 = "python2 plot_counties.py ";
     $command3 = $command3 . $_POST["map_vars1"] . $_POST["map_vars2"];
     foreach($state_array as $state){

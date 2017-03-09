@@ -42,7 +42,7 @@ def get_polygon_lists(df,df_diff,states):
                 df3 = df1['vote_diff1216'] < 0
                 df4 = df1['win_marg'] < 0
                 df5 = df1_2['unemp1216'] > 0
-                df6 = df1_2['manuper'] < 0
+                df6 = df1_2['manuper'] > 0
                 df7 = df1_2['median_age']>0
                 df8 = df1_2['median_income']>0
                 df9 = df1_2['not_cit']>0
@@ -163,10 +163,10 @@ def get_polygon_lists(df,df_diff,states):
 def plot_counties(df, df_diff, states, display_opts):
     args_to_vars = {'W': 'poly_list', 'w':'win_marg', 'd':'vote_diff', 'u':'unemp1216', 'm':'manuper', 'i':'median_income',
                     'a':'median_age', 'n':'not_cit'}
-    title_dict = {'W': 'Winning Party by County in 2016 Election', 'd':'Difference in Votes Cast Between 2012 and 2016',
-                  'w': 'Winning Margin by County in 2016', 'u': 'Difference in Unemployment Rate from 2012 to 2016',
-                  'm': 'Difference in Manufcaturing Job Percentages between 2012 and 2015', 'i':'Difference in Median Income betwen 2012 and 2016',
-                  'a':'Difference in Median Age betwen 2012 and 2016','n':'Difference in Percentage of Population not U.S. Citizens between 2012 and 2016'}
+    title_dict = {'W': 'Winning Party by County in 2016 Election', 'd':'Difference in Winning Margin Between 2012 and 2015',
+                  'w': 'Winning Margin by County in 2016', 'u': 'Difference in Unemployment Rate from 2012 to 2015',
+                  'm': 'Difference in Manufcaturing Job Percentages between 2012 and 2015', 'i':'Difference in Median Income betwen 2012 and 2015',
+                  'a':'Difference in Median Age betwen 2012 and 2015','n':'Difference in Percentage of Population not U.S. Citizens between 2012 and 2015'}
     poly_dict, color_dict = get_polygon_lists(df, df_diff, states)
     fig1 = plt.figure(figsize = (14, 6))
     rd_cmap1 = 'Reds'
@@ -208,7 +208,7 @@ def plot_counties(df, df_diff, states, display_opts):
     #html_fig = mpld3.fig_to_html(fig1, template_type = "general")
     #print(html_fig)
     plt.savefig('test_map_plot.png')
-    print("<center> <img src=\"test_map_plot.png\" alt=\"Map\" height=\"500\" width=\"1000\"></center>")
+    print("<img src=\"test_map_plot.png\" alt=\"Map\" height=\"500\" width=\"1200\">")
 
 
 
