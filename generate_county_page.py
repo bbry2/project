@@ -40,7 +40,7 @@ def generate_page(county_state):
     print("Go back to the <a href=\"http://localhost/elections.php\">home page</a> ")
     print("<h1> Data for", county + ",", state , "</h1> ")
     print("<h3> Please be patient while the tables and raw data table load. </h3>")
-    print("<h4> See how this compares the state as a whole at <a href=\"http://localhost/statedata.php?state="+state+"\">"+state+" page</a>. </h4> ")
+    print("<h4> See how this compares to the state as a whole at <a href=\"http://localhost/statedata.php?state="+state+"\">"+state+" page</a>. </h4> ")
     print("<h5> Below you will find charts which give a visual representation of the data. At the bottom of the page is a table of the raw data for the county. </h5>")
     
     employment_areas = ["Percent of Workers on Salary","Percent of Workers Self-Employed","Percent Employment in Manufacturing"]

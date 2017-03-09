@@ -6333,7 +6333,7 @@ the folder containing this and the other relevant files.
 <option value="3111">3111</option>
 <option value="3112">3112</option>
 </select>
-<h2> 6. Regression Analysis </h2>
+<h2> Regression Analysis </h2>
 
 <h4> <b> Regression output will be displayed above county raw data </b> </h4> 
 <b> Model one of the data above on another: <br> </b> <label for="outcome"></label>
