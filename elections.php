@@ -40,6 +40,7 @@ tr:nth-child(even) {
 <h1> 2016 Election Analysis by County </h1> 
 <h3> Information about the data used as well as our sources can be found at our <a href="http://localhost/information.php">information page</a>. </h3>
 <h5> You can access our <a href="http://localhost/regression.php">regression tool</a> directly or below with other tools. </h5>
+<h5> See pages for any county or state. For example, look at data for <a href="http://localhost/http://localhost/countydata.php?county=Cook%20County%20IL">Cook County</a> and  <a href="http://localhost/statedata.php?state=IL">Cook County</a>. </h5>
 <h4> <i> Steps 1-4 create the raw data table displayed below. This data is used to generate optional correlation/regression analysis in steps 5-6.</i> </h4>
 
 <h2> 1. Select States or a Particular County </h2>
@@ -6870,6 +6871,9 @@ tr:nth-child(even) {
 <option value="W">Winning Party</option>
 <option value="w">Winning Margin</option>
 <option value="d">Difference in Votes Cast for Democratic Party between 2012 and 2016</option>
+<option value="i">Median Income</option>
+<option value="a">Median Age</option>
+<option value="n">Percent of Population Not Citizens</option>
 </select>
 <label for="map_vars2"></label>
 <select name="map_vars2" id="map_vars2">
@@ -6877,6 +6881,9 @@ tr:nth-child(even) {
 <option value="W">Winning Party</option>
 <option value="w">Winning Margin</option>
 <option value="d">Difference in Votes Cast for Democratic Party between 2012 and 2016</option>
+<option value="i">Median Income</option>
+<option value="a">Median Age</option>
+<option value="n">Percent of Population Not Citizens</option>
 </select>
 
 
@@ -7640,25 +7647,29 @@ foreach($summary_data as $summary_select){
     $summary_command = $summary_command . $summary_select;
 }
 $summary_command = substr($summary_command, 2);
-$summary_command = "SELECT " . $summary_command;
-$summary_command = $summary_command . $f_command . $w_command . ";";
-//echo $summary_command;
-$summary_array = $db->query($summary_command);
-//var_dump($summary_array);
-while($row = $summary_array->fetchArray()){
-  //var_dump($row);
-  $output = "<tr> <td> <b> Column Average </b> </td>";
-  foreach(array_keys($row) as $key) {
-    if($key == 9999999999 && $row[$key] == "9999999999"){
+if(!empty($summary_command)){
+  $summary_command = "SELECT " . $summary_command;
+  $summary_command = $summary_command . $f_command . $w_command . ";";
+  $summary_array = $db->query($summary_command);
+  //echo $summary_command;
+  //var_dump($summary_array);
+  while($row = $summary_array->fetchArray()){
+    //var_dump($row);
+    $output = "<tr> <td> <b> Column Average </b> </td>";
+    foreach(array_keys($row) as $key) {
+      if($key == 9999999999 && $row[$key] == "9999999999"){
           $output = $output . "<td>(categorical data)</td>";
-      }
-    elseif(is_numeric($key) != 1){
+        }
+      elseif(is_numeric($key) != 1){
           $output = $output . "<td>" . round($row[$key], 2). "</td>";
-      }
+        }
     }
   $output = $output . "</tr>";
   echo $output;
 }
+}
+
+
 $county_link_temp = "";
 while($row = $result->fetchArray()){
   $count = 0;
@@ -7685,6 +7696,7 @@ if(!empty($_POST["display_map"])){
     if(!empty($state)){
         $command3 = $command3 . " " . $state . " ";
     }
+    $command3 = $command3 . " 2>&1";
    } 
   $output = shell_exec($command3);
   echo $output;

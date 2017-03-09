@@ -52,7 +52,7 @@ def regression(predictor, outcome, w_command):
     print('We can explain <b>', round(100*r_value**2, 4), '% </b> of the variation in', outcome_label, 'by variation in', predictor_label, '<br> <br>')
 
     fig = plt.figure()
-    plt.suptitle('test title', fontsize=20)
+    plt.suptitle(predictor_label+ " and " + outcome_label, fontsize=20)
     plt.xlabel(predictor_label, fontsize=18)
     plt.ylabel(outcome_label, fontsize=16)
     
@@ -67,10 +67,11 @@ def regression(predictor, outcome, w_command):
     yl = [slope*xx + intercept  for xx in xl]
 
     plt.plot(xl, yl, '-r')
+    plt.savefig("regression.png")
+    print("<center> <img src=\"regression.png\" alt=\"Regression\" height=\"500\" width=\"550\"></center>")
+    #string = mpld3.fig_to_html(fig,template_type="simple")
 
-    string = mpld3.fig_to_html(fig,template_type="simple")
-
-    print(string)
+    #print(string)
 	
 
 

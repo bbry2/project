@@ -26,7 +26,7 @@ $path = '/usr/bin';
 putenv("PYTHONPATH=$path");
 apache_setenv("PYTHONPATH", "$path");
 $county_state = $_GET['county'];
-$command2 = "python3 generate_county_page.py" . " \"" . $county_state . "\" ";
+$command2 = "python3 generate_county_page.py" . " \"" . $county_state . "\" 2>&1";
 $pid = popen($command2, "r");
 while( !feof( $pid ) )
 {

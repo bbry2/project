@@ -46,7 +46,7 @@ def generate_page(state):
     print("<h1> Data for", state , "</h1>")
     print("<h3> Please be patient while the tables and raw data table load. </h3>")
     print("<h5> Below you will find charts which give a visual representation of the data. At the bottom of the page is a table of the raw data for the county. </h5>")
-
+    print("<h5> This data is constructed from the county data. </h5>")
     
     employment_areas = ["Percent of Workers on Salary","Percent of Workers Self-Employed","Percent Employment in Manufacturing"]
     citizen_areas = ["Population of Citizens","Population of Non-Citizens","Population of Naturalized Citizens"]

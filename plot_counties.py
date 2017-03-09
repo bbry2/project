@@ -208,6 +208,8 @@ def plot_counties(df, df_diff, states, display_opts):
     #html_fig = mpld3.fig_to_html(fig1, template_type = "general")
     #print(html_fig)
     plt.savefig('test_map_plot.png')
+    print("<center> <img src=\"test_map_plot.png\" alt=\"Map\" height=\"500\" width=\"1000\"></center>")
+
 
 
 

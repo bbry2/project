@@ -1,5 +1,6 @@
 #! /usr/bin python3
 
+import os
 import sys
 import sqlite3
 import numpy as np
@@ -36,7 +37,7 @@ def make_plot(field, command):
     df = pd.read_sql_query(command, conn)
     corr = df.corr()
     a = corr.iloc[3:,:3]
-    print(list(df)[5:])
+    #print(list(df)[5:])
     labels_list = list(df)[5:]
     yticklabels_list = []
     for label in labels_list:
@@ -55,8 +56,10 @@ def make_plot(field, command):
         fid = sns.heatmap(a, vmax = 1, vmin= -1, cmap='RdBu',annot=True, xticklabels = xticklabels_list, yticklabels = yticklabels_list)
     if field == "republican_perc":
         fid = sns.heatmap(a, vmax = 1, vmin= -1, cmap='RdBu',annot=True, xticklabels = xticklabels_list, yticklabels = yticklabels_list)
-    string = mpld3.fig_to_html(fig, template_type="general")
-    print(string)
+    #string = mpld3.fig_to_html(fig, template_type="general")
+    plt.savefig("correlationmap.png")
+    print("<img src=\"correlationmap.png\" alt=\"Correlation Map\" height=\"600\" width=\"800\">")
+    #print(string)
 
 
 if __name__ == "__main__":
