@@ -208,7 +208,7 @@ def plot_counties(df, df_diff, states, display_opts):
     norm = mpl.colors.Normalize(vmin = -1, vmax=1)
     cmap = plt.cm.bwr
     cax = fig1.add_axes([0.915, 0.2, 0.02, 0.6])
-    cbar = mpl.ColorbarBase(cax, cmap = cmap, norm = norm, spacing = 'proportional', ticks = [-1, 0, 1])
+    cbar = mpl.colorbar.ColorbarBase(cax, cmap = cmap, norm = norm, spacing = 'proportional', ticks = [-1, 0, 1])
     cbar.ax.set_yticklabels(['Decreasing', 'Neutral', 'Increasing'])
     plt.savefig('test_map_plot.png')
     print("<img src=\"test_map_plot.png\" alt=\"Map\" height=\"500\" width=\"1200\">")
