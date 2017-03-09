@@ -14,7 +14,7 @@ be able to access the following modules: sqlite3, numpy, scipy, pandas, matplotl
 The Election Analysis Template is written in php5 with sqlite3 enabled. To run on a localhost, the document root must be changed to 
 the folder containing this and the other relevant files.
  -->
- <head>
+<head>
 <title>Election Analyzer Home</title>
 </head>
 
@@ -39,7 +39,7 @@ tr:nth-child(even) {
 <form method="post" id="election_analysis" action="">
 <h1> Election Analysis by County </h1> 
 <h3> Information about the data used as well as our sources can be found at our <a href="http://localhost/information.php">information page</a>. </h3>
-<h5> You can access our <a href="http://localhost/regression.php">regression tool</a> directly or below with other tools. </h5>
+<h5> You can access our <a href="http://localhost/regression.php">regression tool</a> and our <a href="http://localhost/maps.php">mapping tool</a> directly or below with other tools. </h5>
 <h5> See pages for any county or state. For example, look at data for <a href="http://localhost/countydata.php?county=Cook County IL">Cook County</a> and  <a href="http://localhost/statedata.php?state=IL">IL</a>. </h5>
 <h4> <i> Steps 1-4 create the raw data table displayed below. This data is used to generate optional correlation/regression analysis in steps 5-6.</i> </h4>
 

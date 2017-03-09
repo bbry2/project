@@ -1,3 +1,5 @@
+
+
 <style>
 table {
     font-family: arial, sans-serif;
@@ -15,6 +17,9 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style>
+<head>
+<title>State Data</title>
+</head>
 
 <?php
 /*Updating data: no changes needed*/

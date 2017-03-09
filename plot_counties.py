@@ -3,8 +3,8 @@
 import sys
 import numpy as np
 import pandas as pd
-import matplotlib
-matplotlib.use('Agg')
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import shapefile as sf
 from matplotlib.patches import Polygon
@@ -205,10 +205,14 @@ def plot_counties(df, df_diff, states, display_opts):
     ax2.set_ylabel('Lattitude ($^{\circ}$N)')
     ax2.autoscale_view()
     ax2.set_title(title_dict[display_opts[1]])
-    #html_fig = mpld3.fig_to_html(fig1, template_type = "general")
-    #print(html_fig)
+    norm = mpl.colors.Normalize(vmin = -1, vmax=1)
+    cmap = plt.cm.bwr
+    cax = fig1.add_axes([0.915, 0.2, 0.02, 0.6])
+    cbar = mpl.ColorbarBase(cax, cmap = cmap, norm = norm, spacing = 'proportional', ticks = [-1, 0, 1])
+    cbar.ax.set_yticklabels(['Decreasing', 'Neutral', 'Increasing'])
     plt.savefig('test_map_plot.png')
     print("<img src=\"test_map_plot.png\" alt=\"Map\" height=\"500\" width=\"1200\">")
+    print("<center> For election data, red favors Republican candidate, blue favors Democratic canidate. <br> For demographic data, red is increase, blue is decrease. </center>")
 
 
 
