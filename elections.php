@@ -6863,6 +6863,24 @@ tr:nth-child(even) {
 <option value="">--No--</option>
 <option value="Yes">Yes</option>
 </select>
+<h4> If Yes, Choose Two Variables You'd Like to See Mapped </h4>
+<label for="map_vars1"></label>
+<select name="map_vars1" id="map_vars1">
+<option value="W">--No Choice--</option>
+<option value="W">Winning Party</option>
+<option value="w">Winning Margin</option>
+<option value="d">Difference in Votes Cast for Democratic Party between 2012 and 2016</option>
+</select>
+<label for="map_vars2"></label>
+<select name="map_vars2" id="map_vars2">
+<option value="W">--No Choice--</option>
+<option value="W">Winning Party</option>
+<option value="w">Winning Margin</option>
+<option value="d">Difference in Votes Cast for Democratic Party between 2012 and 2016</option>
+</select>
+
+
+
 
 <br>
 <br>
