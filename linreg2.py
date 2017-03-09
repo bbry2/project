@@ -44,7 +44,7 @@ def regression(predictor, outcome, w_command):
     print("<br> <b> <u> Regression </u> </b> <br>")	
     print('Our model for the <b>',len(results),'</b> counties you\'ve selected is: <br>')
     print('<b> (' + outcome_label + ') = ',round(intercept, 2), '+', round(slope, 4), '(' + predictor_label + ')</b> <br>')
-    print('There is a<b>', str(100*round(p_value, 6)), '% </b>chance the slope is 0. If the slope is zero, we do not have statistically significant evidence of an association between', predictor_label, 'and', outcome_label, '<br>')
+    print('There is a<b>', str(round(100*p_value, 6)), '% </b>chance the slope is 0. If the slope is zero, we do not have statistically significant evidence of an association between', predictor_label, 'and', outcome_label, '<br>')
     if p_value > .05:
         print("A statistician would say that there <b> is not </b> a statistically significant association here. <br>")
     else:
