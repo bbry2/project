@@ -1,3 +1,5 @@
+<?php /* County Page Template - Ryan Hopkins */ ?> 
+<!-- Page for county data -->
 <head>
 <title>County Data</title>
 </head>

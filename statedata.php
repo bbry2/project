@@ -1,4 +1,5 @@
-
+<?php /* Mapping Page Template - Ryan Hopkins */ ?> 
+<!-- Page for state data -->
 
 <style>
 table {

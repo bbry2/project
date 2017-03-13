@@ -1,4 +1,4 @@
-<?php ?>
+<?php /* Information Page Template - Ryan Hopkins */ ?>
 <!-- Adding Data: Add the variable names and descriptions below. -->
 <head>
 <title>Information and Sources</title>

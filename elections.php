@@ -1,4 +1,5 @@
 <?php /* Election Analysis Template - Ryan Hopkins */ ?> 
+<!-- Built using the information on syntax at www.w3schools.com/html/ www.w3schools.com/php/ and www.w3schools.com/css/ -->
 <!-- How to add data: Add checkbox fields below for each data field added. If a new table is added, a new section may be needed.
 Add the fields to the Order By dropdowns. 
 Add data to both Regression Model By/On Dropdowns.
@@ -19,6 +20,7 @@ the folder containing this and the other relevant files.
 </head>
 
 <style>
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -3364,6 +3366,7 @@ tr:nth-child(even) {
 <label for="orderby"></label>
 <select name="orderby" id="orderby">
 <option value="">--No Choice--</option>
+<option value="">--Election Data--</option>
 <option value="e.total_2008">Total 2008 Votes</option>
 <option value="e.total_2012">Total 2012 Votes</option>
 <option value="e.total_2016">Total 2016 Votes</option>
@@ -3391,6 +3394,7 @@ tr:nth-child(even) {
 <option value="e.diff_0812">2008 to 2012 Shift in Winning Margin</option>
 <option value="e.diff_0816">2008 to 2016 Shift in Winning Margin</option>
 <option value="e.diff_1216">2012 to 2016 Shift in Winning Margin</option>
+<option value="">-- Unemployment and Labor Force Data --</option>
 <option value="u.unemployment_rate_2008">2008 Unemployment Rate</option>
 <option value="u.unemployment_rate_2012">2012 Unemployment Rate</option>
 <option value="u.unemployment_rate_2015">2015 Unemployment Rate</option>
@@ -3404,6 +3408,7 @@ tr:nth-child(even) {
 <option value="u.civilian_labor_force_2015">Civilian Labor Force in 2015</option>
 <option value="u.labor_Force_Percent_Difference_2008_to_2015">Difference in Labor Force Participation Rate 2008 to 2015</option>
 <option value="u.labor_Force_Percent_Difference_2012_to_2015">Difference in Labor Force Participation Rate 2012 to 2015</option>
+<option value="">-- 2012 Demographic Data --</option>
 <option value="fd12.population">Total Population in 2012</option>
 <option value="fd12.median_age">Median Age in 2012</option>
 <option value="fd12.health_cov">Medicare Coverage in 2012</option>
@@ -3429,6 +3434,7 @@ tr:nth-child(even) {
 <option value="fd12.not_cit_per">Percentage of Non-Citizens in 2012</option>
 <option value="fd12.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2012</option>
 <option value="fd12.less_than_hs_per">Percent of Population with Less Than High School Degree in 2012</option>
+<option value="">-- 2015 Demographic Data --</option>
 <option value="fd15.population">Total Population in 2015</option>
 <option value="fd15.median_age">Median Age in 2015</option>
 <option value="fd15.health_cov">Medicare Coverage in 2015</option>
@@ -3454,6 +3460,7 @@ tr:nth-child(even) {
 <option value="fd15.not_cit_per">Percentage of Non-Citizens in 2015</option>
 <option value="fd15.bach_or_higher_per">Percent of Population with a Bachelor's Degree or Higher in 2015</option>
 <option value="fd15.less_than_hs_per">Percent of Population with Less Than High School Degree in 2015</option>
+<option value="">-- 2012 to 2015 Differences in Demographic Data --</option>
 <option value="d.population">2012 to 2015 Difference in Total Population</option>
 <option value="d.median_age">2012 to 2015 Difference in Median Age</option>
 <option value="d.health_cov">2012 to 2015 Difference in Medicare Coverage</option>
@@ -7703,5 +7710,5 @@ if(!empty($_POST["map_vars1"]) && !empty($_POST["map_vars2"])){
 ?>
 
 
-</div><!-- #primary --> <?php ?>
+</div> <?php ?>
 

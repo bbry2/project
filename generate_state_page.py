@@ -1,3 +1,5 @@
+#Ryan Hopkins
+#Generates page for a state's data
 
 import sqlite3
 import sys

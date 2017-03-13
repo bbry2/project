@@ -1,4 +1,5 @@
-#! /usr/bin python3
+#!/usr/bin python3
+#Ryan Hopkins
 
 import sys
 import sqlite3
@@ -45,16 +46,17 @@ def regression(predictor, outcome, w_command):
     print('Our model for the <b>',len(results),'</b> counties you\'ve selected is: <br>')
     print('<b> (' + outcome_label + ') = ',round(intercept, 2), '+', round(slope, 4), '(' + predictor_label + ')</b> <br>')
     print('There is a<b>', str(round(100*p_value, 6)), '% </b>chance the slope is 0. If the slope is zero, we do not have statistically significant evidence of an association between', predictor_label, 'and', outcome_label, '<br>')
+    print('Go to our <a href="http://localhost/information.php">information page</a> to see more about the variables. <br>')
     if p_value > .05:
-        print("A statistician would say that there <b> is not </b> a statistically significant association here. <br>")
+        print("A statistician would say that there<b><i> is not </i> a statistically significant </b> association here. <br>")
     else:
-        print("A statistician would say that there <b> is </b> a statistically significant association here. <br>")
+        print("A statistician would say that there <b><i> is </i>a statistically significant association </b>here. <br>")
     print('We can explain <b>', round(100*r_value**2, 4), '% </b> of the variation in', outcome_label, 'by variation in', predictor_label, '<br> <br>')
 
     fig = plt.figure()
-    plt.suptitle(predictor_label+ " and " + outcome_label, fontsize=20)
-    plt.xlabel(predictor_label, fontsize=18)
-    plt.ylabel(outcome_label, fontsize=16)
+    plt.suptitle(predictor_label+ " and " + outcome_label, fontsize=16)
+    plt.xlabel(predictor_label, fontsize=13)
+    plt.ylabel(outcome_label, fontsize=15)
     
     fid = plt.scatter(predictors, outcomes, s=30, alpha=0.15, marker='o')
     par = np.polyfit(predictors, outcomes, 1, full=True)
@@ -65,13 +67,16 @@ def regression(predictor, outcome, w_command):
     reorder = sorted(range(len(xd)), key = lambda ii: xd[ii])
     xl = [min(xd), max(xd)]
     yl = [slope*xx + intercept  for xx in xl]
+    if 'diff' not in predictor and 'difference' not in predictor and 'Difference' not in predictor \
+    and 'd.' not in predictor and 'marg' not in predictor:
+        plt.xlim(xmin=0)
+    if 'diff' not in outcome and 'difference' not in outcome and 'Difference' not in outcome \
+    and 'd.' not in outcome and 'marg' not in outcome and 'Diff' not in outcome:
+        plt.ylim(ymin=0)
 
     plt.plot(xl, yl, '-r')
     plt.savefig("regression.png")
     print("<center> <img src=\"regression.png\" alt=\"Regression\" height=\"500\" width=\"550\"></center>")
-    #string = mpld3.fig_to_html(fig,template_type="simple")
-
-    #print(string)
 	
 
 

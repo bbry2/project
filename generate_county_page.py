@@ -1,3 +1,5 @@
+#Ryan Hopkins
+#Generates page for a county's data
 
 import sqlite3
 import sys

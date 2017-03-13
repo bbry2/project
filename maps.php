@@ -1,19 +1,5 @@
-<?php /* Election Analysis Template - Ryan Hopkins */ ?> 
-<!-- How to add data: Add checkbox fields below for each data field added. If a new table is added, a new section may be needed.
-Add the fields to the Order By dropdowns. 
-Add data to both Regression Model By/On Dropdowns.
-Add data to Select-command-building if waterfall with desired table header.
-Alter correlationmap.py, linreg2.py, generate_county_page.py files as directed in each.
-How to add a year of election data: Go through the above to add the year's data to be displayed/correlated/regressed.
-As desired, add the winner criterion from the year's election as an additional dropdown to the Filter Results by Winner. 
-Add the criterion fields to the w_command builder.
-Alter correlationmap.py, linreg2.py, generate_county_page.py files as directed in each for year change.
-Database filename change: alter $db_filename variable in php section below to desired filename
-Note: The Election Analysis relies on Python 3 to preform regression analysis and build visuals. To run on a local server, Python must
-be able to access the following modules: sqlite3, numpy, scipy, pandas, matplotlib, statsmodels, seaborn, mpld3
-The Election Analysis Template is written in php5 with sqlite3 enabled. To run on a localhost, the document root must be changed to 
-the folder containing this and the other relevant files.
- -->
+<?php /* Mapping Page Template - Ryan Hopkins */ ?> 
+<!-- Page for producing maps of US -->
  <head>
 <title>Map Generator</title>
 </head>
@@ -124,7 +110,7 @@ if(!empty($_POST["map_vars1"]) && !empty($_POST["map_vars2"])){
     if(!empty($state)){
         $command3 = $command3 . " " . $state . " ";
     }
-    $command3 = $command3 . " 2>&1";
+    //$command3 = $command3 . " 2>&1";
    } 
   $output = shell_exec($command3);
   echo $output;
