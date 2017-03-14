@@ -9,14 +9,6 @@ for result in results:
     temp = result[0].strip().replace(" ", "_")+"_"+result[1].strip()
     county_list.append(temp)
 county_results = []
-# for county in county_list:
-#     state = county[-2:]
-#     county = county[:-3].replace("_", " ")
-#     state = "\"" + state + "\""
-#     county = "\"" + county + "\""
-#     command ="SELECT * FROM election_results AS e INNER JOIN fd12 ON e.fips_code=fd12.fips_code INNER JOIN fd15 ON e.fips_code=fd15.fips_code INNER JOIN diff_1215 AS d ON e.fips_code=d.fips_code INNER JOIN unemployment AS u ON e.fips_code=u.fips_code  WHERE e.county =" + county + " AND e.state=" + state +" ;"
-#     result = c.execute(command).fetchall()
-#     county_results.append(result)
 state = county_list[0][-2:]
 county = county_list[0][:-3].replace("_", " ")
 state = "\"" + state + "\""
