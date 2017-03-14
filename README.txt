@@ -26,4 +26,5 @@ statedata.php?state=EX: State level data put together county-by-county from SQLi
 
 Data: Data was taken from sources listed on the information page. We put together estimates from different years and many different files. The raw data to produced useful parameters and statistics, like percentages and differences, which were loaded into the database file data1215.db.
 
-The various csv and xls files contain the data which was loaded into the data1215.db.
+The various csv and xls files contain the data which was loaded into the data1215.db, which was created using data1215.sql.
+
