@@ -1,0 +1,5 @@
+The homepage is index.html. Go to localhost/index.html to access the website. The webpages are elections.php, regression.php, maps.php, information.php and pages constructed based on input: countydata.php?county=Example County and statedata.php?state=EX
+Python files support the functioning of the website: generate_county_page.py, generate_state_page.py, plot_counties.py, linreg2.py, correlationmap.py
+The files have comments which explain how to update the files if the database name is changed or data fields are added.
+The website uses php5, HMTL5, CSS, Python3, Python2, and SQLite3. This allowed us to customize the website to a great extent and format the output in an accessible way. 
+To prevent command injection, the website uses checkboxes and dropdowns. The exception is the county and state data pages, you could type in a command, so it is sent to the python file as a string and the python file processes it.
