@@ -1,5 +1,5 @@
 #! /usr/bin python3
-#Ryan Hopkins
+#Barsican Goc, Yigit Akdemir, and Ryan Hopkins
 
 import os
 import sys

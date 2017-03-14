@@ -1,3 +1,5 @@
+#Used to store the labels and SQLite3 calls for the data. 
+
 list1 = ["Total 2008 Votes",
 "Total 2012 Votes",
 "Total 2016 Votes",

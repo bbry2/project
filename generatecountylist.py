@@ -1,3 +1,6 @@
+#Ryan Hopkins
+#Used to generate a list of the counties, which could then be processed in other python files to print the dropdown menu in php code.
+
 import sqlite3
 
 command ="SELECT county, state FROM election_results;"

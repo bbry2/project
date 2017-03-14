@@ -1,4 +1,5 @@
 <?php /* County Page Template - Ryan Hopkins */ ?> 
+<!-- Built using the information on syntax at www.w3schools.com/html/ www.w3schools.com/php/ and www.w3schools.com/css/ -->
 <!-- Page for county data -->
 <head>
 <title>County Data</title>

@@ -1,4 +1,5 @@
-<?php /* Information Page Template - Ryan Hopkins */ ?>
+<?php /* Information Page Template - Ryan Hopkins and Yigit Akdemir*/ ?>
+<!-- Built using the information on syntax at www.w3schools.com/html/ www.w3schools.com/php/ and www.w3schools.com/css/ -->
 <!-- Adding Data: Add the variable names and descriptions below. -->
 <head>
 <title>Information and Sources</title>
